@@ -1,0 +1,49 @@
+.header {
+  position: sticky;
+  top: 0;
+  background: var(--main-color);
+  width: 100%;
+  height: 65px;
+}
+.header .wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+  height: 100%;
+  gap: 10px;
+}
+.header .wrapper .logo {
+  width: 170px;
+}
+.header .wrapper .logo > img {
+  width: 100%;
+}
+.header .wrapper .outer > ul {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: max(20px, 3rem);
+  font-size: 2rem;
+  font-weight: 600;
+}
+.header .wrapper .outer > ul > li {
+  cursor: pointer;
+}
+.header .wrapper .tel_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-items: end;
+  font-size: 2rem;
+  color: #fff;
+  gap: 10px;
+}
+.header .wrapper .tel_box > strong {
+  font-weight: 600;
+}
+.header .wrapper .tel_box > a {
+  font-weight: 700;
+}/*# sourceMappingURL=Header.module.css.map */

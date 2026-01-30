@@ -1,27 +1,22 @@
 @media all {
-  .clear:after {
-    content: "";
-    display: block;
-    clear: both;
-  }
   * {
     margin: 0;
     padding: 0;
     outline: none;
     box-sizing: border-box;
   }
+  html {
+    font-size: clamp(5px, 0.5208333333vw, 14px);
+  }
   body {
     line-height: 1;
-    font-size: 14px;
     font-weight: 400;
     color: #000;
-    font-family: "Noto Sans KR", sans-serif !important;
     word-wrap: break-word;
     word-break: keep-all;
   }
   h1, h2, h3, h4, h5, h6 {
     margin: 0;
-    font-family: "Noto Sans KR", sans-serif !important;
     line-height: 1;
     font-size: 1em;
   }
@@ -33,13 +28,13 @@
   a {
     outline: 0;
     text-decoration: none;
-    color: #000;
-    font-family: "Noto Sans KR", sans-serif !important;
+    color: inherit;
   }
   a:focus {
     outline: none;
   }
-  figure, dl, dd, input[type=radio], input[type=checkbox] {
+  figure, dl, dd, input[type=radio],
+  input[type=checkbox] {
     margin: 0;
     padding: 0;
   }
@@ -61,12 +56,6 @@
   dt {
     font-weight: normal;
   }
-  ::-moz-placeholder {
-    font-family: "Noto Sans KR", sans-serif !important;
-  }
-  ::placeholder {
-    font-family: "Noto Sans KR", sans-serif !important;
-  }
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
@@ -76,5 +65,24 @@
     -webkit-transition: background-color 9999s ease-out;
     box-shadow: none !important;
     -webkit-text-fill-color: none !important;
+  }
+  :root {
+    --main-color: #D82A38;
+  }
+  .paperLogy {
+    font-family: var(--font-paperlogy) !important;
+  }
+  .poppins {
+    font-family: var(--font-poppins) !important;
+  }
+  .containerV1 {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 1380px) {
+  .containerV1 {
+    padding: 0 13px;
   }
 }/*# sourceMappingURL=globals.css.map */

@@ -1,19 +1,21 @@
 import { Caculator, FormBox } from './client'
 
 
+
+// section
+import Section01 from '@/main/Section01/Section01';
+import Header from '@/main/Header/Header';
+
+
 export default function Home() {
 
 
   return (
-    <div>
-      <main>
-        <div>
-          <h2>회수기간 계산기</h2>
-
-          <Caculator />
-          <FormBox />
-        </div>
-      </main>
-    </div>
+    <main>
+      <Header/>
+      <Section01/>
+      {/* <Caculator />
+      <FormBox /> */}
+    </main>
   );
 }

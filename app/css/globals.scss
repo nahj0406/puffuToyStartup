@@ -1,32 +1,72 @@
 @media all {
-  .clear:after {
-	 content: ""; display: block; clear: both;
+
+  * {
+    margin: 0; 
+    padding: 0; 
+    outline: none; 
+    box-sizing: border-box;
   }
-  * {margin: 0; padding: 0; outline: none; box-sizing: border-box;}
+  
+  html { // 폰트사이즈 지정! rem
+    font-size: clamp(5px, calc(100vw * 10 / 1920), 14px);
+    // 1920 기준 10px 너비 줄을때마다 폰트사이즈 줄어들고 min은 5, max는 14
+  }
+
   body {
-	 line-height: 1; font-size: 14px; font-weight: 400;
-	 color: #000; font-family: "Noto Sans KR", sans-serif !important;
-	 word-wrap: break-word; word-break: keep-all;
+	 line-height: 1; 
+   font-weight: 400;
+	 color: #000;
+	 word-wrap: break-word; 
+   word-break: keep-all;
   }
+
   h1, h2, h3, h4, h5, h6 {
-	 margin: 0; font-family: "Noto Sans KR", sans-serif !important;
-	 line-height: 1; font-size: 1em;
+	 margin: 0;
+	 line-height: 1; 
+   font-size: 1em;
   }
-  ul, ol {list-style: none; margin: 0; padding: 0;}
+
+  ul, ol {
+    list-style: none; 
+    margin: 0; 
+    padding: 0;
+  }
+
   a {
-	 outline: 0; text-decoration: none; color: #000;
-	 font-family: "Noto Sans KR", sans-serif !important;
+	 outline: 0; 
+   text-decoration: none; 
+   color: inherit;
   }
+
   a:focus {outline: none;}
-  figure, dl, dd, input[type="radio"], input[type="checkbox"] {margin: 0; padding: 0;}
-  img {border: none; outline: none; max-width: 100%;}
-  p {
-	 margin: 0; padding: 0;
-	 word-wrap: break-word; word-break: keep-all;
+
+  figure, dl, dd, input[type="radio"], 
+  input[type="checkbox"] {
+    margin: 0; 
+    padding: 0;
   }
-  button, input, submit {border: none; background: none;}
+
+  img {
+    border: none; 
+    outline: none; 
+    max-width: 100%;
+  }
+
+  p {
+	 margin: 0; 
+   padding: 0;
+	 word-wrap: break-word; 
+   word-break: keep-all;
+  }
+
+  button, input, submit {
+    border: none; 
+    background: none;
+  }
+
   dt {font-weight: normal;}
-  ::placeholder {font-family: "Noto Sans KR", sans-serif !important;}
+
+  ::placeholder {}
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
@@ -35,5 +75,29 @@
 	 -webkit-transition: background-color 9999s ease-out;
 	 box-shadow: none !important;
 	 -webkit-text-fill-color: none !important;
+  }
+
+
+  :root {
+    --main-color: #D82A38;
+  }
+
+  // 필요한 폰트 설정
+  .paperLogy {font-family: var(--font-paperlogy) !important;}
+  .poppins {font-family: var(--font-poppins) !important;}
+
+
+  // 기본 레이아웃 너비
+  .containerV1 {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+
+  @media (max-width: 1380px) {
+    .containerV1 {
+      padding: 0 13px;
+    }
   }
 }

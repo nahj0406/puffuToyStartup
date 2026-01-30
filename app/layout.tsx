@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { poppins } from "@/font";
-// pretendard, paperlogy, 
+import { poppins, pretendard, paperlogy } from "./fonts";
 import "./css/globals.css";
 import Providers from "./provider";
 
@@ -47,7 +46,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#000" />
       </head>
       <body
-        className={`${poppins.variable} antialiased`}
+        className={`${pretendard.className} ${poppins.variable} ${paperlogy.variable} antialiased`}
       >
         <Providers>{children}</Providers>
       </body>
