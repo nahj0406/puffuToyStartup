@@ -111,6 +111,11 @@
 }
 
 .location_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-content: start;
   border-radius: 20px;
   background: rgba(0, 0, 0, 0.8);
   --webkit-backdrop-filter: blur(10px);
@@ -156,7 +161,7 @@
   line-height: 1.4;
 }
 
-.mapBox {
+.location_box .mapBox {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -165,19 +170,19 @@
   width: 100%;
   max-width: 1000px;
 }
-.mapBox .img_box {
+.location_box .mapBox .img_box {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   align-items: start;
   gap: 10px;
+  width: 50%;
 }
-.mapBox .img_box .img {
+.location_box .mapBox .img_box > img {
   width: 100%;
-  max-width: 475px;
 }
-.mapBox .img_box .color_check {
+.location_box .mapBox .img_box .color_check {
   padding-left: 13px;
   display: flex;
   align-items: center;
@@ -185,7 +190,7 @@
   justify-content: start;
   gap: 20px;
 }
-.mapBox .img_box .color_check .unit {
+.location_box .mapBox .img_box .color_check .unit {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -196,17 +201,43 @@
   font-weight: 500;
   white-space: nowrap;
 }
-.mapBox .img_box .color_check .unit .dote {
+.location_box .mapBox .img_box .color_check .unit .dote {
   width: 1em;
   height: 1em;
   border-radius: 50%;
 }
-.mapBox .img_box .color_check .unit.red .dote {
+.location_box .mapBox .img_box .color_check .unit.red .dote {
   background: #EE4E4E;
 }
-.mapBox .img_box .color_check .unit.blue .dote {
+.location_box .mapBox .img_box .color_check .unit.blue .dote {
   background: #5454E2;
 }
-.mapBox .img_box .color_check .unit.green .dote {
+.location_box .mapBox .img_box .color_check .unit.green .dote {
   background: #4FF24F;
+}
+
+.mapBox .slide_box {
+  width: 50%;
+}
+.mapBox .slide_box .board_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 26px;
+}
+.mapBox .slide_box .board_box .board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.mapBox .slide_box .board_box .board h4 {
+  font-size: max(16px, 2.5rem);
+  font-weight: 800;
+  line-height: 1.2;
 }/*# sourceMappingURL=Section03.module.css.map */
