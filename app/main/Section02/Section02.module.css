@@ -1,3 +1,228 @@
-.header {
-  width: 10%;
+.sec2 {
+  overflow: hidden;
+  position: relative;
+}
+
+.sec2 .wrapper {
+  padding-bottom: 12rem;
+}
+
+.sec2 .wrapper > * {
+  position: relative;
+  z-index: 2;
+}
+
+.logo_circle {
+  position: absolute;
+  z-index: 1;
+  width: 80rem;
+  opacity: 0.2;
+}
+.logo_circle.circle01 {
+  top: -20%;
+  right: -12%;
+  animation: circle1Rotate 30s infinite linear;
+}
+.logo_circle.circle02 {
+  bottom: -21%;
+  left: -12%;
+  animation: circle2Rotate 30s infinite linear;
+}
+
+@keyframes circle1Rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  from {
+    transform: rotate(360deg);
+  }
+}
+@keyframes circle2Rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  from {
+    transform: rotate(-360deg);
+  }
+}
+.wrapper .title_box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: start;
+  align-items: end;
+  gap: 25px;
+  margin-bottom: 12rem;
+}
+.wrapper .title_box .title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-items: start;
+  gap: 15px;
+  color: #000;
+}
+.wrapper .title_box .title strong {
+  font-size: 3.5rem;
+  font-weight: 900;
+}
+.wrapper .title_box .title h2 {
+  font-size: 6rem;
+  font-weight: 900;
+  line-height: 1.2;
+}
+.wrapper .title_box .title h2 span {
+  color: #fff;
+}
+
+.itemBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+  gap: 10rem;
+}
+.itemBox .txt_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-items: start;
+  gap: 25px;
+}
+.itemBox .txt_box h3 {
+  font-size: 4rem;
+  font-weight: 700;
+  line-height: 1.6;
+  color: #000;
+}
+.itemBox .txt_box .unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-items: start;
+  gap: 25px;
+}
+.itemBox .txt_box .unit .txt1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-items: start;
+  justify-content: start;
+  gap: 15px;
+}
+.itemBox .txt_box .unit .txt1 .check_i {
+  width: 5rem;
+}
+.itemBox .txt_box .unit .txt1 p {
+  color: #000;
+  font-size: 18px;
+  line-height: 1.4;
+  font-weight: 500;
+}
+.itemBox.item01 {
+  margin-bottom: 10rem;
+}
+.itemBox.item02 .img {
+  order: 2;
+}
+.itemBox.item02 .txt_box {
+  order: 1;
+}
+
+@media (max-width: 1480px) {
+  .itemBox .img {
+    width: 45%;
+  }
+}
+@media (min-width: 992px) and (max-width: 1080px) {
+  .itemBox .txt_box .unit .txt1 p br {
+    display: none;
+  }
+}
+@media (max-width: 992px) {
+  .itemBox {
+    position: relative;
+  }
+  .itemBox .img {
+    width: 80%;
+  }
+  .itemBox .txt_box {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px;
+  }
+  .itemBox .txt_box h3 {
+    font-size: max(20px, 4rem);
+  }
+  .itemBox.item01 {
+    padding-bottom: 100px;
+  }
+  .itemBox.item02 {
+    padding-bottom: 200px;
+  }
+}
+@media (max-width: 768px) {
+  .logo_circle.circle01 {
+    top: 0%;
+    right: -40%;
+  }
+  .logo_circle.circle02 {
+    bottom: 0%;
+    left: -30%;
+  }
+}
+@media (max-width: 680px) {
+  .itemBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-items: start;
+    gap: 5rem;
+  }
+  .itemBox .img {
+    width: 100%;
+    max-width: 450px;
+    align-self: end;
+  }
+  .itemBox .txt_box {
+    position: relative;
+    bottom: unset;
+    right: unset;
+    padding: 0;
+    background: transparent;
+  }
+  .itemBox .txt_box h3 {
+    font-size: max(20px, 3.5rem);
+  }
+  .itemBox .txt_box .unit {
+    gap: max(15px, 2.5rem);
+  }
+  .itemBox .txt_box .unit .txt1 {
+    gap: max(7px, 1.5rem);
+  }
+  .itemBox .txt_box .unit .txt1 p {
+    font-size: max(14px, 1.8rem);
+  }
+  .itemBox .txt_box .unit .txt1 p br {
+    display: none;
+  }
+  .itemBox.item01 {
+    padding-bottom: 0;
+  }
+  .itemBox.item02 {
+    padding-bottom: 0;
+  }
+  .itemBox.item02 .img {
+    order: 1;
+  }
+  .itemBox.item02 .txt_box {
+    order: 2;
+  }
 }/*# sourceMappingURL=Section02.module.css.map */
