@@ -6,9 +6,15 @@
     outline: none; 
     box-sizing: border-box;
   }
+
+  
+  :root {
+    --main-color: #D82A38;
+    --header-h: 65px;
+  }
   
   html { // 폰트사이즈 지정! rem
-    font-size: clamp(5px, calc(100vw * 10 / 1920), 14px);
+    font-size: clamp(7px, calc(100vw * 10 / 1920), 10px);
     // 1920 기준 10px 너비 줄을때마다 폰트사이즈 줄어들고 min은 5, max는 14
   }
 
@@ -77,15 +83,9 @@
 	 -webkit-text-fill-color: none !important;
   }
 
-
-  :root {
-    --main-color: #D82A38;
-  }
-
   // 필요한 폰트 설정
   .paperLogy {font-family: var(--font-paperlogy) !important;}
   .poppins {font-family: var(--font-poppins) !important;}
-
 
   // 기본 레이아웃 너비
   .containerV1 {
@@ -95,9 +95,20 @@
   }
 
 
-  @media (max-width: 1380px) {
+  @media (max-width: 1480px) {
     .containerV1 {
       padding: 0 13px;
+    }
+  }
+
+  @media (max-width: 992px) {
+    html { // 폰트사이즈 지정! rem
+      font-size: clamp(7px, calc(100vw * 10 / 992), 10px);
+      // 1920 기준 10px 너비 줄을때마다 폰트사이즈 줄어들고 min은 5, max는 14
+    }
+
+    :root {
+      --header-h: 55px;
     }
   }
 }

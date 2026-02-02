@@ -4,7 +4,7 @@ import ContainerV1 from '@/component/ContainerV1.tsx/ContainerV1'
 
 export default function Section04() {
    return (
-      <section className={styles.sec3}>
+      <section className={styles.sec4} id='section4'>
          <div className={styles.title_header}>
             <div className="title">
                <span>차별화된 브랜드 방향성</span>
