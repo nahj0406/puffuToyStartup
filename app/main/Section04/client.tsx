@@ -40,6 +40,14 @@ export function SlideBox() {
 //     }
 //   }, [swiperInstance]); // swiperInstance가 설정되면 실행
 
+  // const paginationOptions = {
+  //   clickable: true,
+  //   renderBullet: function (index, className) {
+  //     // index를 활용해 menu 배열의 텍스트를 가져옴
+  //     return `<span class="${className}">${menu[index]}</span>`;
+  //   },
+  // };
+
    return (
       <div className={styles.tab_box}>
          <div className={styles.tab_title}>
