@@ -2,8 +2,23 @@ import clsx from 'clsx'
 import styles from './Section02.module.css'
 import ContainerV1 from '@/component/ContainerV1.tsx/ContainerV1'
 import TextSlide from '@/component/TextSlide.tsx/TextSlide'
+import * as motion from "motion/react-client"
+import type { Variants } from "motion/react"
 
 export default function Section02() {
+   const cardVariants: Variants = {
+      offscreen: {
+         y: 300,
+      },
+      onscreen: {
+         y: 50,
+         transition: {
+            type: "spring",
+            bounce: 0.4,
+            duration: 0.8,
+         },
+      },
+   }
    return (
       <section className={styles.sec2} id='section2'>
          <TextSlide />
@@ -12,15 +27,23 @@ export default function Section02() {
          <img src="/img/sec2/rotate_circle.png" alt="로고 써클" className={clsx(styles.logo_circle, styles.circle02)} />
 
          <ContainerV1 className={styles.wrapper}>
-            <div className={styles.title_box}>
+            <motion.div 
+               className={styles.title_box}
+               initial='offscreen'
+               whileInView='onscreen'
+               viewport={{amount: 0.8, once: true}}
+            >
                <img src="/img/sec2/title_bar.png" alt="제목 데코 막대" className={styles.title_stick} />
-               <div className={styles.title}>
+               <motion.div 
+                  className={styles.title}
+                  variants={cardVariants}
+               >
                   <strong className='paperLogy'>많은 업종중에</strong>
                   <h2 className='paperLogy'>
                      왜 <span className='title_deco'>무인 성인용품</span> 인가?
                   </h2>
-               </div>
-            </div>
+               </motion.div>
+            </motion.div>
 
             <div className={clsx(styles.itemBox, styles.item01)}>
                <img src="/img/sec2/item1_img.png" alt="아이템1 이미지" className={styles.img} />
