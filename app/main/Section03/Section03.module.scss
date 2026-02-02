@@ -118,6 +118,8 @@
 
 
 .location_box {
+   @include vertical-flex();
+   justify-content: start;
    border-radius: 20px;
    background: rgba(0,0,0,0.8);
    --webkit-backdrop-filter: blur(10px);
@@ -163,7 +165,7 @@
 
 }
 
-.mapBox {
+.location_box .mapBox {
    @include flex-box();
    justify-content: start;
    gap: 50px;
@@ -174,8 +176,9 @@
       @include vertical-flex();
       align-items: start;
       gap: 10px;
+      width: 50%;
 
-      .img {width: 100%; max-width: 475px;}
+      > img {width: 100%;}
 
       .color_check {
          padding-left: 13px;
@@ -202,6 +205,32 @@
             &.blue .dote {background: #5454E2;}
             &.green .dote {background: #4FF24F;}
          }
+      }
+   }
+}
+
+
+.mapBox .slide_box {
+   width: 50%;
+
+   .board_box {
+      @include vertical-flex();
+      gap: 25px;
+      background: #fff;
+      border-radius: 20px;
+      padding: 26px;
+
+      .board {
+         @include vertical-flex();
+         gap: 20px;
+
+         h4 {
+            font-size: max(16px, 2.5rem);
+            font-weight: 800;
+            line-height: 1.2;
+         }
+
+         
       }
    }
 }
