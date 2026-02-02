@@ -1,10 +1,13 @@
 import clsx from 'clsx'
 import styles from './Section02.module.css'
 import ContainerV1 from '@/component/ContainerV1.tsx/ContainerV1'
+import TextSlide from '@/component/TextSlide.tsx/TextSlide'
 
 export default function Section02() {
    return (
       <section className={styles.sec2} id='section2'>
+         <TextSlide />
+         
          <img src="/img/sec2/rotate_circle.png" alt="로고 써클" className={clsx(styles.logo_circle, styles.circle01)} />
          <img src="/img/sec2/rotate_circle.png" alt="로고 써클" className={clsx(styles.logo_circle, styles.circle02)} />
 
