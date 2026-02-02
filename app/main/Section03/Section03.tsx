@@ -6,7 +6,7 @@ import { SlideBox } from './client'
 
 export default function Section03() {
    return (
-      <section className={styles.sec3}>
+      <section className={styles.sec3} id='section3'>
          <div className={styles.title_header}>
             <div className="title">
                <span>무인성인용품은</span>

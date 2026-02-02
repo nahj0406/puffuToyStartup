@@ -3,11 +3,11 @@ import styles from './Section01.module.css'
 
 export default function Section01() {
    return (
-      <section className={styles.sec1}>
+      <section className={styles.sec1} id='section1'>
          {
-            [1,2,3,4,5,6].map(()=> {
+            [1,2,3,4,5,6].map((i)=> {
                return (
-                  <img src="/img/sec1/coin.png" alt="코인" className={styles.coin} />
+                  <img key={i} src="/img/sec1/coin.png" alt="코인" className={styles.coin} />
                )
             })
          }

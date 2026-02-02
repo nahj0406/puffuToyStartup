@@ -4,7 +4,7 @@ import ContainerV1 from '@/component/ContainerV1.tsx/ContainerV1'
 
 export default function Section02() {
    return (
-      <section className={styles.sec2}>
+      <section className={styles.sec2} id='section2'>
          <img src="/img/sec2/rotate_circle.png" alt="로고 써클" className={clsx(styles.logo_circle, styles.circle01)} />
          <img src="/img/sec2/rotate_circle.png" alt="로고 써클" className={clsx(styles.logo_circle, styles.circle02)} />
 

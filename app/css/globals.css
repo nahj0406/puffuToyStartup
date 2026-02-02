@@ -5,8 +5,12 @@
     outline: none;
     box-sizing: border-box;
   }
+  :root {
+    --main-color: #D82A38;
+    --header-h: 65px;
+  }
   html {
-    font-size: clamp(5px, 0.5208333333vw, 14px);
+    font-size: clamp(7px, 0.5208333333vw, 10px);
   }
   body {
     line-height: 1;
@@ -66,9 +70,6 @@
     box-shadow: none !important;
     -webkit-text-fill-color: none !important;
   }
-  :root {
-    --main-color: #D82A38;
-  }
   .paperLogy {
     font-family: var(--font-paperlogy) !important;
   }
@@ -81,8 +82,16 @@
     margin: 0 auto;
   }
 }
-@media (max-width: 1380px) {
+@media (max-width: 1480px) {
   .containerV1 {
     padding: 0 13px;
+  }
+}
+@media (max-width: 992px) {
+  html {
+    font-size: clamp(7px, 1.0080645161vw, 10px);
+  }
+  :root {
+    --header-h: 55px;
   }
 }/*# sourceMappingURL=globals.css.map */
