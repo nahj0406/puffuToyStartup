@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { poppins, pretendard, paperlogy } from "./fonts";
 import "./css/globals.css";
+import "./css/normalrize.css";
 import Providers from "./provider";
 
 export const metadata: Metadata = {

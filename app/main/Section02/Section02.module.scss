@@ -1,1 +1,224 @@
-.header {width: 10%;}
+@mixin flex-box {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+@mixin vertical-flex {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+
+.sec2 {overflow: hidden; position: relative;}
+
+.sec2 .wrapper {
+   padding-bottom: 12rem;
+}
+
+.sec2 .wrapper > * {
+   position: relative;
+   z-index: 2;
+}
+
+.logo_circle {
+   position: absolute;
+   z-index: 1;
+   width: 80rem;
+   opacity: 0.2;
+
+   &.circle01 {
+      top: -20%;
+      right: -12%;
+      animation: circle1Rotate 30s infinite linear;
+   }
+
+   &.circle02 {
+      bottom: -21%;
+      left: -12%;
+      animation: circle2Rotate 30s infinite linear;
+   }
+}
+
+@keyframes circle1Rotate {
+   from {transform: rotate(0deg)}
+   from {transform: rotate(360deg)}
+}
+
+@keyframes circle2Rotate {
+   from {transform: rotate(0deg)}
+   from {transform: rotate(-360deg)}
+}
+
+.wrapper .title_box {
+   @include flex-box;
+   justify-content: start;
+   align-items: end;
+   gap: 25px;
+   margin-bottom: 12rem;
+
+   .title {
+      @include vertical-flex;
+      align-items: start;
+      gap: 15px;
+      color: #000;
+
+      strong {font-size: 3.5rem; font-weight: 900;}
+      h2 {
+         font-size: 6rem;
+         font-weight: 900;
+         line-height: 1.2;
+
+         span {color: #fff;}
+      }
+   }
+}
+
+.itemBox {
+   @include flex-box;
+   justify-content: space-between;
+   gap: 10rem;
+
+   // .img {width: 66.8rem;}
+   .txt_box {
+      @include vertical-flex;
+      align-items: start;
+      gap: 25px;
+
+      h3 {
+         font-size: 4rem;
+         font-weight: 700;
+         line-height: 1.6;
+         color: #000;
+      }
+
+      .unit {
+         @include vertical-flex;
+         align-items: start;
+         gap: 25px;
+
+         .txt1 {
+            @include flex-box;
+            align-items: start;
+            justify-content: start;
+            gap: 15px;
+
+            .check_i {width: 5rem;}
+
+            p {
+               color: #000;
+               font-size: 18px;
+               line-height: 1.4;
+               font-weight: 500;
+            }
+         }
+      }
+   }
+
+   &.item01 {margin-bottom: 10rem;}
+   &.item02 {
+      .img {order: 2;}
+      .txt_box {order: 1;}
+   }
+}
+
+
+// 반응형
+
+
+
+@media (max-width: 1480px) {
+   .itemBox .img {width: 45%;}
+}
+
+@media (min-width: 992px) and (max-width: 1080px) {
+   .itemBox .txt_box .unit .txt1 p br {display: none;}
+}
+
+
+@media (max-width: 992px) {
+   .itemBox {
+      position: relative;
+
+      .img {width: 80%;}
+
+      .txt_box {
+         position: absolute;
+         bottom: 0;
+         right: 0;
+         background: #fff;
+         padding: 30px;
+         border-radius: 20px;
+         // width: 70%;
+
+         h3 {
+            font-size: max(20px, 4rem);
+         }
+      }
+
+      &.item01 {padding-bottom: 100px;}
+      &.item02 {padding-bottom: 200px;}
+   }
+
+}
+
+
+@media (max-width: 768px) {
+   .logo_circle {
+      
+      &.circle01 {
+         top: 0%;
+         right: -40%;
+      }
+   
+      &.circle02 {
+         bottom: 0%;
+         left: -30%;
+      }
+   }
+}
+
+
+@media (max-width: 680px) {
+   .itemBox {
+      @include vertical-flex();
+      align-items: start;
+      gap: 5rem;
+
+      .img {width: 100%; max-width: 450px; align-self: end;}
+      
+      .txt_box {
+         position: relative;
+         bottom: unset;
+         right: unset;
+         padding: 0;
+         background: transparent;
+         
+
+         h3 {
+            font-size: max(20px, 3.5rem);
+         }
+
+         .unit {
+            gap: max(15px, 2.5rem);
+
+            .txt1 {
+               gap: max(7px, 1.5rem);
+               p {
+                  font-size: max(14px, 1.8rem);
+                  br {display: none;}
+               }
+            }
+         }
+      }
+
+      &.item01 {padding-bottom: 0;}
+      &.item02 {
+         padding-bottom: 0;
+         .img {order: 1;}
+         .txt_box {order: 2;}
+      }
+   }
+
+}

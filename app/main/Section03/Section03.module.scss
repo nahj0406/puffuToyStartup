@@ -1,1 +1,207 @@
-.header {width: 10%;}
+@mixin flex-box {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+@mixin vertical-flex {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+
+.sec3 {overflow: hidden;}
+
+.title_header {
+   background: #191718;
+   width: 100%;
+   padding: 6rem 0;
+}
+
+.title_header .title {
+   @include vertical-flex;
+   gap: 15px;
+   color: #fff;
+
+   span {
+      font-size: 3.5rem;
+      font-weight: 500;
+   }
+
+   h2 {
+      font-size: 6rem;
+      font-weight: 700;
+   }
+}
+
+
+.wrap_container {
+   width: 100%;
+   background: url('/img/sec3/sec3_bg.jpg') no-repeat center / cover;
+   padding: 17rem 0 max(100px, 12rem);
+   @include vertical-flex();
+   gap: max(60px, 9rem);
+   justify-content: start
+}
+
+
+.itemBox {
+   @include flex-box();
+   gap: 11.5rem;
+   width: 100%;
+   max-width: 1300px;
+
+   .text_box {
+      @include vertical-flex();
+      align-items: start;
+      gap: 30px;
+      color: #fff;
+
+      h3 {
+         font-size: max(25px, 4.5rem);
+         font-weight: 700;
+         line-height: 1.4;
+      }
+
+      p {
+         font-size: max(16px, 2.5rem);
+         line-height: 1.4;
+      }
+   }
+
+
+   .img_box {
+      @include vertical-flex();
+      align-items: start;
+      justify-content: start;
+      background: #fff;
+      border-radius: 30px;
+      padding: max(20px, 4rem) max(15px, 3.5rem);
+      gap: 30px;
+      
+      .unit {
+         @include flex-box();
+         justify-content: start;
+         gap: 30px;
+
+         .img {
+            width: 100%;
+            max-width: 220px;
+         }
+
+         .unit_txt {
+            @include vertical-flex();
+            align-items: start;
+            gap: 15px;
+
+            .title_point {
+               background: var(--main-color);
+               padding: 7px 13px;
+               font-size: max(14px, 2rem);
+               color: #fff;
+               font-weight: 700;
+               border-radius: 100px;
+               text-transform: uppercase;
+            }
+
+            p {
+               font-size: max(14px, 2rem);
+               font-weight: 700;
+               color: #000;
+               line-height: 1.4;
+            }
+         }
+      }
+   }
+}
+
+
+.location_box {
+   border-radius: 20px;
+   background: rgba(0,0,0,0.8);
+   --webkit-backdrop-filter: blur(10px);
+   backdrop-filter: blur(10px);
+   padding: 7rem 15px 9rem;
+
+
+   .title_box {
+      @include vertical-flex();
+      justify-content: start;
+      gap: max(25px, 5rem);
+      margin-bottom: max(25px, 5rem);
+      text-align: center;
+
+      .title {
+         @include vertical-flex();
+         justify-content: start;
+         gap: max(10px, 1.5rem);
+         color: #fff;
+
+         span {
+            font-size: max(15px, 2.5rem);
+            line-height: 1.4;
+            display: inline-block;
+            padding: 3px 15px;
+            border-radius: 100px;
+            background: var(--main-color);
+         }
+
+         h2 {
+            font-weight: 700;
+            font-size: max(25px, 4.5rem);
+         }
+      }
+
+      p {
+         font-size: max(14px, 2rem);
+         font-weight: 500;
+         color: #fff;
+         line-height: 1.4;
+      }
+   }
+
+}
+
+.mapBox {
+   @include flex-box();
+   justify-content: start;
+   gap: 50px;
+   width: 100%;
+   max-width: 1000px;
+
+   .img_box {
+      @include vertical-flex();
+      align-items: start;
+      gap: 10px;
+
+      .img {width: 100%; max-width: 475px;}
+
+      .color_check {
+         padding-left: 13px;
+         @include flex-box();
+         justify-content: start;
+         gap: 20px;
+
+         .unit {
+            @include flex-box();
+            justify-content: start;
+            gap: 6px;
+            color: #fff;
+            font-size: max(13px, 1.6rem);
+            font-weight: 500;
+            white-space: nowrap;
+
+            .dote {
+               width: 1em;
+               height: 1em;
+               border-radius: 50%;
+            }
+
+            &.red .dote {background: #EE4E4E;}
+            &.blue .dote {background: #5454E2;}
+            &.green .dote {background: #4FF24F;}
+         }
+      }
+   }
+}
