@@ -1,3 +1,284 @@
 .sec1 {
   width: 100%;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-items: start;
+  position: relative;
+  padding: 45px 0 112px;
+  gap: 15px;
+  overflow: hidden;
+}
+
+.coin {
+  position: absolute;
+  z-index: 1;
+  width: 74px;
+}
+.coin.coin_1 {
+  top: 10rem;
+  left: 16rem;
+}
+.coin.coin_2 {
+  top: 40rem;
+  left: 21rem;
+}
+.coin.coin_3 {
+  top: 30rem;
+  left: 45rem;
+}
+.coin.coin_4 {
+  top: 30rem;
+  right: 10rem;
+}
+.coin.coin_5 {
+  top: 10rem;
+  right: 45rem;
+}
+.coin.coin_6 {
+  top: 75rem;
+  right: 35rem;
+}
+
+.circle_itemBox {
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+  order: 2;
+}
+.circle_itemBox .circle_wrap {
+  position: relative;
+  z-index: 2;
+}
+.circle_itemBox .circle_wrap .circle_img {
+  width: 100%;
+}
+.circle_itemBox .circle_wrap .content_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+  position: absolute;
+  width: 100%;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.circle_itemBox .circle_wrap .content_box .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+.circle_itemBox .circle_wrap .content_box .content .logo {
+  width: 480px;
+}
+.circle_itemBox .circle_wrap .content_box .content .txt_box {
+  color: #fff;
+  font-weight: 900;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.2;
+  gap: 10px;
+}
+.circle_itemBox .circle_wrap .content_box .content .txt_box > h2 {
+  font-size: 30px;
+}
+.circle_itemBox .circle_wrap .content_box .content .txt_box > h1 {
+  font-size: 50px;
+}
+.circle_itemBox .pakage_card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  border-radius: 15px;
+  background: linear-gradient(#ff4150, #d82a38);
+  padding: 30px 10px;
+  position: relative;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  max-width: 430px;
+  overflow: hidden;
+}
+.circle_itemBox .pakage_card::before {
+  content: "";
+  position: absolute;
+  width: 150%;
+  height: 120%;
+  z-index: 1;
+  background: #2D2D2D;
+  top: 50%;
+  left: 88%;
+  width: transform;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+.circle_itemBox .pakage_card > * {
+  position: relative;
+  z-index: 2;
+}
+.circle_itemBox .pakage_card > h4 {
+  font-size: 40px;
+  text-shadow: 0 0 3px #fff;
+  font-weight: 800;
+}
+.circle_itemBox .pakage_card > p {
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.talk_bubble {
+  position: absolute;
+  bottom: 100px;
+  z-index: 2;
+}
+.talk_bubble.bubble01 {
+  order: 1;
+  left: 40px;
+}
+.talk_bubble.bubble02 {
+  order: 3;
+  right: 40px;
+}
+
+@media (min-width: 993px) and (max-width: 1550px) {
+  .sec1 {
+    align-items: center;
+  }
+  .circle_itemBox .circle_wrap .content_box {
+    top: 60%;
+  }
+  .talk_bubble {
+    bottom: unset;
+    top: 45px;
+    width: 48rem;
+  }
+}
+@media (max-width: 992px) {
+  .sec1 {
+    flex-wrap: wrap;
+    background: url("/img/sec1/mob_bg.jpg") no-repeat center/cover;
+    padding: 4.5rem 0 0;
+  }
+  .circle_itemBox {
+    order: 1;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .circle_itemBox .circle_wrap {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+  }
+  .circle_itemBox .circle_wrap .circle_img {
+    display: none;
+  }
+  .circle_itemBox .circle_wrap .content_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    position: relative;
+    left: unset;
+    top: unset;
+    transform: unset;
+  }
+  .circle_itemBox .circle_wrap .content_box .content .logo {
+    width: max(250px, 38rem);
+  }
+  .circle_itemBox .circle_wrap .content_box .content .txt_box > h2 {
+    font-size: 30px;
+  }
+  .circle_itemBox .circle_wrap .content_box .content .txt_box > h1 {
+    font-size: 50px;
+  }
+  .circle_itemBox .pakage_card {
+    padding: 30px 10px;
+    max-width: 430px;
+  }
+  .circle_itemBox .pakage_card > h4 {
+    font-size: 40px;
+    text-shadow: unset;
+  }
+  .circle_itemBox .pakage_card > p {
+    font-size: 25px;
+  }
+  .talk_bubble {
+    position: relative;
+    width: calc(50% - 30px);
+    bottom: 0;
+  }
+  .talk_bubble.bubble01 {
+    order: 2;
+    left: unset;
+  }
+  .talk_bubble.bubble02 {
+    order: 3;
+    right: unset;
+  }
+}
+@media (max-width: 680px) {
+  .sec1 {
+    display: block;
+    padding: 23rem 0 10rem;
+    min-height: 100%;
+  }
+  .coin {
+    width: max(30px, 7.4rem);
+  }
+  .circle_itemBox {
+    order: unset;
+  }
+  .circle_itemBox .circle_wrap {
+    position: relative;
+    width: 100%;
+  }
+  .circle_itemBox .circle_wrap .content_box .content {
+    gap: 3rem;
+  }
+  .circle_itemBox .circle_wrap .content_box .content .txt_box > h2 {
+    font-size: max(18px, 3rem);
+  }
+  .circle_itemBox .circle_wrap .content_box .content .txt_box > h1 {
+    font-size: max(30px, 5rem);
+  }
+  .circle_itemBox .pakage_card {
+    padding: 30px 10px;
+    max-width: 350px;
+    gap: 3rem;
+  }
+  .circle_itemBox .pakage_card > h4 {
+    font-size: max(33px, 4rem);
+  }
+  .circle_itemBox .pakage_card > p {
+    font-size: max(18px, 2.5rem);
+  }
+  .talk_bubble {
+    position: absolute;
+    width: 35%;
+    bottom: unset;
+    top: max(13px, 4.5rem);
+  }
+  .talk_bubble.bubble01 {
+    order: 1;
+    left: 13px;
+  }
+  .talk_bubble.bubble02 {
+    order: 2;
+    right: 13px;
+  }
 }/*# sourceMappingURL=Section01.module.css.map */

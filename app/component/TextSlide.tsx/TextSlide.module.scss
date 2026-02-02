@@ -1,0 +1,40 @@
+.textSlide {
+   width: 100%;
+   background: #000;
+   padding: 15px 13px;
+   overflow: hidden;
+}
+
+.textSlide .slideFrams :global(.swiper-wrapper) {
+   transition-timing-function: linear !important; 
+   position: relative;
+}
+
+.textSlide .slideFrams {
+   .slideItem {
+      width: fit-content !important;
+   }
+   .txt_box {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+
+      span {color: #fff; font-weight: 800; white-space: nowrap;}
+      .txt {font-size: 25px;}
+      .dote {font-size: 40px;}
+   }
+}
+
+
+@media (max-width: 680px) {
+   .textSlide {
+      padding: 10px 13px;
+   }
+   .textSlide .slideFrams {
+      .txt_box {
+         span {color: #fff; font-weight: 800; white-space: nowrap;}
+         .txt {font-size: 16px;}
+         .dote {font-size: 31px;}
+      }
+   }
+}

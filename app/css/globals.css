@@ -94,4 +94,14 @@
   :root {
     --header-h: 55px;
   }
+}
+@media (max-width: 768px) {
+  html {
+    font-size: clamp(7px, 1.3020833333vw, 10px);
+  }
+}
+@media (max-width: 680px) {
+  html {
+    font-size: clamp(2px, 1.4705882353vw, 10px);
+  }
 }/*# sourceMappingURL=globals.css.map */

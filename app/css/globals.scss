@@ -111,4 +111,18 @@
       --header-h: 55px;
     }
   }
+
+  @media (max-width: 768px) {
+    html { // 폰트사이즈 지정! rem
+      font-size: clamp(7px, calc(100vw * 10 / 768), 10px);
+      // 1920 기준 10px 너비 줄을때마다 폰트사이즈 줄어들고 min은 5, max는 14
+    }
+  }
+
+  @media (max-width: 680px) {
+    html { // 폰트사이즈 지정! rem
+      font-size: clamp(2px, calc(100vw * 10 / 680), 10px);
+      // 1920 기준 10px 너비 줄을때마다 폰트사이즈 줄어들고 min은 5, max는 14
+    }
+  }
 }
