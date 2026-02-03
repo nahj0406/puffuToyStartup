@@ -27,9 +27,6 @@ html {
   }
 }
 @media (max-width: 992px) {
-  html {
-    font-size: clamp(7px, 0.9072580645vw, 10px);
-  }
   :root {
     --header-h: 55px;
   }
@@ -49,6 +46,26 @@ html {
   line-height: 1;
   background: var(--main-color);
   color: #fff;
+}
+
+.title_deco2 {
+  position: relative;
+  font-weight: inherit;
+}
+.title_deco2 span {
+  position: relative;
+  z-index: 2;
+}
+.title_deco2::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -5%;
+  width: 103%;
+  height: var(--fontSize20);
+  background: var(--main-color);
+  z-index: 1;
 }
 
 .title_deco_circle {
