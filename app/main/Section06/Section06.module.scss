@@ -26,3 +26,173 @@
    color: #fff;
 }
 
+.formBox {
+   @include vertical-flex();
+   justify-content: start;
+   gap: 30px;
+   width: 100%;
+   max-width: 880px;
+   margin: 0 auto;
+}
+
+.formBox .step_box {
+   width: 100%;
+   @include vertical-flex();
+   justify-content: start;
+   align-items: start;
+   gap: 10px;
+   
+   > .title {
+      // font-size: var(--fontSize20);
+      font-size: 20px;
+      color: #fff;
+      font-weight: 700;
+      text-transform: uppercase;
+
+      > small {font-weight: 300; font-size: 0.7em;}
+   }
+
+   > .itemBox {
+      width: inherit;
+      @include vertical-flex();
+      justify-content: inherit;
+      gap: 15px;
+   }
+}
+
+.itemBox .input_group {
+   width: inherit;
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   gap: 20px;
+
+   .input_item {
+      width: inherit;
+      @include flex-box();
+      justify-content: start;
+      background: #fff;
+      gap: 10px;
+      border-radius: 10px;
+      padding: 19px 20px;
+
+      > .tag {
+         display: inline-block;
+         // text-align: center;
+         min-width: 100px;
+         font-size: max(16px, 1.8rem);
+         font-weight: 600;
+         color: #000;
+         white-space: nowrap;
+
+         span {position: relative;}
+
+         &.required span::after {
+            content: '*';
+            position: absolute;
+            top: -0px;
+            right: -12px;
+            color: var(--main-color);
+
+         }
+      }
+
+      > input {
+         flex: 1;
+         font-size: max(16px, 1.8rem);
+         color: #000;
+         font-weight: 500;
+         border-left: 1px solid #e0e0e0;
+         padding-left: 5px;
+         
+         &::placeholder {
+            color: #797979;
+            font-weight: 400;
+         }
+      }
+   }
+}
+
+.input_group .input_item .check_group {
+   flex: 1;
+   @include flex-box();
+   justify-content: start;
+   gap: 15px;
+   border-left: 1px solid #e0e0e0;
+   padding-left: 5px;
+
+   > label {
+      @include flex-box();
+      justify-content: start;
+      gap: 7px;
+      cursor: pointer;
+
+      > input {display: none;}
+
+      > .check_icon {
+         width: max(15px, 1.9rem);
+         height: max(15px, 1.9rem);
+         background: url('/img/sec6/radio_check.png') no-repeat center / contain;
+      }
+
+      span {
+         color: #797979;
+         font-size: max(14px, 1.8rem);
+         font-weight: 500;
+         transition: all 0.1s;
+      }
+
+      > input:checked ~ .check_icon {
+         background: url('/img/sec6/radio_check_active.png') no-repeat center / contain;
+      }
+
+      > input:checked ~ span {
+         color: var(--main-color);
+      }
+   }
+}
+
+// 개인정보 처리방침
+.itemBox.agree_box {
+   .agree_content {
+      width: 100%;
+      background: #fff;
+      border-radius: 10px;
+      height: 190px;
+      overflow: hidden;
+
+      .txt_box {
+         padding: 20px;
+         overflow-y: auto;
+         height: 100%;
+
+         > p {
+            font-size: 13px;
+            color: #434343;
+            line-height: 1.4;
+         }
+      }
+   }
+
+   .check {
+      @include flex-box();
+      gap: 7px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 500;
+   }
+
+}
+
+
+.formBox > button {
+   margin-top: 40px;
+   border-radius: 100px;
+   background: var(--main-color);
+   width: 100%;
+   max-width: 330px;
+   padding: 12px 5px 13px;
+   color: #fff;
+   font-weight: 800;
+   font-size: 25px;
+   cursor: pointer;
+}
