@@ -3,7 +3,10 @@
 import clsx from 'clsx';
 import styles from './Section06.module.css'
 import { useState } from "react";
-
+import DatePicker from "react-datepicker"; // 기본 설정 1
+import "react-datepicker/dist/react-datepicker.css"; // 기본 설정 2
+import { ko } from 'date-fns/locale/ko';
+import { format } from "date-fns";
 
 export function FormBox() {
    // 날짜선택 캘린더 라이브러리 추가
@@ -11,6 +14,11 @@ export function FormBox() {
    // 문의전송에 성공하면 문의 전송이 완료되었습니다. 빠른 시일내에 답변드리겠습니다 모달 추가.
    // 개인정보처리방침 체크
    // 필수 내용들 확실하게 다 들어갔는지 체크
+   // datepicker 커스텀하기
+   // 라디오 값 들어가게 체크하기
+   const today = new Date();
+   const [startDate, setStartDate] = useState<Date | null>(null);
+   
 
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
 
@@ -20,9 +28,17 @@ export function FormBox() {
 
     const form = e.currentTarget;
     const formData = new FormData(form);
+    const formattedDate = startDate 
+    ? format(startDate, "yyyy-MM-dd HH:mm") 
+    : "날짜 미선택";
 
     const payload = {
       name: String(formData.get("name") || ""),
+      tel: String(formData.get("tel") || ""),
+      email: String(formData.get("email") || ""),
+      address: String(formData.get("address") || ""),
+      appointmentDate: formattedDate,
+      
       message: String(formData.get("message") || ""),
     };
 
@@ -36,6 +52,9 @@ export function FormBox() {
       if (res.ok) {
         setStatus("success");
         form.reset();
+
+      // 성공 시 달력도 초기화
+        setStartDate(null);
       } else {
         setStatus("error");
       }
@@ -55,31 +74,43 @@ export function FormBox() {
                <div className={styles.input_group}>
                   <div className={styles.input_item}>
                      <label className={clsx(styles.tag, styles.required)}><span>이름</span></label>
-                     <input name="name" placeholder="이름을 입력해 주세요" required />
+                     <input type='text' name="name" placeholder="이름을 입력해 주세요" required />
                   </div>
    
                   <div className={styles.input_item}>
                      <label className={clsx(styles.tag, styles.required)}><span>연락처</span></label>
-                     <input name="tel" placeholder="연락처를 입력해 주세요" required />
+                     <input type='text' name="tel" placeholder="연락처를 입력해 주세요" required />
                   </div>
                </div>
    
                <div className={styles.input_group}>
                   <div className={styles.input_item}>
                      <label className={clsx(styles.tag, styles.required)}><span>이메일</span></label>
-                     <input name="mail" placeholder="이메일을 입력해 주세요" required />
+                     <input type='email' name="email" placeholder="이메일을 입력해 주세요" required />
                   </div>
    
                   <div className={styles.input_item}>
                      <label className={clsx(styles.tag, styles.required)}><span>희망지역</span></label>
-                     <input name="address" placeholder="희망지역을 입력해 주세요" required />
+                     <input type='text' name="address" placeholder="희망지역을 입력해 주세요" required />
                   </div>
                </div>
    
                <div className={styles.input_group}>
                   <div className={styles.input_item}>
                      <label className={clsx(styles.tag, styles.required)}><span>상담희망날짜</span></label>
-                     <input name="date" placeholder="상담희망 날짜를 정해 주세요" required />
+                     {/* <input name="date" placeholder="상담희망 날짜를 정해 주세요" required /> */}
+                     <DatePicker
+                         locale={ko} // 한국어 설정
+                         dateFormat="yyyy.MM.dd HH시" // 날짜 형식 지정
+                         showTimeSelect
+                         minDate={new Date()}
+                         selected={startDate} // 선택된 날짜와 시간을 currentTime 변수에서 가져옴
+                         filterDate={(date) => date.getDay() !== 0 && date.getDay() !== 6}
+                         onChange={(date: Date | null) => { // Datepicker에서 선택된 값을 업데이트
+                           setStartDate(date)
+                         }}
+                         placeholderText="상담희망 날짜를 정해 주세요"
+                     />
                   </div>
                </div>
             </div>
@@ -110,7 +141,7 @@ export function FormBox() {
    
                   <div className={styles.input_item}>
                      <label className={clsx(styles.tag)}><span>예산</span></label>
-                     <input name="name" placeholder="예산을 입력해 주세요" required />
+                     <input type='text' name="name" placeholder="예산을 입력해 주세요" required />
                   </div>
                </div>
    
@@ -140,7 +171,7 @@ export function FormBox() {
    
                   <div className={styles.input_item}>
                      <label className={clsx(styles.tag)}><span>오픈 희망시기</span></label>
-                     <input name="name" placeholder="오픈 희망시기를 입력해 주세요" required />
+                     <input type='text' name="name" placeholder="오픈 희망시기를 입력해 주세요" required />
                   </div>
                </div>
             </div>

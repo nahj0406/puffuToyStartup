@@ -1,3 +1,4 @@
+@charset "UTF-8";
 :root {
   --main-color: #D82A38;
   --header-h: 65px;
@@ -122,4 +123,8 @@ html {
   font-weight: 700;
   color: #000000;
   line-height: 1.2;
+}
+
+.react-datepicker {
+  font-size: 14px !important; /* 원하는 크기로 조절 */
 }/*# sourceMappingURL=normalrize.css.map */

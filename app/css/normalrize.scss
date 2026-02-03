@@ -146,3 +146,8 @@ html { // 폰트사이즈 지정! rem
       line-height: 1.2;
    }
 }
+
+// date-picker
+.react-datepicker {
+  font-size: 14px !important; /* 원하는 크기로 조절 */
+}

@@ -110,6 +110,19 @@
   font-weight: 400;
 }
 
+@media (max-width: 992px) {
+  .itemBox .input_group .input_item > .tag {
+    min-width: 80px;
+  }
+}
+@media (max-width: 768px) {
+  .itemBox .input_group {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .itemBox .input_group .input_item {
+    padding: 15px;
+  }
+}
 .input_group .input_item .check_group {
   flex: 1;
   display: flex;
@@ -119,6 +132,7 @@
   gap: 15px;
   border-left: 1px solid #e0e0e0;
   padding-left: 5px;
+  flex-wrap: wrap;
 }
 .input_group .input_item .check_group > label {
   display: flex;
