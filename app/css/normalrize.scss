@@ -1,3 +1,66 @@
+:root {
+   --main-color: #D82A38;
+   --header-h: 65px;
+
+   --fontSize60: max(30px, 6rem);
+   --fontSize45: max(25px, 4.5rem);
+   --fontSize35: max(20px, 3.5rem);
+   --fontSize30: max(18px, 3rem);
+   --fontSize25: max(16px, 2.5rem);
+   --fontSize20: max(15px, 2rem);
+   --fontSize18: max(14px, 1.8rem); 
+   --fontSize16: max(13px, 1.6rem); 
+}
+
+html { // 폰트사이즈 지정! rem
+   font-size: clamp(7px, calc(100vw * 10 / 1920), 10px);
+   // 1920 기준 10px 너비 줄을때마다 폰트사이즈 줄어들고 min은 5, max는 14
+}
+
+// 기본 레이아웃 너비
+.containerV1 {
+   width: 100%;
+   max-width: 1400px;
+   margin: 0 auto;
+}
+
+
+@media (max-width: 1480px) {
+   .containerV1 {
+   padding: 0 13px;
+   }
+}
+
+@media (max-width: 992px) {
+   html { // 폰트사이즈 지정! rem
+   font-size: clamp(7px, calc(100vw * 9 / 992), 10px);
+   // 1920 기준 10px 너비 줄을때마다 폰트사이즈 줄어들고 min은 5, max는 14
+   }
+
+   :root {
+   --header-h: 55px;
+   }
+}
+
+@media (max-width: 768px) {
+   html { // 폰트사이즈 지정! rem
+   font-size: clamp(6px, calc(100vw * 8 / 768), 10px);
+   // 1920 기준 10px 너비 줄을때마다 폰트사이즈 줄어들고 min은 5, max는 14
+   }
+}
+
+@media (max-width: 680px) {
+   html { // 폰트사이즈 지정! rem
+   font-size: clamp(3px, calc(100vw * 7 / 680), 10px);
+   // 1920 기준 10px 너비 줄을때마다 폰트사이즈 줄어들고 min은 5, max는 14
+   }
+}
+
+
+
+
+// deco style
+
 .title_deco {
    padding: 3px 10px;
    line-height: 1;
@@ -9,4 +72,33 @@
    padding: 2.1rem 3.2rem;
    border-radius: 50%;
    border: 3px solid var(--main-color);
+}
+
+
+
+.black_title_header {
+   background: #191718;
+   width: 100%;
+   padding: 6rem 0;
+   width: 100%;
+}
+
+.black_title_header .black_title {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 15px;
+   color: #fff;
+   text-align: center;
+
+   span {
+      font-size: var(--fontSize35);
+      font-weight: 500;
+   }
+
+   h2 {
+      font-size: var(--fontSize60);
+      font-weight: 700;
+      line-height: 1.2;
+   }
 }

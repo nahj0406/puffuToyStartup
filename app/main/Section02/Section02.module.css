@@ -51,8 +51,11 @@
   justify-content: center;
   justify-content: start;
   align-items: end;
-  gap: 25px;
+  gap: var(--fontSize25);
   margin-bottom: 12rem;
+}
+.wrapper .title_box .title_stick {
+  width: max(10px, 3.8rem);
 }
 .wrapper .title_box .title {
   display: flex;
@@ -60,7 +63,7 @@
   align-items: center;
   justify-content: center;
   align-items: start;
-  gap: 15px;
+  gap: max(7px, 1.5rem);
   color: #000;
 }
 .wrapper .title_box .title strong {

@@ -11,7 +11,7 @@ export default function Section02() {
          y: 300,
       },
       onscreen: {
-         y: 50,
+         y: 0,
          transition: {
             type: "spring",
             bounce: 0.4,

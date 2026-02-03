@@ -55,13 +55,17 @@
    @include flex-box;
    justify-content: start;
    align-items: end;
-   gap: 25px;
+   gap: var(--fontSize25);
    margin-bottom: 12rem;
+
+   .title_stick {
+      width: max(10px, 3.8rem);
+   }
 
    .title {
       @include vertical-flex;
       align-items: start;
-      gap: 15px;
+      gap: max(7px, 1.5rem);
       color: #000;
 
       strong {font-size: 3.5rem; font-weight: 900;}
