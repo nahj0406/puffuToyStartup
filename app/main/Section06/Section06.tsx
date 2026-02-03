@@ -11,7 +11,9 @@ export default function Section06() {
          <div className={styles.title_box}>
             <h2 className="paperLogy">창업문의</h2>
          </div>
-         <FormBox /> 
+         <ContainerV1>
+            <FormBox />
+         </ContainerV1>
       </section>
    )
 }
