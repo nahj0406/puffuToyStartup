@@ -6,7 +6,7 @@ import { SlideBox } from './client'
 
 export default function Section03() {
    return (
-      <section className={styles.sec3} id='section3'>
+      <section className={styles.sec3}>
          <div className={'black_title_header'}>
             <ContainerV1 className={styles.wrapper}>
                <div className='black_title'>

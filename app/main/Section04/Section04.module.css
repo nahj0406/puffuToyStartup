@@ -44,9 +44,6 @@
     height: 80dvh;
     min-height: 80dvh;
   }
-  .sec_wrapper .wrapper {
-    max-width: 1000px;
-  }
 }
 @media (max-width: 992px) {
   .sec_wrapper {

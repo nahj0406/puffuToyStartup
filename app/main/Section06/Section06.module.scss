@@ -1,0 +1,28 @@
+@mixin flex-box {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+@mixin vertical-flex {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+
+.sec6 {
+   width: 100%;
+   padding: max(70px, 12rem) 0 max(80px, 13rem);
+   background: url('/img/sec6/sec6_bg.png') no-repeat center / cover;
+   @include vertical-flex();
+   justify-content: start;
+   gap: max(50px, 7rem);
+}
+
+.sec6 .title_box h2 {
+   font-size: var(--fontSize60);
+   font-weight: 800;
+   color: #fff;
+}
+
