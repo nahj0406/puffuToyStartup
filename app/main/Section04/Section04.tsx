@@ -4,7 +4,7 @@ import ContainerV1 from '@/component/ContainerV1.tsx/ContainerV1'
 
 export default function Section04() {
    return (
-      <section className={styles.sec4} id='section4'>
+      <section className={styles.sec4} id='section2'>
          <div className={'black_title_header'}>
             <ContainerV1 className={styles.wrapper}>
                <div className='black_title'>

@@ -3,7 +3,7 @@ import styles from './Section01.module.css'
 
 export default function Section01() {
    return (
-      <section className={styles.sec1} id='section1'>
+      <section className={styles.sec1}>
          {
             [1,2,3,4,5,6].map((i)=> {
                return (

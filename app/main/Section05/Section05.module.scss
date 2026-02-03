@@ -1,0 +1,329 @@
+@mixin flex-box {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+@mixin vertical-flex {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+
+.sec5 {
+   width: 100%;
+   padding: max(70px, 12rem) 0 max(80px, 13rem);
+   background: url('/img/sec5/sec5_bg.png') no-repeat center / cover;
+   @include vertical-flex();
+   justify-content: start;
+   gap: max(50px, 7rem);
+}
+
+.wrapper .title_box {
+   @include vertical-flex();
+   justify-content: start;
+   gap: 30px;
+
+   h2 {
+      font-size: var(--fontSize40);
+   }
+
+   > p {
+      font-size: var(--fontSize20);
+      font-weight: 500;
+      color: #000;
+      line-height: 1.6;
+      text-align: center;
+   }
+}
+
+// 창업절차 안내
+.wrapper_01 .itemBox {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   grid-auto-rows: minmax(265px, auto);
+   align-items: start;
+   gap: max(20px, 4rem) max(25px, 6rem);
+   width: 100%;
+   max-width: max(780px, 88.8rem);
+   margin: 0 auto;
+
+   .item {
+      @include vertical-flex();
+      justify-content: start;
+      gap: 25px;
+      border: 1px solid var(--main-color);
+      position: relative;
+      background: #fff;
+      border-radius: 20px;
+      padding: 30px 10px 10px;
+      height: 100%;
+
+      &::before {
+         content:'';
+         position: absolute;
+         top: -4px;
+         left: 50%;
+         transform: translateX(-50%);
+         width: 48.83%;
+         height: 8px;
+         background: var(--main-color);
+         border-radius: 0 0 20px 20px;
+      }
+
+      .step_txt {
+         border-radius: 100px;
+         border: 1px solid #C7C7C7;
+         background: #fff;
+         padding: 6px 13px;
+         color: var(--main-color);
+         font-size: 15px;
+         font-weight: 700;
+         text-transform: uppercase;
+      }
+
+      .img_box {
+         @include vertical-flex();
+         justify-content: start;
+         gap: 15px;
+
+         > img {
+            width: auto; 
+            height: max(65px, 9.5rem);
+         }
+
+         > h5 {
+            font-size: 25px;
+            color: #000;
+            font-weight: 700;
+            line-height: 1.2;
+            text-align: center;
+         }
+         
+      }
+   }
+}
+
+@media (max-width: 992px) {
+   .wrapper_01 .itemBox {
+      grid-auto-rows: minmax(200px, auto);
+
+      .item {
+         gap: var(--fontSize25);
+         padding: var(--fontSize30) 10px 10px;
+
+         .step_txt {
+            font-size: var(--fontSize15);
+         }
+
+         .img_box {
+
+            > h5 {
+               font-size: var(--fontSize25);
+            }
+            
+         }
+      }
+   }
+}
+
+@media (max-width: 680px) {
+   .wrapper_01 .itemBox {
+      max-width: 500px;
+      grid-template-columns: repeat(2, 1fr);
+
+      .item {
+         gap: var(--fontSize25);
+         padding: var(--fontSize30) 10px 10px;
+
+         .step_txt {
+            font-size: var(--fontSize15);
+         }
+
+         .img_box {
+
+            > h5 {
+               font-size: var(--fontSize25);
+            }
+            
+         }
+      }
+   }
+}
+
+.wrapper_01 > .txt1 {
+   text-align: center;
+   margin-top: max(30px, 4rem);
+   font-size: var(--fontSize20);
+   line-height: 1.4;
+   color: #000;
+   font-weight: 500;
+}
+
+// 창업지원
+.wrapper_02 {
+   @include vertical-flex();
+   justify-content: start;
+   gap: 50px;
+}
+
+.wrapper_02 .itemBox {
+   width: 100%;
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   grid-auto-rows: minmax(327px, auto);
+   align-items: end;
+}
+
+.wrapper_02 .itemBox > .item {
+   @include vertical-flex();
+   justify-content: start;
+   gap: 25px;
+   background: #c33b47;
+   // background: #333;
+   position: relative;
+   padding: 20px;
+   height: 100%;
+   transition: all 0.3s;
+   cursor: default;
+
+   > * {
+      transition: inherit;
+   }
+
+   &:not(:last-child) {
+      border-right: 1px solid #fff;
+   }
+
+   .point_txt {
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+      text-transform: uppercase;
+      align-self: start;
+   }
+
+   .img_box {
+      @include vertical-flex();
+      justify-content: start;
+      gap: 20px;
+
+      .img {
+         width: auto; 
+         height: max(80px, 11.2rem);
+         position: relative;
+
+         img {
+            width: auto; height: 100%;
+            position: relative;
+            &.default {z-index: 2;}
+            &.hover {
+               position: absolute;
+               z-index: 1;
+               top: 0;
+               left: 0;
+               opacity: 0;
+            }
+         }
+      }
+
+      > .txt_box {
+         @include vertical-flex();
+         justify-content: start;
+         gap: 15px;
+
+         > h5 {
+            font-size: var(--fontSize25);
+            font-weight: 900;
+            line-height: 1.2;
+            text-align: center;
+            color: #fff;
+         }
+
+         > p {
+            font-size: var(--fontSize20);
+            line-height: 1.4;
+            text-align: center;
+            color: rgba(255,255,255,0.9);
+         }
+      }
+   }
+}
+
+@media (min-width: 992px) {
+   // hover
+   .wrapper_02 .itemBox > .item:hover {
+      background: #fff;
+      transform: translateY(-10%);
+
+      .point_txt {
+         color: var(--main-color);
+      }
+
+      .img_box .img {
+
+         .default {opacity: 0; z-index: 1;}
+         .hover {opacity: 1; z-index: 2;}
+      }
+
+      .img_box > .txt_box > h5 {
+         color: #000;
+      }
+
+      .img_box > .txt_box > p {
+         color: #000;
+      }
+   }
+}
+
+@media (max-width: 992px) {
+   .wrapper_02 .itemBox > .item br {
+      display: none;
+   }
+}
+
+@media (max-width: 680px) {
+   .wrapper_02 {padding: 0;}
+   .wrapper_02 .title_box {padding: 0 13px;}
+   .wrapper_02 .itemBox {
+      grid-template-columns: repeat(1, 1fr);
+      grid-auto-rows: minmax(200px, auto);
+
+      > .item {
+         padding: 20px 20px 40px;
+         // background: #ededed;
+
+
+         &:not(:last-child) {
+            border-right: none;
+            border-bottom: 1px solid #fff;
+         }
+
+         // .point_txt {
+         //    color: var(--main-color);
+         // }
+
+         // .img_box .img {
+
+         //    .default {opacity: 0 !important; z-index: 1 !important;}
+         //    .hover {opacity: 1 !important; z-index: 2 !important;}
+         // }
+
+         // .img_box > .txt_box > h5 {
+         //    color: #000;
+         //    font-weight: 800;
+         // }
+
+         // .img_box > .txt_box > p {
+         //    color: #000;
+
+         //    br {display: block;}
+         // }
+      }
+   }
+}
+
+@media (max-width: 480px) {
+   .wrapper_02 .title_box br {display: none;}
+}

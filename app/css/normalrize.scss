@@ -2,18 +2,20 @@
    --main-color: #D82A38;
    --header-h: 65px;
 
-   --fontSize60: max(30px, 6rem);
-   --fontSize45: max(25px, 4.5rem);
+   --fontSize60: max(35px, 6rem);
+   --fontSize45: max(30px, 4.5rem);
+   --fontSize40: max(25px, 4rem);
    --fontSize35: max(20px, 3.5rem);
    --fontSize30: max(18px, 3rem);
    --fontSize25: max(16px, 2.5rem);
    --fontSize20: max(15px, 2rem);
-   --fontSize18: max(14px, 1.8rem); 
-   --fontSize16: max(13px, 1.6rem); 
+   --fontSize18: max(14px, 1.8rem);
+   --fontSize16: max(13px, 1.6rem);
+   --fontSize15: max(12px, 1.5rem);
 }
 
 html { // 폰트사이즈 지정! rem
-   font-size: clamp(7px, calc(100vw * 10 / 1920), 10px);
+   font-size: 10px;
    // 1920 기준 10px 너비 줄을때마다 폰트사이즈 줄어들고 min은 5, max는 14
 }
 
@@ -27,14 +29,17 @@ html { // 폰트사이즈 지정! rem
 
 @media (max-width: 1480px) {
    .containerV1 {
-   padding: 0 13px;
+      padding: 0 13px;
+   }
+
+   html { // 폰트사이즈 지정! rem
+   font-size: clamp(7px, calc(100vw * 10 / 1480), 10px);
    }
 }
 
 @media (max-width: 992px) {
    html { // 폰트사이즈 지정! rem
    // font-size: clamp(7px, calc(100vw * 9 / 992), 10px);
-   // 1920 기준 10px 너비 줄을때마다 폰트사이즈 줄어들고 min은 5, max는 14
    }
 
    :root {
@@ -45,14 +50,12 @@ html { // 폰트사이즈 지정! rem
 @media (max-width: 768px) {
    html { // 폰트사이즈 지정! rem
    font-size: clamp(6px, calc(100vw * 8 / 768), 10px);
-   // 1920 기준 10px 너비 줄을때마다 폰트사이즈 줄어들고 min은 5, max는 14
    }
 }
 
 @media (max-width: 680px) {
    html { // 폰트사이즈 지정! rem
    font-size: clamp(3px, calc(100vw * 7 / 680), 10px);
-   // 1920 기준 10px 너비 줄을때마다 폰트사이즈 줄어들고 min은 5, max는 14
    }
 }
 
@@ -94,9 +97,6 @@ html { // 폰트사이즈 지정! rem
 }
 
 
-
-
-
 .black_title_header {
    background: #191718;
    width: 100%;
@@ -120,6 +120,29 @@ html { // 폰트사이즈 지정! rem
    h2 {
       font-size: var(--fontSize60);
       font-weight: 700;
+      line-height: 1.2;
+   }
+}
+
+
+.normal_title_header {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 10px;
+
+   .title_deco_circle {
+      padding: 3px 14px;
+      border-radius: 100px;
+      background: var(--main-color);
+      color: #fff;
+      font-size: var(--fontSize25);
+   }
+
+   h2 {
+      font-size: var(--fontSize60);
+      font-weight: 700;
+      color: #000000;
       line-height: 1.2;
    }
 }
