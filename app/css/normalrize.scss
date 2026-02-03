@@ -33,7 +33,7 @@ html { // 폰트사이즈 지정! rem
 
 @media (max-width: 992px) {
    html { // 폰트사이즈 지정! rem
-   font-size: clamp(7px, calc(100vw * 9 / 992), 10px);
+   // font-size: clamp(7px, calc(100vw * 9 / 992), 10px);
    // 1920 기준 10px 너비 줄을때마다 폰트사이즈 줄어들고 min은 5, max는 14
    }
 
@@ -68,11 +68,32 @@ html { // 폰트사이즈 지정! rem
    color: #fff;
 }
 
+.title_deco2 {
+   position: relative;
+   font-weight: inherit;
+
+   span {position: relative; z-index: 2;}
+
+   &::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -5%;
+      width: 103%;
+      height: var(--fontSize20);
+      background: var(--main-color);
+      z-index: 1;
+   }
+}
+
 .title_deco_circle {
    padding: 2.1rem 3.2rem;
    border-radius: 50%;
    border: 3px solid var(--main-color);
 }
+
+
 
 
 

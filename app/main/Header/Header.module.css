@@ -60,7 +60,7 @@
   font-weight: 700;
 }
 
-@media (min-width: 993px) {
+@media (min-width: 992px) {
   .wrapper .btn_box {
     display: none;
   }
