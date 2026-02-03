@@ -5,11 +5,13 @@ import ContainerV1 from '@/component/ContainerV1.tsx/ContainerV1'
 export default function Section04() {
    return (
       <section className={styles.sec4} id='section4'>
-         <div className={styles.title_header}>
-            <div className="title">
-               <span>차별화된 브랜드 방향성</span>
-               <h2>차별화된 브랜드 방향성</h2>
-            </div>
+         <div className={'black_title_header'}>
+            <ContainerV1 className={styles.wrapper}>
+               <div className='black_title'>
+                  <span className='paperLogy title_deco_circle'>차별화된 브랜드 방향성</span>
+                  <h2 className='paperLogy'>푸푸토이만의 창업경쟁력</h2>
+               </div>
+            </ContainerV1>
          </div>
 
          <ContainerV1 className={clsx(styles.wrapper, styles.step1)}>
