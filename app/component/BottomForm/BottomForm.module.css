@@ -6,4 +6,67 @@
   background: #fff;
   border-top: 1px solid #DEDEDE;
   z-index: 1000;
+  padding: 15px 0;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+}
+
+.bottomForm .left_box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: start;
+  gap: 10px;
+}
+.bottomForm .left_box .tel_box {
+  padding: 7px 11px;
+  background: var(--main-color);
+  color: #fff;
+  font-size: max(15px, 1.8rem);
+  font-weight: 800;
+  line-height: 1.2;
+  border-radius: 10px;
+}
+.bottomForm .left_box .tel_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-items: start;
+  gap: 5px;
+}
+.bottomForm .left_box .tel_content > a {
+  font-size: var(--fontSize30);
+  color: var(--main-color);
+  font-weight: 700;
+  line-height: 1;
+}
+.bottomForm .left_box .tel_content > p {
+  font-size: max(12px, 1.4rem);
+  color: var(--main-color);
+  line-height: 1.2;
+  font-weight: 500;
+}
+
+.bottomForm .right_box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  gap: 15px;
+}
+.bottomForm .right_box .button {
+  border-radius: 5px;
+  min-width: 160px;
+  padding: 11px 16px;
+  color: #fff;
+  font-size: max(16px, 2.3rem);
+  font-weight: 600;
+  background: #000;
 }/*# sourceMappingURL=BottomForm.module.css.map */

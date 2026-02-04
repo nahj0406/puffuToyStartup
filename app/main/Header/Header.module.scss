@@ -42,7 +42,7 @@
          color: #fff;
          @include flex-box;
          gap: max(20px, 3rem);
-         font-size: 2rem;
+         font-size: var(--fontSize20);
          font-weight: 600;
 
          > li {
