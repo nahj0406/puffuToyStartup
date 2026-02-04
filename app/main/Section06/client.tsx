@@ -149,7 +149,7 @@ export function FormBox() {
         className={styles.formBox}
         initial='offscreen'
         whileInView='onscreen'
-        viewport={{amount: 0.5, once: true}}
+        viewport={{amount: 0.2, once: true}}
         variants={{
           offscreen: { y: -10, opacity: 0,},
           onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.5,},},
