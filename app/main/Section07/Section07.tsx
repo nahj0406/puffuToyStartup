@@ -2,24 +2,53 @@ import clsx from 'clsx'
 import styles from './Section07.module.css'
 import ContainerV1 from '@/component/ContainerV1.tsx/ContainerV1'
 import { Caculator } from './client'
+import * as motion from "motion/react-client"
 
 export default function Section07() {
 
    return (
       <section className={styles.sec7} id='section3'>
          <ContainerV1 className={styles.wrapper}>
-            <div className={styles.title_box}>
+            <motion.div 
+               className={styles.title_box}
+               initial='offscreen'
+               whileInView='onscreen'
+               viewport={{amount: 0.5, once: true}}
+            >
                <div className='normal_title_header'>
-                  <span className='paperLogy title_deco_circle'>창업비용 안내</span>
-                  <h2 className='paperLogy'>
+                  <motion.span 
+                     className='paperLogy title_deco_circle'
+                     variants={{
+                        offscreen: { y: -10, opacity: 0,},
+                        onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.3,},},
+                     }}
+                  >
+                     창업비용 안내
+                  </motion.span>
+                  <motion.h2 
+                     className='paperLogy'
+                     variants={{
+                        offscreen: { y: -10, opacity: 0,},
+                        onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.5,},},
+                     }}
+                  >
                      프라이빗함은 지키고, <br />
                      가격은 <span className='title_deco'>합리적</span>으로
-                  </h2>
+                  </motion.h2>
                </div>
-            </div>
+            </motion.div>
 
             <div className={styles.itemBox}>
-               <article className={clsx(styles.package_box, styles.toggle_box)}>
+               <motion.article 
+                  className={clsx(styles.package_box, styles.toggle_box)}
+                  initial='offscreen'
+                  whileInView='onscreen'
+                  viewport={{amount: 0.5, once: true}}
+                  variants={{
+                     offscreen: { y: -20, opacity: 0,},
+                     onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.3,},},
+                  }}
+               >
                   <div className={styles.box_header}>
                      <h5 className='paperLogay'>1.2억 패키지</h5>
                      <span className='paperLogay'>(실내 추가 공사 비용 제외)</span>
@@ -65,10 +94,19 @@ export default function Section07() {
                         </div>
                      </div>
                   </div>
-               </article>
+               </motion.article>
 
                <div className={styles.box_vertical_group}>
-                  <article className={clsx(styles.toggle_box)}>
+                  <motion.article 
+                     className={clsx(styles.toggle_box)}
+                     initial='offscreen'
+                     whileInView='onscreen'
+                     viewport={{amount: 0.5, once: true}}
+                     variants={{
+                        offscreen: { y: -20, opacity: 0,},
+                        onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.5,},},
+                     }}
+                  >
                      <div className={styles.box_header}>
                         <h5 className='paperLogay'>설치 기간</h5>
                      </div>
@@ -77,9 +115,18 @@ export default function Section07() {
                         <p className={styles.txt1}>평균 1개월</p>
                         <p className={styles.txt2}>(단, 자판기 수급 대기 가능성 고지)</p>
                      </div>
-                  </article>
+                  </motion.article>
    
-                  <article className={clsx(styles.toggle_box)}>
+                  <motion.article 
+                     className={clsx(styles.toggle_box)}
+                     initial='offscreen'
+                     whileInView='onscreen'
+                     viewport={{amount: 0.5, once: true}}
+                     variants={{
+                        offscreen: { y: -20, opacity: 0,},
+                        onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.7,},},
+                     }}
+                  >
                      <div className={styles.box_header}>
                         <h5 className='paperLogay'>면적 가이드</h5>
                      </div>
@@ -91,7 +138,7 @@ export default function Section07() {
                            + 자판기 동선)
                         </p>
                      </div>
-                  </article>
+                  </motion.article>
                </div>
             </div>
 

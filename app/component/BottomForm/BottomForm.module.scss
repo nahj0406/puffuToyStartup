@@ -78,5 +78,39 @@
       font-size: max(16px, 2.3rem);
       font-weight: 600;
       background: #000;
+      cursor: pointer;
+      text-align: center;
+
+      &.contact {background: var(--main-color);}
+      &.map {background: #05438E;}
+      &.calc {background: #25174c;}
+
+      br {display: none;}
+   }
+}
+
+@media (max-width: 992px) {
+   .bottomForm {padding: 10px 0;}
+   .wrapper {justify-content: center;}
+   .bottomForm .left_box {display: none;}
+   .bottomForm .right_box {
+      width: 100%;
+
+      .button {
+         flex: 1;
+         min-width: unset;
+         padding: 11px;
+         line-height: 1.2;
+      }
+   }
+}
+
+@media (max-width: 600px) {
+   .bottomForm .right_box {
+
+      .button {
+
+         br {display: block;}
+      }
    }
 }

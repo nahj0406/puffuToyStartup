@@ -211,7 +211,7 @@
                gap: max(7px, 1.5rem);
                p {
                   font-size: max(14px, 1.8rem);
-                  br {display: none;}
+                  // br {display: none;}
                }
             }
          }
@@ -225,4 +225,10 @@
       }
    }
 
+}
+
+@media (max-width: 450px) {
+   .itemBox .txt_box .unit .txt1 p br {
+      display: none;
+   }
 }

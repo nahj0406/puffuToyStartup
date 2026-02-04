@@ -49,7 +49,7 @@
 }
 
 // 입력 상자
-.calc_input_box {
+.calc_header .calc_input_box {
    @include vertical-flex();
    justify-content: start;
    background: #1a1a1a;
@@ -61,7 +61,7 @@
 
    .calc_input_header {
       text-align: center;
-      font-size: var(--fontSize25);
+      font-size: 25px;
       color: #fff;
       font-weight: 900;
       line-height: 1;
@@ -86,7 +86,7 @@
    }
 }
 
-
+// 입력상자 인풋
 .input_group {
    @include vertical-flex();
    justify-content: start;
@@ -136,24 +136,49 @@
             font-weight: 400;
          }
       }
-
-      // 나머지 캘린더 스타일은 normalrize
-      .custom_picker_input {
-         width: 100%;
-         font-size: max(16px, 1.8rem);
-         color: #000;
-         font-weight: 500;
-         border-left: 1px solid #e0e0e0;
-         padding-left: 5px;
-         line-height: 1.2;
-
-         &::placeholder {
-            color: #797979;
-            font-weight: 400;
-         }
-      }
    }
 }
+
+
+@media (max-width: 992px) {
+   .calc_header {
+      flex-direction: column;
+      gap: 50px;
+   }
+
+   .calc_header .calc_input_box {
+      max-width: 100%;
+   }
+}
+
+@media (max-width: 768px) {
+   @mixin border_change {
+      border-left: none; 
+      border-bottom: 1px solid #e0e0e0;
+      padding-bottom: 3px;
+   }
+   .calc_header .calc_input_box {
+      padding: 25px 15px 30px;
+   }
+
+   .calc_header .calc_input_box .input_item {
+      padding: 15px 10px 12px;
+      min-width: 0;
+      gap: 15px;
+      @include vertical-flex();
+      align-items: start;
+
+      input {
+         width: 100%; 
+         @include border_change;
+      }
+   }
+
+   .calc_header .calc_input_box .calc_submit {
+      max-width: 100%;
+   }
+}
+
 
 // 결과 박스
 .calc_result_box {
@@ -243,12 +268,14 @@
    }
 
    .not_data_txt {
+      @include flex-box();
       color: #fff;
       font-weight: 500;
       font-size: var(--fontSize20);
       width: 100%;
       min-height: 180px;
-      @include flex-box();
+      text-align: center;
+      line-height: 1.4;
    }
 
    .profit {

@@ -213,9 +213,6 @@
   .itemBox .txt_box .unit .txt1 p {
     font-size: max(14px, 1.8rem);
   }
-  .itemBox .txt_box .unit .txt1 p br {
-    display: none;
-  }
   .itemBox.item01 {
     padding-bottom: 0;
   }
@@ -227,5 +224,10 @@
   }
   .itemBox.item02 .txt_box {
     order: 2;
+  }
+}
+@media (max-width: 450px) {
+  .itemBox .txt_box .unit .txt1 p br {
+    display: none;
   }
 }/*# sourceMappingURL=Section02.module.css.map */

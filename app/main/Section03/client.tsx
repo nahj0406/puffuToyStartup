@@ -5,6 +5,7 @@ import styles from './Section03.module.css'
 import React, { useRef, useState, useEffect } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
+import * as motion from "motion/react-client"
 
 // Import Swiper styles
 import 'swiper/css';
@@ -12,6 +13,7 @@ import 'swiper/css/pagination';
 
 // import required modules
 import { Autoplay, Pagination } from 'swiper/modules';
+import Link from 'next/link';
 
 export function SlideBox() {
 
@@ -127,4 +129,37 @@ export function SlideBox() {
          </div>
       </div>
    )
+}
+
+
+export function ButtonBox() {
+  const FormAnchor = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+    });
+  };
+
+  return (
+    <motion.div 
+      className={styles.btn_box}
+      initial='offscreen'
+      whileInView='onscreen'
+      viewport={{amount: 0.5, once: true}}
+      variants={{
+         offscreen: { y: 30, opacity: 0,},
+         onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.3,},},
+      }}
+    >
+      <div className={clsx(styles.blue_btn)}>
+        <Link href={'https://eeis.schoolkeepa.or.kr/gis/gis.do'} target='_blank'>
+            내 입지조건 확인하기
+        </Link>
+      </div>
+
+      <div onClick={()=> FormAnchor('section5')} className={clsx(styles.red_btn)}>
+        내 입지조건 문의하기
+      </div>
+  </motion.div>
+  )
 }

@@ -37,7 +37,7 @@
   line-height: 1.4;
 }
 
-.calc_input_box {
+.calc_header .calc_input_box {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,14 +50,14 @@
   padding: 25px 25px 35px;
   gap: 20px;
 }
-.calc_input_box .calc_input_header {
+.calc_header .calc_input_box .calc_input_header {
   text-align: center;
-  font-size: var(--fontSize25);
+  font-size: 25px;
   color: #fff;
   font-weight: 900;
   line-height: 1;
 }
-.calc_input_box .calc_submit {
+.calc_header .calc_input_box .calc_submit {
   margin-top: 5px;
   width: 100%;
   max-width: 220px;
@@ -70,7 +70,7 @@
   cursor: pointer;
   transition: all 0.3s;
 }
-.calc_input_box .calc_submit:hover {
+.calc_header .calc_input_box .calc_submit:hover {
   background: #ff3445;
 }
 
@@ -128,24 +128,40 @@
   color: #797979;
   font-weight: 400;
 }
-.input_group .input_item .custom_picker_input {
-  width: 100%;
-  font-size: max(16px, 1.8rem);
-  color: #000;
-  font-weight: 500;
-  border-left: 1px solid #e0e0e0;
-  padding-left: 5px;
-  line-height: 1.2;
-}
-.input_group .input_item .custom_picker_input::-moz-placeholder {
-  color: #797979;
-  font-weight: 400;
-}
-.input_group .input_item .custom_picker_input::placeholder {
-  color: #797979;
-  font-weight: 400;
-}
 
+@media (max-width: 992px) {
+  .calc_header {
+    flex-direction: column;
+    gap: 50px;
+  }
+  .calc_header .calc_input_box {
+    max-width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .calc_header .calc_input_box {
+    padding: 25px 15px 30px;
+  }
+  .calc_header .calc_input_box .input_item {
+    padding: 15px 10px 12px;
+    min-width: 0;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-items: start;
+  }
+  .calc_header .calc_input_box .input_item input {
+    width: 100%;
+    border-left: none;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 3px;
+  }
+  .calc_header .calc_input_box .calc_submit {
+    max-width: 100%;
+  }
+}
 .calc_result_box {
   display: flex;
   flex-direction: column;
@@ -233,14 +249,16 @@
   font-weight: 600;
 }
 .calc_result_box .not_data_txt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #fff;
   font-weight: 500;
   font-size: var(--fontSize20);
   width: 100%;
   min-height: 180px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
+  line-height: 1.4;
 }
 .calc_result_box .profit {
   width: 100%;
