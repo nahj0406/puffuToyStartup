@@ -9,7 +9,7 @@ export default function Section05() {
       img: string;
       content: string;
    };
-   const stepArr = [
+   const stepArr = [ // 매장 오픈 절차
       {
          img: '/img/sec5/sec5_icon01.png',
          content: '창업상담'

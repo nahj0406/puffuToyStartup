@@ -25,7 +25,7 @@ export default function TextSlide() {
       '무재고(위탁)운영',
    ];
 
-   const slides = [...textArr, ...textArr];
+   const slides = [...textArr, ...textArr, ...textArr];
 
    
    return (
