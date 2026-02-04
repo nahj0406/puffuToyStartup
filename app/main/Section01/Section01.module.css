@@ -168,7 +168,11 @@
   .sec1 {
     flex-wrap: wrap;
     background: url("/img/sec1/mob_bg.jpg") no-repeat center/cover;
-    padding: 4.5rem 0 0;
+    padding: 40rem 0 10rem;
+    gap: 30px 0;
+    height: auto;
+    min-height: auto;
+    align-items: center;
   }
   .circle_itemBox {
     order: 1;
@@ -219,24 +223,24 @@
     font-size: 25px;
   }
   .talk_bubble {
-    position: relative;
-    width: calc(50% - 30px);
-    bottom: 0;
+    position: absolute;
+    width: 40rem;
+    bottom: unset;
+    top: max(13px, 4.5rem);
   }
   .talk_bubble.bubble01 {
-    order: 2;
-    left: unset;
+    order: 1;
+    left: 13px;
   }
   .talk_bubble.bubble02 {
-    order: 3;
-    right: unset;
+    order: 2;
+    right: 13px;
   }
 }
 @media (max-width: 680px) {
   .sec1 {
     display: block;
-    padding: 23rem 0 10rem;
-    min-height: 100%;
+    padding: 35rem 0 10rem;
   }
   .coin {
     width: max(30px, 7.4rem);
@@ -267,19 +271,5 @@
   }
   .circle_itemBox .pakage_card > p {
     font-size: max(18px, 2.5rem);
-  }
-  .talk_bubble {
-    position: absolute;
-    width: 35%;
-    bottom: unset;
-    top: max(13px, 4.5rem);
-  }
-  .talk_bubble.bubble01 {
-    order: 1;
-    left: 13px;
-  }
-  .talk_bubble.bubble02 {
-    order: 2;
-    right: 13px;
   }
 }/*# sourceMappingURL=Section01.module.css.map */

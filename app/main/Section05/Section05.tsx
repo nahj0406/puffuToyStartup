@@ -2,6 +2,7 @@ import clsx from 'clsx'
 import styles from './Section05.module.css'
 import ContainerV1 from '@/component/ContainerV1.tsx/ContainerV1'
 import TextSlide from '@/component/TextSlide.tsx/TextSlide';
+import * as motion from "motion/react-client"
 
 export default function Section05() {
 
@@ -42,19 +43,51 @@ export default function Section05() {
          <section className={styles.sec5} id={'section4'}>
             <ContainerV1>
                <div className={styles.title_box}>
-                  <div className='normal_title_header'>
-                     <span className='paperLogy title_deco_circle'>본사가 함께 돕는</span>
-                     <h2 className='paperLogy'>창업절차 안내</h2>
-                  </div>
+                  <motion.div 
+                     className='normal_title_header'
+                     initial='offscreen'
+                     whileInView='onscreen'
+                     viewport={{amount: 0.5, once: true}}
+                  >
+                     <motion.span 
+                        className='paperLogy title_deco_circle'
+                        variants={{
+                           offscreen: { y: -10, opacity: 0,},
+                           onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.3,},},
+                        }}
+                     >
+                        본사가 함께 돕는
+                     </motion.span>
+                     <motion.h2 
+                        className='paperLogy'
+                        variants={{
+                           offscreen: { y: -10, opacity: 0,},
+                           onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.5,},},
+                        }}
+                     >
+                        창업절차 안내
+                     </motion.h2>
+                  </motion.div>
                </div>
             </ContainerV1>
    
             <ContainerV1 className={clsx(styles.wrapper, styles.wrapper_01)}>
-               <div className={styles.itemBox}>
+               <motion.div 
+                  className={styles.itemBox}
+                  initial='offscreen'
+                  whileInView='onscreen'
+                  viewport={{amount: 0.5, once: true}}
+               >
                   {
                      stepArr.map((item: stepArray, i: number)=> {
                         return (
-                           <article className={styles.item} key={`item_${i}`}>
+                           <motion.article 
+                              className={styles.item} key={`item_${i}`}
+                              variants={{
+                                 offscreen: { y: -10, opacity: 0,},
+                                 onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: (0.1 * i),},},
+                              }}
+                           >
                               <span className={clsx(styles.step_txt, 'poppins')}>
                                  {`step 0${i+1}`}
                               </span>
@@ -64,34 +97,81 @@ export default function Section05() {
       
                                  <h5 className='paperLogy'>{item.content}</h5>
                               </figure>
-                           </article>
+                           </motion.article>
                         )
                      })
                   }
-               </div>
+               </motion.div>
    
-               <p className={styles.txt1}>
+               <motion.p 
+                  className={styles.txt1}
+                  initial='offscreen'
+                  whileInView='onscreen'
+                  viewport={{amount: 0.5, once: true}}
+                  variants={{
+                     offscreen: { y: -10, opacity: 0,},
+                     onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.3,},},
+                  }}
+               >
                   예상 기간은 평균 1개월이며 <br />
                   자판기 수급에 따라 대기 시간이 존재할 수 있습니다.
-               </p>
+               </motion.p>
             </ContainerV1>
    
             <ContainerV1 className={clsx(styles.wrapper, styles.wrapper_02)}>
-               <div className={styles.title_box}>
+               <motion.div 
+                  className={styles.title_box}
+                  initial='offscreen'
+                  whileInView='onscreen'
+                  viewport={{amount: 0.5, once: true}}
+               >
                   <div className='normal_title_header'>
-                     <span className='paperLogy title_deco_circle'>오픈 이후까지 책임지는</span>
-                     <h2 className='paperLogy'>통합 운영 지원 시스템</h2>
+                     <motion.span 
+                        className='paperLogy title_deco_circle'
+                        variants={{
+                           offscreen: { y: -10, opacity: 0,},
+                           onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.3,},},
+                        }}
+                     >
+                        오픈 이후까지 책임지는
+                     </motion.span>
+                     <motion.h2 
+                        className='paperLogy'
+                        variants={{
+                           offscreen: { y: -10, opacity: 0,},
+                           onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.5,},},
+                        }}
+                     >
+                        통합 운영 지원 시스템
+                     </motion.h2>
                   </div>
    
-                  <p className='paperLogy'>
+                  <motion.p 
+                     className='paperLogy'
+                     variants={{
+                        offscreen: { y: -10, opacity: 0,},
+                        onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.7,},},
+                     }}
+                  >
                      푸푸토이는 창업 이후에 운영자가 혼자 판단해야 하는 상황을 <br />
                      <span className='title_deco'>최소화할 수 있도록</span> 운영 난이도를 낮춘 시스템과 <br />
                      지원 구조를 함께 제공합니다.
-                  </p>
-               </div>
+                  </motion.p>
+               </motion.div>
    
-               <div className={styles.itemBox}>
-                  <article className={styles.item}>
+               <motion.div 
+                  className={styles.itemBox}
+                  initial='offscreen'
+                  whileInView='onscreen'
+                  viewport={{amount: 0.5, once: true}}
+               >
+                  <motion.article 
+                     className={styles.item}
+                     variants={{
+                        offscreen: { opacity: 0,},
+                        onscreen: { opacity: 1, transition: { duration: 0.5, delay: 0.3,},},
+                     }}
+                  >
                      <span className={clsx(styles.point_txt, 'poppins')}>
                         point 01
                      </span>
@@ -110,9 +190,15 @@ export default function Section05() {
                            </p>
                         </div>
                      </figure>
-                  </article>
+                  </motion.article>
    
-                  <article className={styles.item}>
+                  <motion.article 
+                     className={styles.item}
+                     variants={{
+                        offscreen: { opacity: 0,},
+                        onscreen: { opacity: 1, transition: { duration: 0.5, delay: 0.5,},},
+                     }}
+                  >
                      <span className={clsx(styles.point_txt, 'poppins')}>
                         point 02
                      </span>
@@ -132,9 +218,15 @@ export default function Section05() {
                            </p>
                         </div>
                      </figure>
-                  </article>
+                  </motion.article>
    
-                  <article className={styles.item}>
+                  <motion.article 
+                     className={styles.item}
+                     variants={{
+                        offscreen: { opacity: 0,},
+                        onscreen: { opacity: 1, transition: { duration: 0.5, delay: 0.7,},},
+                     }}
+                  >
                      <span className={clsx(styles.point_txt, 'poppins')}>
                         point 03
                      </span>
@@ -154,8 +246,8 @@ export default function Section05() {
                            </p>
                         </div>
                      </figure>
-                  </article>
-               </div>
+                  </motion.article>
+               </motion.div>
             </ContainerV1>
    
          </section>

@@ -5,6 +5,7 @@ import styles from './Section03.module.css'
 import React, { useRef, useState, useEffect } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
+import * as motion from "motion/react-client"
 
 // Import Swiper styles
 import 'swiper/css';
@@ -12,6 +13,7 @@ import 'swiper/css/pagination';
 
 // import required modules
 import { Autoplay, Pagination } from 'swiper/modules';
+import Link from 'next/link';
 
 export function SlideBox() {
 
@@ -127,4 +129,48 @@ export function SlideBox() {
          </div>
       </div>
    )
+}
+
+
+export function ButtonBox() {
+  const FormAnchor = (id: string) => {
+    const el = document.getElementById(id);
+      if (!el) return;
+
+      // :root에 설정된 --header-h 값 가져옴.
+      const headerH = parseFloat(
+         getComputedStyle(document.documentElement)
+            .getPropertyValue('--header-h')
+      ) || 0;
+      // 사파리에서도 적용 잘 되는데 만약 버벅이면 getComputedStyle 문제임.
+
+      const y =
+         el.getBoundingClientRect().top +
+         window.scrollY - headerH;
+
+      window.scrollTo({ top: y, behavior: 'smooth' });
+  };
+
+  return (
+    <motion.div 
+      className={styles.btn_box}
+      initial='offscreen'
+      whileInView='onscreen'
+      viewport={{amount: 0.5, once: true}}
+      variants={{
+         offscreen: { y: 30, opacity: 0,},
+         onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.3,},},
+      }}
+    >
+      <div className={clsx(styles.blue_btn)}>
+        <Link href={'https://eeis.schoolkeepa.or.kr/gis/gis.do'} target='_blank'>
+            내 입지조건 확인하기
+        </Link>
+      </div>
+
+      <div onClick={()=> FormAnchor('section5')} className={clsx(styles.red_btn)}>
+        내 입지조건 문의하기
+      </div>
+  </motion.div>
+  )
 }

@@ -69,9 +69,18 @@ export function Caculator() {
   };
 
   return (
-    <section className={styles2.calc_wrapper}>
+    <section className={styles2.calc_wrapper} id={'calc_sec'}>
       <div className={styles2.calc_header}>
-        <div className={styles2.calc_title}>
+        <motion.div 
+          className={styles2.calc_title}
+          initial='offscreen'
+          whileInView='onscreen'
+          viewport={{amount: 0.5, once: true}}
+          variants={{
+              offscreen: { y: -20, opacity: 0,},
+              onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.3,},},
+          }}
+        >
           <h2 className="paperLogy">
             <span className="title_deco">수익 회수기간</span> <br />
             직접 계산해 보세요
@@ -81,9 +90,18 @@ export function Caculator() {
             초기 투자 비용과 예상 매출을 입력하면 <br />내 상황에 맞는
             회수기간을 확인하실 수 있습니다.
           </p>
-        </div>
+        </motion.div>
 
-        <article className={styles2.calc_input_box}>
+        <motion.article 
+          className={styles2.calc_input_box}
+          initial='offscreen'
+          whileInView='onscreen'
+          viewport={{amount: 0.5, once: true}}
+          variants={{
+              offscreen: { y: -20, opacity: 0,},
+              onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.3,},},
+          }}
+        >
           <div className={styles2.calc_input_header}>
             {/* <input type="text" placeholder="투자금(1.2억)" readOnly /> */}
             <p>기본 투자금 : 1.2억</p>
@@ -143,10 +161,19 @@ export function Caculator() {
           >
             계산하기
           </button>
-        </article>
+        </motion.article>
       </div>
 
-      <div className={styles2.calc_result_box}>
+      <motion.div 
+        className={styles2.calc_result_box}
+        initial='offscreen'
+        whileInView='onscreen'
+        viewport={{amount: 0.5, once: true}}
+        variants={{
+            offscreen: { y: -20, opacity: 0,},
+            onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.3,},},
+        }}
+      >
          <article className={styles2.result_window}>
             {total > 0 && (
                <AnimatePresence>
@@ -218,7 +245,7 @@ export function Caculator() {
          <div className={styles2.profit}>
             <span className="paperLogy">월 순이익 추정치 : {total.toLocaleString() || 0}만원</span>
          </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

@@ -18,6 +18,10 @@ html {
   font-size: 10px;
 }
 
+main {
+  margin-bottom: 85px;
+}
+
 .containerV1 {
   width: 100%;
   max-width: 1400px;

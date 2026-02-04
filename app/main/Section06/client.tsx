@@ -5,6 +5,7 @@ import styles from "./Section06.module.css";
 import { useEffect, useRef, useState } from "react";
 import NiceModal from "@ebay/nice-modal-react";
 import ConfirmModal from "@/component/modal/ConfirmModal/ConfirmModal";
+import * as motion from "motion/react-client"
 
 // date-picker
 import DatePicker from "react-datepicker"; // 기본 설정 1
@@ -143,7 +144,17 @@ export function FormBox() {
 
   return (
     <>
-      <form onSubmit={onSubmit} className={styles.formBox}>
+      <motion.form 
+        onSubmit={onSubmit} 
+        className={styles.formBox}
+        initial='offscreen'
+        whileInView='onscreen'
+        viewport={{amount: 0.5, once: true}}
+        variants={{
+          offscreen: { y: -10, opacity: 0,},
+          onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.5,},},
+        }}
+      >
         <article className={styles.step_box}>
           <span className={clsx(styles.title, "poppins")}>
             step 01 <small>(필수 입력)</small>
@@ -384,7 +395,7 @@ export function FormBox() {
         <button disabled={isLoading} type="submit">
           {isLoading ? "문의 전송중" : "창업 문의하기"}
         </button>
-      </form>
+      </motion.form>
 
       {/* {status === "success" && <p className="text_route">전송되었습니다.</p>}
       {status === "error" && <p className="text_route">전송에 실패했습니다.</p>} */}
