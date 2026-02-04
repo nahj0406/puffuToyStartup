@@ -134,10 +134,21 @@ export function SlideBox() {
 
 export function ButtonBox() {
   const FormAnchor = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-    });
+    const el = document.getElementById(id);
+      if (!el) return;
+
+      // :root에 설정된 --header-h 값 가져옴.
+      const headerH = parseFloat(
+         getComputedStyle(document.documentElement)
+            .getPropertyValue('--header-h')
+      ) || 0;
+      // 사파리에서도 적용 잘 되는데 만약 버벅이면 getComputedStyle 문제임.
+
+      const y =
+         el.getBoundingClientRect().top +
+         window.scrollY - headerH;
+
+      window.scrollTo({ top: y, behavior: 'smooth' });
   };
 
   return (
