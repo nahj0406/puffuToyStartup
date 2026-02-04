@@ -132,6 +132,7 @@
    .wrapper_01 .itemBox {
       max-width: 500px;
       grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: minmax(180px, auto);
 
       .item {
          gap: var(--fontSize25);

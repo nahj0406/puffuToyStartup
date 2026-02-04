@@ -3,11 +3,22 @@ import nodemailer from "nodemailer";
 
 export async function POST(req: Request) {
   try {
-    const { name, message } = await req.json();
+    const { 
+      name, 
+      tel,
+      email,
+      address,
+      appointmentDate,
+      business,
+      budget,
+      store,
+      openDate,
+      // message, 
+    } = await req.json();
 
-    if (!name || !message) {
+    if (!name || !tel) {
       return NextResponse.json(
-        { ok: false, error: "name/message are required" },
+        { ok: false, error: "name/tel are required" },
         { status: 400 }
       );
     }
@@ -22,7 +33,8 @@ export async function POST(req: Request) {
       },
     });
 
-    const fromName = process.env.MAIL_FROM_NAME || "문의폼";
+    // const fromName = process.env.MAIL_FROM_NAME || "푸푸토이 창업 문의";
+    const fromName = "푸푸토이 창업 문의";
     const fromAddress = process.env.SMTP_USER;
 
     const mailTo = process.env.MAIL_TO || fromAddress;
@@ -37,7 +49,28 @@ export async function POST(req: Request) {
       from: `${fromName} <${fromAddress}>`,
       to: mailTo,
       subject: `[창업문의] 푸푸토이 창업문의가 도착했습니다`,
-      text: [`이름: ${name}`, ``, `내용:`, `${message}`].join("\n"),
+      text: [
+        `이름: ${name}`,
+        ``,
+        `연락처: ${tel}`,
+        ``,
+        `이메일: ${email}`,
+        ``,
+        `희망지역: ${address}`,
+        ``,
+        `상담희망날짜: ${appointmentDate}`,
+        ``,
+        ``,
+        `업종 변경여부: ${business ? business : '미기입'}`,
+        ``,
+        `예산: ${budget ? budget : '미기입'}`,
+        ``, 
+        `점포상태: ${store ? store : '미기입'}`,
+        ``, 
+        `오픈 희망시기: ${openDate ? openDate : '미기입'}`,
+        ``, 
+        // `내용:`, `${message}`
+      ].filter(Boolean).join("\n"),
     });
 
     return NextResponse.json({ ok: true });

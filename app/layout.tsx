@@ -3,6 +3,7 @@ import { poppins, pretendard, paperlogy } from "./fonts";
 import "./css/globals.css";
 import "./css/normalrize.css";
 import Providers from "./provider";
+import ModalProvider from './client';
 
 export const metadata: Metadata = {
   title: "푸푸토이 | 웰니스 무인 성인용품",
@@ -49,7 +50,11 @@ export default function RootLayout({
       <body
         className={`${pretendard.className} ${poppins.variable} ${paperlogy.variable} antialiased`}
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          <ModalProvider>
+            {children}
+          </ModalProvider>
+        </Providers>
       </body>
     </html>
   );

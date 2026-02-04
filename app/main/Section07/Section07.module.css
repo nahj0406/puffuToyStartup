@@ -39,7 +39,7 @@
   gap: 10px;
 }
 .formBox .step_box > .title {
-  font-size: var(--fontSize20);
+  font-size: 20px;
   color: #fff;
   font-weight: 700;
   text-transform: uppercase;
@@ -78,7 +78,7 @@
 .itemBox .input_group .input_item > .tag {
   display: inline-block;
   min-width: 100px;
-  font-size: max(14px, 1.8rem);
+  font-size: max(16px, 1.8rem);
   font-weight: 600;
   color: #000;
   white-space: nowrap;
@@ -109,23 +109,6 @@
   color: #797979;
   font-weight: 400;
 }
-.itemBox .input_group .input_item .custom_picker_input {
-  width: 100%;
-  font-size: max(16px, 1.8rem);
-  color: #000;
-  font-weight: 500;
-  border-left: 1px solid #e0e0e0;
-  padding-left: 5px;
-  line-height: 1.2;
-}
-.itemBox .input_group .input_item .custom_picker_input::-moz-placeholder {
-  color: #797979;
-  font-weight: 400;
-}
-.itemBox .input_group .input_item .custom_picker_input::placeholder {
-  color: #797979;
-  font-weight: 400;
-}
 
 @media (max-width: 992px) {
   .itemBox .input_group .input_item > .tag {
@@ -137,24 +120,7 @@
     grid-template-columns: repeat(1, 1fr);
   }
   .itemBox .input_group .input_item {
-    padding: 15px 10px 12px;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    align-items: start;
-  }
-  .itemBox .input_group .input_item input {
-    width: 100%;
-    border-left: none;
-    border-bottom: 1px solid #e0e0e0;
-    padding-bottom: 3px;
-  }
-  .itemBox .input_group .input_item .custom_picker_input {
-    border-left: none;
-    border-bottom: 1px solid #e0e0e0;
-    padding-bottom: 3px;
+    padding: 15px;
   }
 }
 .input_group .input_item .check_group {
@@ -197,11 +163,6 @@
   color: var(--main-color);
 }
 
-@media (max-width: 768px) {
-  .input_group .input_item .check_group {
-    border-left: none;
-  }
-}
 .itemBox.agree_box .agree_content {
   width: 100%;
   background: #fff;
@@ -218,13 +179,6 @@
   font-size: 13px;
   color: #434343;
   line-height: 1.4;
-}
-.itemBox.agree_box .agree_content .txt_box .title {
-  text-align: center;
-  font-size: var(--fontSize25);
-  margin-bottom: 20px;
-  font-weight: 600;
-  color: #000;
 }
 .itemBox.agree_box .check {
   display: flex;
@@ -245,12 +199,6 @@
   padding: 12px 5px 13px;
   color: #fff;
   font-weight: 800;
-  font-size: var(--fontSize25);
+  font-size: 25px;
   cursor: pointer;
-}
-
-@media (max-width: 768px) {
-  .formBox > button {
-    margin-top: 15px;
-  }
-}/*# sourceMappingURL=Section06.module.css.map */
+}/*# sourceMappingURL=Section07.module.css.map */

@@ -147,7 +147,107 @@ html { // 폰트사이즈 지정! rem
    }
 }
 
-// date-picker
+.text_route {color: #fff; font-size: 20px;}
+
+// date-picker custom
+
+@media (max-width: 768px) {
+   .react-datepicker__portal {
+      width: 100% !important;
+   } 
+}
+
 .react-datepicker {
   font-size: 14px !important; /* 원하는 크기로 조절 */
+  font-family: var(--font-pretendard), sans-serif !important;
+  border-radius: 10px !important;
+  overflow: hidden;
+  border: none !important;
+  box-shadow: 0 0 10px rgba(0,0,0,0.25);
+}
+
+// 캘린더 wrapper 
+.calenderWrapper, .monthWrapper {
+   width: 400px;
+}
+
+@media (max-width: 500px) {
+   .calenderWrapper, .monthWrapper {
+      width: 90%;
+   }
+}
+
+// 캘린더 헤더
+.react-datepicker__header {
+   padding: 10px 0 !important;
+   background: crimson !important;
+}
+// 캘린더 헤더 텍스트
+.react-datepicker__current-month, 
+.react-datepicker-time__header, 
+.react-datepicker-year-header {
+   font-size: 1.2em !important;
+   color: #fff !important;
+}
+
+// 헤더 상단 세모 svg
+.react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle {
+   fill: crimson !important;
+   color: crimson !important;
+}
+
+// 헤더 양옆 next. prev 버튼
+.react-datepicker__navigation-icon:before {
+   border-color: #fff !important;
+   transition: all 0.1s;
+}
+// 헤더 양옆 next. prev 버튼 hover
+.react-datepicker__navigation-icon:hover:before {
+   border-color: #222 !important;
+}
+
+// 캘린더 달력 몸통
+.react-datepicker__month-container {
+   width: 100%;
+}
+
+.react-datepicker__month {
+   margin: .5em 0 !important;
+} 
+
+.react-datepicker__day-names, .react-datepicker__week {
+   display: grid;
+   grid-template-columns: repeat(7, 1fr);
+   justify-items: center;
+}
+
+/* 선택된 날짜 배경색 직접 바꾸기 */
+.react-datepicker__day--selected,
+.react-datepicker__day--selected:not([aria-disabled="true"]):hover,
+.react-datepicker__month-text--selected,
+.react-datepicker__month-text--selected:not([aria-disabled="true"]):hover {
+  background-color: var(--main-color) !important;
+  border-radius: 3px !important;
+}
+
+// 년,월만 표시할때
+.react-datepicker__month-wrapper {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   grid-auto-rows: minmax(50px, auto);
+   justify-items: center;
+   align-items: center;
+   width: fit-content;
+   margin: 0 auto;
+}
+
+.react-datepicker__month-text {
+   width: 90%; height: 90%;
+   display: inline-flex !important;
+   align-items: center;
+   justify-content: center;
+   background: #e6e6e6;
+   border-radius: 5px !important;
+   font-weight: 500;
+   color: #434343;
 }
