@@ -6,6 +6,30 @@ import styles2 from "./client.module.css";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  Filler,
+} from 'chart.js';
+import { Bar } from 'react-chartjs-2';
+import annotationPlugin from 'chartjs-plugin-annotation';
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  Filler,
+  annotationPlugin
+);
+
 // 추가할것 : 출력값에 숫자 올라가는 애니메이션
 // 차트 생성되면 올라가는 애니메이션
 // 입력, 출력값들 , 표시되게 추가
@@ -17,6 +41,10 @@ import { motion, AnimatePresence } from "framer-motion";
 // }
 
 export function Caculator() {
+
+  // 기준 투자금
+  const TARGET_AMOUNT = 120000000;
+
   const [value, setValue] = useState({
     expectedSales: "",
     rent: "",
@@ -27,6 +55,7 @@ export function Caculator() {
   const [total, setTotal] = useState<number>(0);
   const [totalDate, setTotalDate] = useState<string>("");
   const [chartDatas, setChartDatas] = useState<number[]>([]);
+  const [chartActive, setChartActive] = useState<boolean>(false);
 
   const toNumber = (value: string) => Number(value.replace(/,/g, "")) || 0;
 
@@ -47,7 +76,7 @@ export function Caculator() {
 
     setTotal(inputTotal);
 
-    const date = 120000000 / inputTotal;
+    const date = TARGET_AMOUNT / inputTotal;
 
     const minDate = Math.floor(date);
     const maxDate = Math.ceil(date);
@@ -66,6 +95,12 @@ export function Caculator() {
     }
 
     setChartDatas(chartData); // 그래프
+    
+    if (inputTotal > 0) {
+      setChartActive(true);
+    } else {
+      setChartActive(false);
+    }
   };
 
   return (
@@ -174,7 +209,7 @@ export function Caculator() {
             onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.3,},},
         }}
       >
-         <article className={styles2.result_window}>
+         <article className={clsx({[styles2.active]: chartActive }, styles2.result_window)}>
             {total > 0 && (
                <AnimatePresence>
                   <motion.div
@@ -190,38 +225,47 @@ export function Caculator() {
                         투자회수기간 : {totalDate}
                      </p>
 
+                     <RecoveryChart chartDatas={chartDatas} inputTotal={total} amount={TARGET_AMOUNT} />
+
                      {/* 3000씩 더해서 1.2천에서 멈추면 됨. */}
-                     <div className={styles2.month_chart}>
+                     {/* <div className={styles2.month_chart}>
                         <ul className={styles2.Coordinates_Y}>
-                           <li>1.2억</li>
-                           <li>9,000</li>
-                           <li>6,000</li>
-                           <li>3,000</li>
-                           <li>0</li>
+                           {[1, 0.75, 0.5, 0.25, 0].map((ratio) => {
+                              const value = target_amount * ratio;
+                              return (
+                                <li key={ratio}>
+                                  {value >= 100000000 
+                                    ? `${(value / 100000000).toFixed(1).replace('.0', '')}억` 
+                                    : value.toLocaleString()}
+                                </li>
+                              );
+                            })}
                         </ul>
 
                         <div className={styles2.Coordinates_X}>
                            {chartDatas.map((item, i) => {
+                              const percentage = Math.min((item / target_amount) * 100, 100);
+
                               return (
                               <div key={i} className={styles2.item}>
                                  <div 
                                     className={styles2.object}
                                     style={{ 
-                                      '--timing-delay': 0.5,
+                                      '--timing-delay': `${0.1 * (i+1)}s`,
+                                      '--active-height': `${percentage}%`,
                                     } as React.CSSProperties}
                                  >
-                                    {/* {item.toLocaleString() || 0}원 */}
+                                  {item.toLocaleString() || 0}원
                                  </div>
 
-                                 <span>{i + 1}개월차</span>
+                                 <span>{i + 1}</span>
                               </div>
                               );
                            })}
-                           {/* <div className={styles2.graph_item}>
-                              
-                           </div> */}
                         </div>
-                     </div>
+                     </div> */}
+
+                     {/* <div className={coordinm}></div> */}
                   </motion.div>
                </AnimatePresence>
             )}
@@ -276,3 +320,90 @@ function CalcInput({
     />
   );
 }
+
+
+// 차트
+interface Props {
+  chartDatas: number[];
+  inputTotal: number; // 월 순이익
+  amount: number;
+}
+
+const RecoveryChart = ({ chartDatas, inputTotal, amount }: Props) => {
+  const GOAL = amount; // 1.2억
+
+  const data = {
+    labels: chartDatas.map((_, i) => `${i + 1}개월차`),
+    datasets: [
+      {
+        label: '누적 수익',
+        data: chartDatas,
+        // 배경 그라데이션 (함수로 구현하거나 단순 색상 지정)
+        backgroundColor: 'rgba(255, 94, 98, 0.8)',
+        borderRadius: 4,
+      },
+    ],
+  };
+
+  const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      y: {
+        beginAtZero: true,
+        grid: { color: '#333' },
+        ticks: {
+          color: '#ccc',
+          // 단위 포맷팅 (예: 1.2억, 9000...)
+          callback: (val: any) => {
+            if (val >= 100000000) return (val / 100000000).toFixed(1) + '억';
+            return val.toLocaleString();
+          },
+        },
+      },
+      x: {
+        grid: { display: false },
+        ticks: { color: '#ccc' },
+      },
+    },
+    plugins: {
+      legend: { display: false },
+      annotation: {
+        annotations: {
+          // 1.2억 목표 가로선
+          goalLine: {
+            type: 'line' as const,
+            yMin: GOAL,
+            yMax: GOAL,
+            borderColor: 'rgba(255, 255, 255, 0.3)',
+            borderWidth: 1,
+            borderDash: [5, 5],
+            label: {
+              display: true,
+              content: '목표 1.2억',
+              backgroundColor: 'transparent',
+              color: '#fff',
+              yAdjust: -10,
+            },
+          },
+          // 투자 회수 시점 세로선 (예시: 10개월차 회수라면)
+          recoveryLine: {
+            type: 'line' as const,
+            xMin: (GOAL / inputTotal) - 1, // index 기준
+            xMax: (GOAL / inputTotal) - 1,
+            borderColor: 'red',
+            borderWidth: 2,
+          },
+        },
+      },
+    },
+  };
+
+  return (
+    <div className={styles2.chart_body}>
+      <Bar data={data} options={options} />
+    </div>
+  );
+};
+
+export default RecoveryChart;

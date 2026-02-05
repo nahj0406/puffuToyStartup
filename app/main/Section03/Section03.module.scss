@@ -17,7 +17,7 @@
 .wrap_container {
    width: 100%;
    background: url('/img/sec3/sec3_bg.jpg') no-repeat center / cover;
-   padding: 17rem 0 max(100px, 12rem);
+   padding: 17rem 0 max(50px, 12rem);
    @include vertical-flex();
    gap: max(60px, 9rem);
    justify-content: start
@@ -85,7 +85,7 @@
             }
 
             p {
-               font-size: var(--fontSize20);
+               font-size: 20px;
                font-weight: 700;
                color: #000;
                line-height: 1.4;
@@ -95,10 +95,23 @@
    }
 }
 
+@media (min-width: 992px) and (max-width: 1080px) {
+   .itemBox .text_box h3 br {
+      display: none;
+   }
+
+   .itemBox .img_box {
+      max-width: 560px;
+   }
+   .itemBox .img_box .unit_txt p br {
+      display: none;
+   }
+}
+
 
 @media (max-width: 992px) {
    .wrap_container {
-      padding-top: max(70px, 10rem);
+      padding-top: max(50px, 7rem);
    }
    .itemBox {
       @include vertical-flex();
@@ -143,6 +156,12 @@
             }
          }
       }
+   }
+}
+
+@media (max-width: 600px) {
+   .itemBox .img_box .unit .unit_txt p {
+      font-size: var(--fontSize20);
    }
 }
 

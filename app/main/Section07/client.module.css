@@ -196,57 +196,11 @@
   font-weight: 700;
   line-height: 1.2;
 }
-.calc_result_box .result_window .data_box .month_chart {
+.calc_result_box .result_window .data_box .chart_body {
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-items: stretch;
-  justify-content: start;
-  gap: 25px;
-  height: 310px;
-}
-.calc_result_box .result_window .data_box .month_chart .Coordinates_Y {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  align-items: start;
-  justify-content: space-between;
-}
-.calc_result_box .result_window .data_box .month_chart .Coordinates_Y > li {
-  color: #fff;
-  font-size: var(--fontSize16);
-  font-weight: 600;
-}
-.calc_result_box .result_window .data_box .month_chart .Coordinates_X {
-  display: flex;
-  align-items: end;
-  justify-content: space-around;
-  gap: 40px;
-  flex: 1;
-}
-.calc_result_box .result_window .data_box .month_chart .Coordinates_X > .item {
-  flex: 1;
-  max-width: 150px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  justify-content: end;
-}
-.calc_result_box .result_window .data_box .month_chart .Coordinates_X > .item .object {
-  width: 100%;
-  height: 100px;
-  background: linear-gradient(#FF8686, #F32828);
-  transition: all 0.3s;
-}
-.calc_result_box .result_window .data_box .month_chart .Coordinates_X > .item span {
-  font-size: max(12px, 1.4rem);
-  color: #fff;
-  font-weight: 600;
+  background: #222;
+  padding: 20px;
+  height: 400px;
 }
 .calc_result_box .not_data_txt {
   display: flex;

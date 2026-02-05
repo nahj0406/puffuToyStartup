@@ -67,11 +67,11 @@
   color: #000;
 }
 .wrapper .title_box .title strong {
-  font-size: 3.5rem;
+  font-size: var(--fontSize35);
   font-weight: 900;
 }
 .wrapper .title_box .title h2 {
-  font-size: 6rem;
+  font-size: max(25px, 6rem);
   font-weight: 900;
   line-height: 1.2;
 }

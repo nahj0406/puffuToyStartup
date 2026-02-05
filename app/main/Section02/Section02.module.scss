@@ -68,9 +68,9 @@
       gap: max(7px, 1.5rem);
       color: #000;
 
-      strong {font-size: 3.5rem; font-weight: 900;}
+      strong {font-size: var(--fontSize35); font-weight: 900;}
       h2 {
-         font-size: 6rem;
+         font-size: max(25px, 6rem);
          font-weight: 900;
          line-height: 1.2;
 
