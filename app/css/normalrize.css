@@ -18,6 +18,10 @@ html {
   font-size: 10px;
 }
 
+main {
+  margin-bottom: 88px;
+}
+
 .containerV1 {
   width: 100%;
   max-width: 1400px;
@@ -33,6 +37,9 @@ html {
   }
 }
 @media (max-width: 992px) {
+  main {
+    margin-bottom: 80px;
+  }
   :root {
     --header-h: 55px;
   }

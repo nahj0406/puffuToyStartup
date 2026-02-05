@@ -19,6 +19,8 @@ html { // 폰트사이즈 지정! rem
    // 1920 기준 10px 너비 줄을때마다 폰트사이즈 줄어들고 min은 5, max는 14
 }
 
+main {margin-bottom: 88px;}
+
 // 기본 레이아웃 너비
 .containerV1 {
    width: 100%;
@@ -41,6 +43,8 @@ html { // 폰트사이즈 지정! rem
    html { // 폰트사이즈 지정! rem
    // font-size: clamp(7px, calc(100vw * 9 / 992), 10px);
    }
+
+   main {margin-bottom: 80px;}
 
    :root {
    --header-h: 55px;
