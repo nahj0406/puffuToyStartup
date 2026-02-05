@@ -230,9 +230,13 @@
 }
 
 @media (min-width: 992px) {
+  .wrapper_02 .itemBox > .item {
+    position: relative;
+    bottom: 0;
+  }
   .wrapper_02 .itemBox > .item:hover {
     background: #fff;
-    transform: translateY(-10%);
+    bottom: 7%;
   }
   .wrapper_02 .itemBox > .item:hover .point_txt {
     color: var(--main-color);

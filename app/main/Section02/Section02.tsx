@@ -8,7 +8,7 @@ import type { Variants } from "motion/react"
 export default function Section02() {
    const cardVariants: Variants = {
       offscreen: {
-         y: 50,
+         y: 40,
          opacity: 0,
       },
       onscreen: {

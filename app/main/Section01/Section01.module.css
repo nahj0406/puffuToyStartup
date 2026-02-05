@@ -16,6 +16,7 @@
   position: absolute;
   z-index: 1;
   width: 74px;
+  animation: coins 1s infinite;
 }
 .coin.coin_1 {
   top: 10rem;
@@ -88,10 +89,13 @@
   line-height: 1.2;
   gap: 10px;
 }
-.circle_itemBox .circle_wrap .content_box .content .txt_box > h2 {
+.circle_itemBox .circle_wrap .content_box .content .txt_box > div {
+  overflow: hidden;
+}
+.circle_itemBox .circle_wrap .content_box .content .txt_box h2 {
   font-size: 30px;
 }
-.circle_itemBox .circle_wrap .content_box .content .txt_box > h1 {
+.circle_itemBox .circle_wrap .content_box .content .txt_box h1 {
   font-size: 50px;
 }
 .circle_itemBox .pakage_card {
@@ -125,6 +129,7 @@
 .circle_itemBox .pakage_card > * {
   position: relative;
   z-index: 2;
+  will-change: transform;
 }
 .circle_itemBox .pakage_card > h4 {
   font-size: 40px;
@@ -142,15 +147,28 @@
   bottom: 100px;
   z-index: 2;
 }
+.talk_bubble > img {
+  position: relative;
+  animation: bubbleMove 1s infinite alternate linear;
+}
 .talk_bubble.bubble01 {
   order: 1;
   left: 40px;
+  animation-delay: 0.5s;
 }
 .talk_bubble.bubble02 {
   order: 3;
   right: 40px;
 }
 
+@keyframes bubbleMove {
+  from {
+    bottom: 0;
+  }
+  to {
+    bottom: 15px;
+  }
+}
 @media (min-width: 993px) and (max-width: 1550px) {
   .sec1 {
     align-items: center;
@@ -168,11 +186,15 @@
   .sec1 {
     flex-wrap: wrap;
     background: url("/img/sec1/mob_bg.jpg") no-repeat center/cover;
+    background-attachment: fixed;
     padding: 40rem 0 10rem;
     gap: 30px 0;
     height: auto;
     min-height: auto;
     align-items: center;
+  }
+  .coin {
+    width: max(30px, 7.4rem);
   }
   .circle_itemBox {
     order: 1;
@@ -205,10 +227,10 @@
   .circle_itemBox .circle_wrap .content_box .content .logo {
     width: max(250px, 38rem);
   }
-  .circle_itemBox .circle_wrap .content_box .content .txt_box > h2 {
+  .circle_itemBox .circle_wrap .content_box .content .txt_box h2 {
     font-size: 30px;
   }
-  .circle_itemBox .circle_wrap .content_box .content .txt_box > h1 {
+  .circle_itemBox .circle_wrap .content_box .content .txt_box h1 {
     font-size: 50px;
   }
   .circle_itemBox .pakage_card {
@@ -255,10 +277,10 @@
   .circle_itemBox .circle_wrap .content_box .content {
     gap: 3rem;
   }
-  .circle_itemBox .circle_wrap .content_box .content .txt_box > h2 {
+  .circle_itemBox .circle_wrap .content_box .content .txt_box h2 {
     font-size: max(18px, 3rem);
   }
-  .circle_itemBox .circle_wrap .content_box .content .txt_box > h1 {
+  .circle_itemBox .circle_wrap .content_box .content .txt_box h1 {
     font-size: max(30px, 5rem);
   }
   .circle_itemBox .pakage_card {
@@ -266,10 +288,10 @@
     max-width: 350px;
     gap: 3rem;
   }
-  .circle_itemBox .pakage_card > h4 {
+  .circle_itemBox .pakage_card h4 {
     font-size: max(33px, 4rem);
   }
-  .circle_itemBox .pakage_card > p {
+  .circle_itemBox .pakage_card p {
     font-size: max(18px, 2.5rem);
   }
 }/*# sourceMappingURL=Section01.module.css.map */

@@ -34,6 +34,7 @@
    @include flex-box();
    justify-content: start;
    gap: max(30px, 7rem);
+   max-width: 1226px;
 
    .box_vertical_group {
       @include vertical-flex();
