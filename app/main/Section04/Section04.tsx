@@ -2,6 +2,7 @@ import clsx from 'clsx'
 import styles from './Section04.module.css'
 import ContainerV1 from '@/component/ContainerV1.tsx/ContainerV1'
 import * as motion from "motion/react-client"
+import isMobile from 'shared/utils/isMobile'
 
 export default function Section04() {
    return (
@@ -23,7 +24,7 @@ export default function Section04() {
                         className={clsx(styles.step_txt, 'poppins')}
                         initial='offscreen'
                         whileInView='onscreen'
-                        viewport={{amount: 0.5, once: true}}
+                        viewport={{amount: 0.3, once: true}}
                         variants={{
                            offscreen: { x: -10, opacity: 0,},
                            onscreen: { x: 0, opacity: 1, transition: { duration: 0.5, delay: 0.3,},},
@@ -35,7 +36,7 @@ export default function Section04() {
                         className='paperLogy'
                         initial='offscreen'
                         whileInView='onscreen'
-                        viewport={{amount: 0.5, once: true}}
+                        viewport={{amount: 0.3, once: true}}
                         variants={{
                            offscreen: { y: 10, opacity: 0,},
                            onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.5,},},
@@ -50,7 +51,7 @@ export default function Section04() {
                      <motion.p
                         initial='offscreen'
                         whileInView='onscreen'
-                        viewport={{amount: 0.5, once: true}}
+                        viewport={{amount: 0.3, once: true}}
                         variants={{
                            offscreen: { y: 10, opacity: 0,},
                            onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.7,},},
@@ -64,7 +65,7 @@ export default function Section04() {
                      <motion.p
                         initial='offscreen'
                         whileInView='onscreen'
-                        viewport={{amount: 0.5, once: true}}
+                        viewport={{amount: 0.3, once: true}}
                         variants={{
                            offscreen: { y: 10, opacity: 0,},
                            onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.9,},},
@@ -81,7 +82,7 @@ export default function Section04() {
                      className={styles.item}
                      initial='offscreen'
                      whileInView='onscreen'
-                     viewport={{amount: 0.5, once: true}}
+                     viewport={{amount: 0.2, once: true}}
                      variants={{
                         offscreen: { y: 20, opacity: 0,},
                         onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.3,},},
@@ -104,10 +105,10 @@ export default function Section04() {
                      className={styles.item}
                      initial='offscreen'
                      whileInView='onscreen'
-                     viewport={{amount: 0.5, once: true}}
+                     viewport={{amount: 0.2, once: true}}
                      variants={{
                         offscreen: { y: 20, opacity: 0,},
-                        onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.5,},},
+                        onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: isMobile ? 0.3 : 0.5,},},
                      }}
                   >
                      <figure className={styles.img}>
@@ -127,10 +128,10 @@ export default function Section04() {
                      className={styles.item}
                      initial='offscreen'
                      whileInView='onscreen'
-                     viewport={{amount: 0.5, once: true}}
+                     viewport={{amount: 0.2, once: true}}
                      variants={{
                         offscreen: { y: 20, opacity: 0,},
-                        onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.7,},},
+                        onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: isMobile ? 0.3 : 0.7,},},
                      }}
                   >
                      <figure className={styles.img}>
@@ -150,10 +151,10 @@ export default function Section04() {
                      className={styles.item}
                      initial='offscreen'
                      whileInView='onscreen'
-                     viewport={{amount: 0.5, once: true}}
+                     viewport={{amount: 0.2, once: true}}
                      variants={{
                         offscreen: { y: 20, opacity: 0,},
-                        onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.9,},},
+                        onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: isMobile ? 0.3 : 0.9,},},
                      }}
                   >
                      <figure className={styles.img}>
@@ -185,7 +186,7 @@ export default function Section04() {
                         className={clsx(styles.step_txt, 'poppins')}
                         initial='offscreen'
                         whileInView='onscreen'
-                        viewport={{amount: 0.5, once: true}}
+                        viewport={{amount: 0.3, once: true}}
                         variants={{
                            offscreen: { x: -10, opacity: 0,},
                            onscreen: { x: 0, opacity: 1, transition: { duration: 0.5, delay: 0.3,},},
@@ -197,7 +198,7 @@ export default function Section04() {
                         className='paperLogy'
                         initial='offscreen'
                         whileInView='onscreen'
-                        viewport={{amount: 0.5, once: true}}
+                        viewport={{amount: 0.3, once: true}}
                         variants={{
                            offscreen: { y: 10, opacity: 0,},
                            onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.5,},},
@@ -212,7 +213,7 @@ export default function Section04() {
                      <motion.p
                         initial='offscreen'
                         whileInView='onscreen'
-                        viewport={{amount: 0.5, once: true}}
+                        viewport={{amount: 0.3, once: true}}
                         variants={{
                            offscreen: { y: 10, opacity: 0,},
                            onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.7,},},
@@ -230,7 +231,7 @@ export default function Section04() {
                      className={styles.item}
                      initial='offscreen'
                      whileInView='onscreen'
-                     viewport={{amount: 0.5, once: true}}
+                     viewport={{amount: 0.2, once: true}}
                      variants={{
                         offscreen: { y: 20, opacity: 0,},
                         onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.3,},},
@@ -254,10 +255,10 @@ export default function Section04() {
                      className={styles.item}
                      initial='offscreen'
                      whileInView='onscreen'
-                     viewport={{amount: 0.5, once: true}}
+                     viewport={{amount: 0.2, once: true}}
                      variants={{
                         offscreen: { y: 20, opacity: 0,},
-                        onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.5,},},
+                        onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: isMobile ? 0.3 : 0.5,},},
                      }}
                   >
                      <figure className={styles.img}>
@@ -285,7 +286,7 @@ export default function Section04() {
                         className={clsx(styles.step_txt, 'poppins')}
                         initial='offscreen'
                         whileInView='onscreen'
-                        viewport={{amount: 0.5, once: true}}
+                        viewport={{amount: 0.3, once: true}}
                         variants={{
                            offscreen: { x: -10, opacity: 0,},
                            onscreen: { x: 0, opacity: 1, transition: { duration: 0.5, delay: 0.3,},},
@@ -297,7 +298,7 @@ export default function Section04() {
                         className='paperLogy'
                         initial='offscreen'
                         whileInView='onscreen'
-                        viewport={{amount: 0.5, once: true}}
+                        viewport={{amount: 0.3, once: true}}
                         variants={{
                            offscreen: { y: 10, opacity: 0,},
                            onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.5,},},
@@ -312,7 +313,7 @@ export default function Section04() {
                      <motion.p
                         initial='offscreen'
                         whileInView='onscreen'
-                        viewport={{amount: 0.5, once: true}}
+                        viewport={{amount: 0.3, once: true}}
                         variants={{
                            offscreen: { y: 10, opacity: 0,},
                            onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.7,},},
@@ -325,7 +326,7 @@ export default function Section04() {
                      <motion.p
                         initial='offscreen'
                         whileInView='onscreen'
-                        viewport={{amount: 0.5, once: true}}
+                        viewport={{amount: 0.3, once: true}}
                         variants={{
                            offscreen: { y: 10, opacity: 0,},
                            onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.9,},},
@@ -342,7 +343,7 @@ export default function Section04() {
                      className={styles.item}
                      initial='offscreen'
                      whileInView='onscreen'
-                     viewport={{amount: 0.5, once: true}}
+                     viewport={{amount: 0.2, once: true}}
                      variants={{
                         offscreen: { y: 20, opacity: 0,},
                         onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.3,},},
@@ -365,10 +366,10 @@ export default function Section04() {
                      className={styles.item}
                      initial='offscreen'
                      whileInView='onscreen'
-                     viewport={{amount: 0.5, once: true}}
+                     viewport={{amount: 0.2, once: true}}
                      variants={{
                         offscreen: { y: 20, opacity: 0,},
-                        onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.5,},},
+                        onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: isMobile ? 0.3 : 0.5,},},
                      }}
                   >
                      <figure className={styles.img}>

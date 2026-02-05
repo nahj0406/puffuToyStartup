@@ -28,6 +28,7 @@
    position: absolute;
    z-index: 1;
    width: 74px;
+   animation: coins 1s infinite;
 
    // 왼쪽
    &.coin_1 {top: 10rem; left: 16rem;}
@@ -79,10 +80,12 @@
                line-height: 1.2;
                gap: 10px;
 
+               > div {overflow: hidden;}
+
                // > h2 {font-size: max(20px, 3rem);}
                // > h1 {font-size: max(35px, 5rem);}
-               > h2 {font-size: 30px;}
-               > h1 {font-size: 50px;}
+               h2 {font-size: 30px;}
+               h1 {font-size: 50px;}
             }
          }
       }
@@ -115,7 +118,7 @@
          transform: translate(-50%, -50%) rotate(-45deg);
       }
 
-      > * {position: relative; z-index: 2;}
+      > * {position: relative; z-index: 2; will-change: transform;}
 
       > h4 {
          // font-size: max(20px, 4rem);
@@ -139,15 +142,31 @@
    bottom: 100px;
    z-index: 2;
 
+   > img {
+      position: relative;
+      animation: bubbleMove 1s infinite alternate linear;
+   }
+
    &.bubble01 {
       order: 1;
       left: 40px;
+      animation-delay: 0.5s;
    }
 
    &.bubble02 {
       order: 3;
       right: 40px;
    }
+}
+
+// @keyframes coins {
+//    from {transform: rotateY(0);}
+//    to {transform: rotateY(360deg);}
+// }
+
+@keyframes bubbleMove {
+   from {bottom: 0;}
+   to {bottom: 15px;}
 }
 
 
@@ -173,12 +192,17 @@
    .sec1 {
       flex-wrap: wrap;
       background: url('/img/sec1/mob_bg.jpg') no-repeat center / cover;
+      background-attachment: fixed;
       // padding: 50px 0 0;
       padding: 40rem 0 10rem;
       gap: 30px 0;
       height: auto;
       min-height: auto;
       align-items: center;
+   }
+
+   .coin {
+      width: max(30px, 7.4rem);
    }
 
    .circle_itemBox {
@@ -209,8 +233,8 @@
 
                .txt_box {
 
-                  > h2 {font-size: 30px;}
-                  > h1 {font-size: 50px;}
+                  h2 {font-size: 30px;}
+                  h1 {font-size: 50px;}
                }
             }
          }
@@ -286,8 +310,8 @@
 
                .txt_box {
 
-                  > h2 {font-size: max(18px, 3rem);}
-                  > h1 {font-size: max(30px, 5rem);}
+                  h2 {font-size: max(18px, 3rem);}
+                  h1 {font-size: max(30px, 5rem);}
                }
             }
          }
@@ -298,11 +322,11 @@
          max-width: 350px;
          gap: 3rem;
 
-         > h4 {
+         h4 {
             font-size: max(33px, 4rem);
          }
 
-         > p {
+         p {
             font-size: max(18px, 2.5rem);
          }
       }

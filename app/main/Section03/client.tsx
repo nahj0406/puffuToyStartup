@@ -131,7 +131,6 @@ export function SlideBox() {
    )
 }
 
-
 export function ButtonBox() {
   const FormAnchor = (id: string) => {
     const el = document.getElementById(id);
@@ -156,7 +155,7 @@ export function ButtonBox() {
       className={styles.btn_box}
       initial='offscreen'
       whileInView='onscreen'
-      viewport={{amount: 0.5, once: true}}
+      viewport={{amount: 0.2, once: true}}
       variants={{
          offscreen: { y: 30, opacity: 0,},
          onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.3,},},

@@ -5,6 +5,7 @@ import * as motion from "motion/react-client"
 import { ButtonBox, SlideBox } from './client'
 
 export default function Section03() {
+
    return (
       <section className={styles.sec3}>
          <div className={'black_title_header'}>
@@ -50,7 +51,7 @@ export default function Section03() {
                      className={styles.img_box}
                      initial='offscreen'
                      whileInView='onscreen'
-                     viewport={{amount: 0.5, once: true}}
+                     viewport={{amount: 0.3, once: true}}
                      variants={{
                         offscreen: { y: 50, opacity: 0,},
                         onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.3,},},
@@ -130,7 +131,7 @@ export default function Section03() {
                         className={styles.mapBox}
                         initial='offscreen'
                         whileInView='onscreen'
-                        viewport={{amount: 0.5, once: true}}
+                        viewport={{amount: 0.3, once: true}}
                         variants={{
                            offscreen: { y: 30, opacity: 0,},
                            onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.5,},},

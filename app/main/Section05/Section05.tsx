@@ -3,6 +3,7 @@ import styles from './Section05.module.css'
 import ContainerV1 from '@/component/ContainerV1.tsx/ContainerV1'
 import TextSlide from '@/component/TextSlide.tsx/TextSlide';
 import * as motion from "motion/react-client"
+import isMobile from 'shared/utils/isMobile';
 
 export default function Section05() {
 
@@ -47,7 +48,7 @@ export default function Section05() {
                      className='normal_title_header'
                      initial='offscreen'
                      whileInView='onscreen'
-                     viewport={{amount: 0.5, once: true}}
+                     viewport={{amount: 0.3, once: true}}
                   >
                      <motion.span 
                         className='paperLogy title_deco_circle'
@@ -76,7 +77,7 @@ export default function Section05() {
                   className={styles.itemBox}
                   initial='offscreen'
                   whileInView='onscreen'
-                  viewport={{amount: 0.5, once: true}}
+                  viewport={{amount: isMobile ? 0.3 : 0.5, once: true}}
                >
                   {
                      stepArr.map((item: stepArray, i: number)=> {
@@ -85,7 +86,7 @@ export default function Section05() {
                               className={styles.item} key={`item_${i}`}
                               variants={{
                                  offscreen: { y: -10, opacity: 0,},
-                                 onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: (0.1 * i),},},
+                                 onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: (0.15 * i),},},
                               }}
                            >
                               <span className={clsx(styles.step_txt, 'poppins')}>
@@ -123,7 +124,7 @@ export default function Section05() {
                   className={styles.title_box}
                   initial='offscreen'
                   whileInView='onscreen'
-                  viewport={{amount: 0.5, once: true}}
+                  viewport={{amount: isMobile ? 0.3 : 0.5, once: true}}
                >
                   <div className='normal_title_header'>
                      <motion.span 
@@ -163,13 +164,13 @@ export default function Section05() {
                   className={styles.itemBox}
                   initial='offscreen'
                   whileInView='onscreen'
-                  viewport={{amount: 0.5, once: true}}
+                  viewport={{amount: isMobile ? 0.2 : 0.5, once: true}}
                >
                   <motion.article 
                      className={styles.item}
                      variants={{
-                        offscreen: { opacity: 0,},
-                        onscreen: { opacity: 1, transition: { duration: 0.5, delay: 0.3,},},
+                        offscreen: { y: 30, opacity: 0,},
+                        onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.3,},},
                      }}
                   >
                      <span className={clsx(styles.point_txt, 'poppins')}>
@@ -195,8 +196,8 @@ export default function Section05() {
                   <motion.article 
                      className={styles.item}
                      variants={{
-                        offscreen: { opacity: 0,},
-                        onscreen: { opacity: 1, transition: { duration: 0.5, delay: 0.5,},},
+                        offscreen: { y: 30, opacity: 0,},
+                        onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.5,},},
                      }}
                   >
                      <span className={clsx(styles.point_txt, 'poppins')}>
@@ -223,8 +224,8 @@ export default function Section05() {
                   <motion.article 
                      className={styles.item}
                      variants={{
-                        offscreen: { opacity: 0,},
-                        onscreen: { opacity: 1, transition: { duration: 0.5, delay: 0.7,},},
+                        offscreen: { y: 30, opacity: 0,},
+                        onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.7,},},
                      }}
                   >
                      <span className={clsx(styles.point_txt, 'poppins')}>

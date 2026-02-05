@@ -29,9 +29,11 @@
 }
 .sec_wrapper.step2::before {
   background: url("/img/sec4/sec4_step2_bg.jpg") no-repeat center/cover;
+  background-attachment: fixed;
 }
 .sec_wrapper.step3::before {
   background: url("/img/sec4/sec4_step3_bg.jpg") no-repeat center/cover;
+  background-attachment: fixed;
 }
 
 .sec_wrapper .wrapper {

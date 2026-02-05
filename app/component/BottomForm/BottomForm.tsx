@@ -1,7 +1,6 @@
 'use client'
 
 import clsx from "clsx";
-import { ReactNode } from "react";
 import styles from "./BottomForm.module.css";
 import ContainerV1 from "../ContainerV1.tsx/ContainerV1";
 import Link from "next/link";

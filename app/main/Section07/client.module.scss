@@ -14,13 +14,18 @@
 .calc_wrapper {
    width: 100%;
    @include vertical-flex;
-   gap: max(30px, 5rem);
+}
+
+.anchor_dummy {
+   width: 100%;
+   height: 1px;
 }
 
 .calc_header {
    @include flex-box;
    gap: max(50px, 12.6rem);
    width: inherit;
+   margin-bottom: max(30px, 5rem);
 
 
    .calc_title {
@@ -55,7 +60,7 @@
    background: #1a1a1a;
    border-radius: 10px;
    width: 100%;
-   max-width: 480px;
+   // max-width: 480px;
    padding: 25px 25px 35px;
    gap: 20px;
 
@@ -139,6 +144,17 @@
    }
 }
 
+@media (min-width: 1380px) {
+   .calc_header {
+      max-width: 1226px;
+   }
+}
+
+@media (min-width: 992px) {
+   .calc_header .calc_title {
+      min-width: 450px;
+   }
+}
 
 @media (max-width: 992px) {
    .calc_header {
@@ -187,9 +203,9 @@
    gap: 15px;
 
    width: 100%;
-   background: #1A1A1A;
+   // background: #1A1A1A;
    border-radius: 10px;
-   padding: max(20px, 3.5rem) max(20px, 3.5rem) max(25px, 3rem);
+   // padding: max(20px, 3.5rem) max(20px, 3.5rem) max(25px, 3rem);
 
    .result_window {
       background: #2F2F2F;
@@ -202,7 +218,7 @@
          @include vertical-flex();
          justify-content: start;
          align-items: start;
-         gap: 15px;
+         gap: 15px;         
 
          .month_result {
             color: #fff;
@@ -217,87 +233,7 @@
             padding: 20px;
             height: 400px;
          }
-
-         // .month_chart {
-         //    width: 100%;
-         //    @include flex-box();
-         //    align-items: stretch;
-         //    justify-content: start;
-         //    gap: 25px;
-         //    position: relative;
-         //    display: none;
-
-         //    // 그래프 높이 기준값
-         //    height: 510px;
-
-
-         //    .Coordinates_Y { // y좌표
-         //       @include vertical-flex();
-         //       gap: 5px;
-         //       align-items: start;
-         //       justify-content: space-between;
-         //       height: 100%;
-         //       position: absolute;
-         //       bottom: 0;
-         //       left: 0;
-         //       width: 100%;
-
-         //       > li {
-         //          color: #fff;
-         //          font-size: var(--fontSize16);
-         //          font-weight: 600;
-         //          width: 100%;
-         //          border-bottom: 1px solid #ccc;
-         //       }
-         //    }
-
-         //    .Coordinates_X {
-         //       display: flex;
-         //       align-items: end;
-         //       justify-content: space-around;
-         //       gap: 40px;
-         //       flex: 1;
-         //       height: 100%;
-
-         //       > .item {
-         //          flex: 1;
-         //          max-width: 150px;
-         //          @include vertical-flex();
-         //          gap: 10px;
-         //          justify-content: end;
-         //          height: inherit;
-
-
-         //          .object {
-         //             width: 100%;
-         //             height: 0;
-         //             background: linear-gradient(#FF8686, #F32828);
-         //             // transition: all 1s;
-         //             // transition-delay: var(--timing-delay);
-         //          }
-
-
-         //          span {
-         //             font-size: max(12px, 1.4rem);
-         //             color: #fff;
-         //             font-weight: 600;
-                     
-         //          }
-         //       }
-         //    }
-         // }
       }
-
-      // &.active {
-      //    // background: #fff;
-      //    .month_chart {
-      //       .Coordinates_X {
-      //          > .item .object {
-      //             animation: heightActive 0.7s var(--timing-delay) forwards;
-      //          }
-      //       }
-      //    }
-      // }
    }
 
    .not_data_txt {
@@ -326,11 +262,9 @@
    
 }
 
-// @keyframes heightActive {
-//   from {
-//     height: 0%;
-//   }
-//   to {
-//     height: var(--active-height);
-//   }
-// }
+
+@media (max-width: 600px) {
+   .calc_result_box .result_window .data_box .chart_body {
+      height: 330px;
+   }
+}

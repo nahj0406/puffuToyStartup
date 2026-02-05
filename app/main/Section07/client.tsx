@@ -5,6 +5,8 @@ import clsx from "clsx";
 import styles2 from "./client.module.css";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import NiceModal from "@ebay/nice-modal-react";
+import ConfirmModal from "@/component/modal/ConfirmModal/ConfirmModal";
 
 import {
   Chart as ChartJS,
@@ -67,24 +69,48 @@ export function Caculator() {
   };
 
   const caculator = () => {
+
+    if(
+      numbers.expectedSales <= 0 ||
+      numbers.rent <= 0 ||
+      numbers.maintenance <= 0
+    ) {
+      NiceModal.show(ConfirmModal, {
+        message: "예상 매출액, 월세, 관리비를 모두 입력해 주세요.",
+        autoClose: 1500,
+      });
+      return;
+    }
+
     const inputTotal =
       numbers.expectedSales -
       (numbers.rent + numbers.maintenance + numbers.extraCost);
 
     // 총 순이익
+    setTotal(inputTotal);
     console.log("월 순이익:", inputTotal);
 
-    setTotal(inputTotal);
 
     const date = TARGET_AMOUNT / inputTotal;
-
     const minDate = Math.floor(date);
     const maxDate = Math.ceil(date);
 
-    console.log(`투자회수기간:${date}`, minDate, "~", maxDate);
+    // console.log(`투자회수기간:${date}`, minDate, "~", maxDate);
 
     // 총 투자회수기간
-    setTotalDate(`${minDate}개월 ~ ${maxDate}개월`);
+    let dateText = "";
+
+    if (maxDate > 15) {
+      // 1. maxDate가 15보다 크면 "15개월 이상"으로 고정
+      dateText = "15개월 이상";
+    } else if (minDate === maxDate) {
+      // 2. 값이 정수로 떨어지면 하나만 표시
+      dateText = `${maxDate}개월`;
+    } else {
+      // 3. 그 외에는 범위로 표시
+      dateText = `${minDate}개월 ~ ${maxDate}개월`;
+    }
+    setTotalDate(dateText);
 
     const chartData: number[] = [];
 
@@ -96,11 +122,47 @@ export function Caculator() {
 
     setChartDatas(chartData); // 그래프
     
-    if (inputTotal > 0) {
-      setChartActive(true);
-    } else {
-      setChartActive(false);
+    setChartActive(true);
+  };
+
+  // 계산 버튼 클릭 시 이동
+  const resultAnchor = (id: string) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    // :root에 설정된 --header-h 값 가져옴.
+    const headerH = parseFloat(
+        getComputedStyle(document.documentElement)
+          .getPropertyValue('--header-h')
+    ) || 0;
+    // 사파리에서도 적용 잘 되는데 만약 버벅이면 getComputedStyle 문제임.
+
+    const y =
+        el.getBoundingClientRect().top +
+        window.scrollY - (headerH + 30);
+
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  };
+
+  // 순이익 표시 필터
+  const formatCurrency = (value: number) => {
+    if (value <= 0) return "0원";
+
+    if (value >= 100000000) {
+      // 1. 1억 원 이상 (예: 1.2억원)
+      const eok = value / 100000000;
+      // 소수점 1자리까지 표시하고, .0으로 끝나면 정수로 표시
+      return `${Number(eok.toFixed(1)).toLocaleString()}억원`;
+    } 
+    
+    if (value >= 100000) {
+      // 2. 10만 원 이상 (예: 150만원)
+      const man = Math.floor(value / 10000);
+      return `${man.toLocaleString()}만원`;
     }
+
+    // 3. 10만 원 미만 (예: 9,500원)
+    return `${value.toLocaleString()}원`;
   };
 
   return (
@@ -192,104 +254,110 @@ export function Caculator() {
 
           <button
             className={clsx(styles2.calc_submit, "paperLogy")}
-            onClick={() => caculator()}
+            onClick={() => {
+              caculator();
+              if(total > 0) {
+                resultAnchor('calc_result');
+              }
+            }}
           >
             계산하기
           </button>
         </motion.article>
       </div>
 
-      <motion.div 
-        className={styles2.calc_result_box}
-        initial='offscreen'
-        whileInView='onscreen'
-        viewport={{amount: 0.5, once: true}}
-        variants={{
-            offscreen: { y: -20, opacity: 0,},
-            onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.3,},},
-        }}
-      >
-         <article className={clsx({[styles2.active]: chartActive }, styles2.result_window)}>
-            {total > 0 && (
-               <AnimatePresence>
-                  <motion.div
-                     className={styles2.data_box}
-                     key={total}
-                     initial={{ opacity: 0 }}
-                     animate={{ opacity: 1 }}
-                     exit={{ opacity: 0 }}
-                     transition={{ duration: 0.2 }}
+      <div id="calc_result" className={styles2.anchor_dummy}></div>
+      {
+        chartActive && (
+        <AnimatePresence>
+          <motion.div 
+            className={styles2.calc_result_box}
+            key={total}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            // id="calc_result"
+            // initial='offscreen'
+            // whileInView='onscreen'
+            // viewport={{amount: 0.5, once: true}}
+            // variants={{
+            //     offscreen: { y: -20, opacity: 0,},
+            //     onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.3,},},
+            // }}
+          >
+            <article className={styles2.result_window}>
+                {(total > 0 && chartActive)  && (
+                  <AnimatePresence>
+                      <motion.div
+                        className={styles2.data_box}
+                        key={total}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        {/* <div className="result1">월 순이익 추정치: {total || 0}</div> */}
+                        <p className={styles2.month_result}>
+                            투자회수기간 : {totalDate}
+                        </p>
+
+                        <RecoveryChart chartDatas={chartDatas} inputTotal={total} amount={TARGET_AMOUNT} />
+                      </motion.div>
+                  </AnimatePresence>
+                )}
+
+                {((total < 0 || total === 0) && chartActive ) && (
+                  <AnimatePresence>
+                      <motion.div
+                        className={styles2.not_data_txt}
+                        key={total}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        현재 입력 조건에서는 투자금 회수가 불가능합니다.
+                      </motion.div>
+                  </AnimatePresence>
+                )}
+
+                {(total === 0 && !chartActive) && (
+                  <AnimatePresence>
+                      <motion.div
+                        className={styles2.not_data_txt}
+                        key={total}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        예상되는 수익을 계산해 주세요.
+                      </motion.div>
+                  </AnimatePresence>
+                )}
+            </article>
+                
+              {(total > 0 && chartActive) && (
+                <AnimatePresence>
+                  <motion.div 
+                    className={styles2.profit}
+                    key={total}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5 }}
                   >
-                     {/* <div className="result1">월 순이익 추정치: {total || 0}</div> */}
-                     <p className={styles2.month_result}>
-                        투자회수기간 : {totalDate}
-                     </p>
-
-                     <RecoveryChart chartDatas={chartDatas} inputTotal={total} amount={TARGET_AMOUNT} />
-
-                     {/* 3000씩 더해서 1.2천에서 멈추면 됨. */}
-                     {/* <div className={styles2.month_chart}>
-                        <ul className={styles2.Coordinates_Y}>
-                           {[1, 0.75, 0.5, 0.25, 0].map((ratio) => {
-                              const value = target_amount * ratio;
-                              return (
-                                <li key={ratio}>
-                                  {value >= 100000000 
-                                    ? `${(value / 100000000).toFixed(1).replace('.0', '')}억` 
-                                    : value.toLocaleString()}
-                                </li>
-                              );
-                            })}
-                        </ul>
-
-                        <div className={styles2.Coordinates_X}>
-                           {chartDatas.map((item, i) => {
-                              const percentage = Math.min((item / target_amount) * 100, 100);
-
-                              return (
-                              <div key={i} className={styles2.item}>
-                                 <div 
-                                    className={styles2.object}
-                                    style={{ 
-                                      '--timing-delay': `${0.1 * (i+1)}s`,
-                                      '--active-height': `${percentage}%`,
-                                    } as React.CSSProperties}
-                                 >
-                                  {item.toLocaleString() || 0}원
-                                 </div>
-
-                                 <span>{i + 1}</span>
-                              </div>
-                              );
-                           })}
-                        </div>
-                     </div> */}
-
-                     {/* <div className={coordinm}></div> */}
+                    <span className="paperLogy">월 순이익 추정치 : {formatCurrency(total)}</span>
                   </motion.div>
-               </AnimatePresence>
-            )}
+                </AnimatePresence>
+              )
 
-            {(total < 0 || total === 0) && (
-               <AnimatePresence>
-                  <motion.div
-                     className={styles2.not_data_txt}
-                     key={total}
-                     initial={{ opacity: 0 }}
-                     animate={{ opacity: 1 }}
-                     exit={{ opacity: 0 }}
-                     transition={{ duration: 0.2 }}
-                  >
-                     현재 입력 조건에서는 투자금 회수가 불가능합니다.
-                  </motion.div>
-               </AnimatePresence>
-            )}
-         </article>
-
-         <div className={styles2.profit}>
-            <span className="paperLogy">월 순이익 추정치 : {total.toLocaleString() || 0}만원</span>
-         </div>
-      </motion.div>
+              }
+          </motion.div>
+        </AnimatePresence>
+        )
+      }
     </section>
   );
 }
