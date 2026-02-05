@@ -211,60 +211,93 @@
             line-height: 1.2;
          }
 
-         .month_chart {
+         .chart_body {
             width: 100%;
-            @include flex-box();
-            align-items: stretch;
-            justify-content: start;
-            gap: 25px;
-            height: 310px;
-
-
-            .Coordinates_Y { // y좌표
-               @include vertical-flex();
-               gap: 5px;
-               align-items: start;
-               justify-content: space-between;
-
-               > li {
-                  color: #fff;
-                  font-size: var(--fontSize16);
-                  font-weight: 600;
-               }
-            }
-
-            .Coordinates_X {
-               display: flex;
-               align-items: end;
-               justify-content: space-around;
-               gap: 40px;
-               flex: 1;
-
-               > .item {
-                  flex: 1;
-                  max-width: 150px;
-                  @include vertical-flex();
-                  gap: 10px;
-                  justify-content: end;
-
-
-                  .object {
-                     width: 100%;
-                     height: 100px;
-                     background: linear-gradient(#FF8686, #F32828);
-                     transition: all 0.3s;
-                  }
-
-                  span {
-                     font-size: max(12px, 1.4rem);
-                     color: #fff;
-                     font-weight: 600;
-                     
-                  }
-               }
-            }
+            background: #222;
+            padding: 20px;
+            height: 400px;
          }
+
+         // .month_chart {
+         //    width: 100%;
+         //    @include flex-box();
+         //    align-items: stretch;
+         //    justify-content: start;
+         //    gap: 25px;
+         //    position: relative;
+         //    display: none;
+
+         //    // 그래프 높이 기준값
+         //    height: 510px;
+
+
+         //    .Coordinates_Y { // y좌표
+         //       @include vertical-flex();
+         //       gap: 5px;
+         //       align-items: start;
+         //       justify-content: space-between;
+         //       height: 100%;
+         //       position: absolute;
+         //       bottom: 0;
+         //       left: 0;
+         //       width: 100%;
+
+         //       > li {
+         //          color: #fff;
+         //          font-size: var(--fontSize16);
+         //          font-weight: 600;
+         //          width: 100%;
+         //          border-bottom: 1px solid #ccc;
+         //       }
+         //    }
+
+         //    .Coordinates_X {
+         //       display: flex;
+         //       align-items: end;
+         //       justify-content: space-around;
+         //       gap: 40px;
+         //       flex: 1;
+         //       height: 100%;
+
+         //       > .item {
+         //          flex: 1;
+         //          max-width: 150px;
+         //          @include vertical-flex();
+         //          gap: 10px;
+         //          justify-content: end;
+         //          height: inherit;
+
+
+         //          .object {
+         //             width: 100%;
+         //             height: 0;
+         //             background: linear-gradient(#FF8686, #F32828);
+         //             // transition: all 1s;
+         //             // transition-delay: var(--timing-delay);
+         //          }
+
+
+         //          span {
+         //             font-size: max(12px, 1.4rem);
+         //             color: #fff;
+         //             font-weight: 600;
+                     
+         //          }
+         //       }
+         //    }
+         // }
       }
+
+      // &.active {
+      //    // background: #fff;
+      //    .month_chart {
+      //       .Coordinates_X {
+      //          > .item .object {
+      //             animation: heightActive 0.7s var(--timing-delay) forwards;
+      //          }
+      //       }
+      //    }
+      // }
    }
 
    .not_data_txt {
@@ -292,3 +325,12 @@
    }
    
 }
+
+// @keyframes heightActive {
+//   from {
+//     height: 0%;
+//   }
+//   to {
+//     height: var(--active-height);
+//   }
+// }

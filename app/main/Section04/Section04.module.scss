@@ -31,6 +31,16 @@
       z-index: 1;
    }
 
+   &.step1 .logo_img {
+      position: absolute;
+      z-index: 2;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0.1;
+      width: 161rem;
+   }
+
    &.step1::before {
       background: linear-gradient(90deg, #72161E, #D82A38);
    }

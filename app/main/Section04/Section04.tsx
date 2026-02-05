@@ -170,6 +170,10 @@ export default function Section04() {
                   </motion.article>
                </div>
             </ContainerV1>
+            <motion.img 
+               className={styles.logo_img}
+               src="/img/sec4/sec4_step1_logo.png" alt="로고" 
+            />
          </div>
 
 
