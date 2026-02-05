@@ -175,19 +175,28 @@
    .sec1 {
       min-height: 90dvh;
    }
+   .circle_itemBox {
+      max-width: 900px;
+      .circle_wrap {
+         .content_box {
+            top: 58%;
+         }
+      }
+   }
+
    .talk_bubble {
 
-   &.bubble01 {
-      order: 1;
-      left: 10vw;
-      animation-delay: 0.5s;
-   }
+      &.bubble01 {
+         order: 1;
+         left: 6vw;
+         animation-delay: 0.5s;
+      }
 
-   &.bubble02 {
-      order: 3;
-      right: 10vw;
+      &.bubble02 {
+         order: 3;
+         right: 6vw;
+      }
    }
-}
 }
 
 @media (min-width: 993px) and (max-width: 1550px) {
