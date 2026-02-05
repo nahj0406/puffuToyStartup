@@ -14,14 +14,15 @@
 
 .sec1 {
    width: 100%;
-   min-height: 100dvh;
+   min-height: 90dvh;
    @include flex-box;
-   align-items: start;
+   align-items: center;
    position: relative;
    padding: 45px 0 112px;
    gap: 15px;
    overflow: hidden;
-   background: url('/img/sec5/sec5_bg.png') no-repeat bottom / cover;
+   // background: url('/img/sec1/sec1_bg.png') no-repeat bottom / cover;
+   background: linear-gradient(-360deg, #d82a38, #a7202c);
 }
 
 .coin {
@@ -95,7 +96,7 @@
       @include vertical-flex;
       gap: 30px;
       border-radius: 15px;
-      background: linear-gradient(#ff4150, #d82a38);
+      background: linear-gradient(#ff4150, #b42e39);
       // padding: max(15px, 3rem) 10px;
       padding: 30px 10px;
       position: relative;
@@ -170,6 +171,25 @@
 }
 
 
+@media (min-width: 1921px) {
+   .sec1 {
+      min-height: 90dvh;
+   }
+   .talk_bubble {
+
+   &.bubble01 {
+      order: 1;
+      left: 10vw;
+      animation-delay: 0.5s;
+   }
+
+   &.bubble02 {
+      order: 3;
+      right: 10vw;
+   }
+}
+}
+
 @media (min-width: 993px) and (max-width: 1550px) {
    .sec1 {align-items: center;}
    .circle_itemBox {
@@ -184,6 +204,13 @@
       bottom: unset;
       top: 45px;
       width: 48rem;
+   }
+}
+
+@media (max-width: 1680px) {
+   .sec1 {
+      min-height: 75dvh;
+      padding: 112px 0;
    }
 }
 
