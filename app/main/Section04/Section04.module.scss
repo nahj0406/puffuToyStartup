@@ -68,6 +68,12 @@
    padding-bottom: max(70px, 14rem);
 }
 
+@media (min-width: 1921px) {
+   .sec_wrapper {
+      height: 78dvh;
+   }
+}
+
 @media (min-width: 992px) and (max-width: 1650px) {
    .sec_wrapper {
       height: 80dvh;

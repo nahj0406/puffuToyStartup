@@ -34,7 +34,7 @@ export default function Section03() {
                         }}
                      >
                         <span className='title_deco'>필요해서 찾아오는</span> 목적형 <br />
-                        소비 지중이 높은 사업
+                        소비 비중이 높은 사업
                      </motion.h3>
                      <motion.p
                         variants={{
