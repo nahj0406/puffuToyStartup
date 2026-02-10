@@ -9,17 +9,17 @@ export const metadata: Metadata = {
   title: "푸푸토이 | 웰니스 무인 성인용품",
   description: "남들 모르게, 매출이 남는 무인 성인 웰니스 매장",
   openGraph: {
-    url: "https://puffutoy.com",
+    url: "https://brand.puffutoy.com/",
     type: "website",
     title: "푸푸토이 | 웰니스 무인 성인용품",
     description: "남들 모르게, 매출이 남는 무인 성인 웰니스 매장",
-    images: "https://puffutoy.com/org-img.png",
+    images: "https://brand.puffutoy.com/org-img.png",
   },
   twitter: {
     card: "summary",
     title: "푸푸토이 | 웰니스 무인 성인용품",
     description: "남들 모르게, 매출이 남는 무인 성인 웰니스 매장",
-    images: "https://puffutoy.com/org-img.png",
+    images: "https://brand.puffutoy.com/org-img.png",
   },
   keywords:
     "푸푸토이, 무인매장 창업, 성인용품 창업",

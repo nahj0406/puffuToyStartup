@@ -15,7 +15,7 @@ import { format } from "date-fns";
 // 시간 min,max용
 // import { setHours, setMinutes } from "date-fns";
 
-export function FormBox() {
+export function FormBox({miniForm} : {miniForm?: boolean;}) {
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [openDate, setOpenDate] = useState<Date | null>(null);
   const [isMobilePicker, setIsMobilePicker] = useState(false);
@@ -146,7 +146,7 @@ export function FormBox() {
     <>
       <motion.form 
         onSubmit={onSubmit} 
-        className={styles.formBox}
+        className={clsx(styles.formBox, (miniForm && styles.miniForm))}
         initial='offscreen'
         whileInView='onscreen'
         viewport={{amount: 0.2, once: true}}
@@ -229,6 +229,7 @@ export function FormBox() {
                   <span>상담희망날짜</span>
                 </label>
                 <DatePicker
+                  onFocus={(e) => e.target.blur()} // 인풋기능 차단
                   ref={startPickerRef}
                   locale={ko} // 한국어 설정
                   dateFormat="yyyy.MM.dd (EEEE)" // 날짜 형식 지정 시간 필요하면 추가 :HH시 mm분
@@ -244,7 +245,7 @@ export function FormBox() {
                   withPortal={isMobilePicker}
                   className={styles.custom_picker_input}
                   calendarClassName={"calenderWrapper"}
-                  placeholderText="상담희망 날짜를 정해 주세요"
+                  placeholderText="상담희망 날짜 선택"
                   //  showTimeSelect
                   //  minTime={setHours(setMinutes(new Date(), 30), 9)}
                   //  maxTime={setHours(setMinutes(new Date(), 30), 18)}
@@ -348,6 +349,7 @@ export function FormBox() {
                   <span>오픈 희망시기</span>
                 </label>
                 <DatePicker
+                  onFocus={(e) => e.target.blur()} // 인풋기능 차단
                   ref={openPickerRef}
                   locale={ko} // 한국어 설정
                   dateFormat="yyyy.MM"
@@ -360,7 +362,7 @@ export function FormBox() {
                   withPortal={isMobilePicker}
                   className={styles.custom_picker_input}
                   calendarClassName={"monthWrapper"}
-                  placeholderText="오픈희망시기를 정해 주세요"
+                  placeholderText="오픈희망시기 선택"
                 />
               </div>
             </div>
