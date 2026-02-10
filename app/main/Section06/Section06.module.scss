@@ -113,16 +113,26 @@
       // 나머지 캘린더 스타일은 normalrize
       .custom_picker_input {
          width: 100%;
-         font-size: max(16px, 1.8rem);
-         color: #000;
+         font-size: 16px;
+         color: #fff;
          font-weight: 500;
          border-left: 1px solid #e0e0e0;
          padding-left: 5px;
          line-height: 1.2;
+         background: var(--main-color);
+         padding: 7px 10px;
+         text-align: center;
+         border-radius: 5px;
+         cursor: pointer;
+         transition: all 0.3s;
 
          &::placeholder {
-            color: #797979;
+            color: #fff;
             font-weight: 400;
+         }
+
+         &:hover {
+            background: #ff3445;
          }
       }
    }
@@ -156,6 +166,7 @@
          }
          .custom_picker_input {
             @include border_change;
+            padding: 10px;
          }
       }
    }

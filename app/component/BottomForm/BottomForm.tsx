@@ -5,6 +5,7 @@ import styles from "./BottomForm.module.css";
 import ContainerV1 from "../ContainerV1.tsx/ContainerV1";
 import Link from "next/link";
 import siteInfo from "shared/utils/siteInfo";
+import { FormBox } from '@/main/Section06/client'
 
 export default function BottomForm() {
 
@@ -70,6 +71,8 @@ export default function BottomForm() {
             </div>
         </div>
       </ContainerV1>
+
+      <FormBox miniForm={true} />
     </div>
   );
 }

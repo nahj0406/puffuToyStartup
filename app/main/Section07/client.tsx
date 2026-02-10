@@ -44,8 +44,10 @@ ChartJS.register(
 
 export function Caculator() {
 
-  // 기준 투자금
-  const TARGET_AMOUNT = 120000000;
+  // 기준 투자금 : 투자금 1억 밑으로 내려가면 parseFloat 꼭 수정하기, RecoveryChart도 수정하기
+  const TARGET_AMOUNT = 150000000;
+  const AMOUNT_Txt = parseFloat((TARGET_AMOUNT / 100000000).toFixed(1));
+
 
   const [value, setValue] = useState({
     expectedSales: "",
@@ -100,9 +102,9 @@ export function Caculator() {
     // 총 투자회수기간
     let dateText = "";
 
-    if (maxDate > 15) {
-      // 1. maxDate가 15보다 크면 "15개월 이상"으로 고정
-      dateText = "15개월 이상";
+    if (maxDate > 24) {
+      // 1. maxDate가 24보다 크면 "24개월 이상"으로 고정
+      dateText = "24개월 이상";
     } else if (minDate === maxDate) {
       // 2. 값이 정수로 떨어지면 하나만 표시
       dateText = `${maxDate}개월`;
@@ -114,7 +116,7 @@ export function Caculator() {
 
     const chartData: number[] = [];
 
-    const chartMaxDate = maxDate > 14 ? 14 : maxDate;
+    const chartMaxDate = maxDate > 24 ? 24 : maxDate;
 
     for (let i = 1; i <= chartMaxDate; i++) {
       chartData.push(inputTotal * i);
@@ -201,7 +203,7 @@ export function Caculator() {
         >
           <div className={styles2.calc_input_header}>
             {/* <input type="text" placeholder="투자금(1.2억)" readOnly /> */}
-            <p>기본 투자금 : 1.2억</p>
+            <p>기본 투자금 : {AMOUNT_Txt}억</p>
           </div>
 
           <div className={styles2.input_group}>
@@ -213,6 +215,7 @@ export function Caculator() {
                 placeholder="예상 매출을 입력해 주세요."
                 value={value.expectedSales}
                 setValue={(v) => setValue({ ...value, expectedSales: v })}
+                TargetAmount={TARGET_AMOUNT}
               />
             </div>
 
@@ -224,6 +227,7 @@ export function Caculator() {
                 placeholder="예상 월세를 입력해 주세요."
                 value={value.rent}
                 setValue={(v) => setValue({ ...value, rent: v })}
+                TargetAmount={TARGET_AMOUNT}
               />
             </div>
 
@@ -235,6 +239,7 @@ export function Caculator() {
                 placeholder="관리비를 입력해 주세요."
                 value={value.maintenance}
                 setValue={(v) => setValue({ ...value, maintenance: v })}
+                TargetAmount={TARGET_AMOUNT}
               />
             </div>
 
@@ -248,6 +253,7 @@ export function Caculator() {
                 placeholder="기타 비용을 입력해 주세요."
                 value={value.extraCost}
                 setValue={(v) => setValue({ ...value, extraCost: v })}
+                TargetAmount={TARGET_AMOUNT}
               />
             </div>
           </div>
@@ -362,30 +368,72 @@ export function Caculator() {
   );
 }
 
+// 인풋
 function CalcInput({
   placeholder,
   value,
   setValue,
+  TargetAmount,
 }: {
   placeholder: string;
   value: string;
   setValue: (value: string) => void;
+  TargetAmount: number;
 }) {
-  return (
-    <input
-      value={value}
-      type="text"
-      maxLength={25}
-      placeholder={placeholder}
-      onChange={(e) => {
-         // 숫자와 하이픈(-)이 아닌 문자가 들어오면 즉시 빈 문자열로 대체
-         e.currentTarget.value = e.currentTarget.value
-         .replace(/[^0-9]/g, "")
-         .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  const [displayValue, setDisplayValue] = useState(""); // 인풋에 표시되는 단위
+  const [displayText, setDisplayText] = useState(""); // 만원 단위 표시
 
-         setValue(e.target.value);
-      }}
-    />
+  const InputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const rawValue = e.target.value.replace(/[^0-9]/g, "");
+
+    // 2. 빈 값 처리
+    if (!rawValue) {
+      setValue("");
+      setDisplayValue("");
+      setDisplayText("");
+      return;
+    }
+
+
+    const numValue = parseInt(rawValue, 10);
+    const DefaultAmount = 10000;
+    const TargetAmountValue = TargetAmount / DefaultAmount;
+
+    if(numValue > TargetAmountValue) return;
+    setDisplayValue(numValue.toLocaleString());
+
+    // 3. 부모 상태(setValue)로 보낼 때만 10,000을 곱함
+    const calculatedValue = (numValue * DefaultAmount).toString();
+    setValue(calculatedValue);
+
+    // 4. 한글 단위 계산 (동일)
+    const totalAmount = numValue * DefaultAmount;
+    let resultText = "";
+    if (totalAmount >= 100000000) {
+      const uk = Math.floor(totalAmount / 100000000);
+      const man = Math.floor((totalAmount % 100000000) / DefaultAmount);
+      resultText = man > 0 
+        ? `${uk.toLocaleString()}억 ${man.toLocaleString()}만원` 
+        : `${uk.toLocaleString()}억`;
+    } else {
+      resultText = `${numValue.toLocaleString()}만원`;
+    }
+    setDisplayText(resultText);
+  }
+
+  
+
+  return (
+    <div className={styles2.input_body}>
+      <input
+        value={displayValue}
+        type="text"
+        maxLength={25}
+        placeholder={placeholder}
+        onChange={InputChange}
+      />
+      <span>{displayText}</span>
+    </div>
   );
 }
 
@@ -398,7 +446,9 @@ interface Props {
 }
 
 const RecoveryChart = ({ chartDatas, inputTotal, amount }: Props) => {
-  const GOAL = amount; // 1.2억
+  const GOAL = amount; // 1.5억
+
+  const GOAL_txt = GOAL / 100000000;
 
   const data = {
     labels: chartDatas.map((_, i) => `${i + 1}개월차`),
@@ -438,7 +488,7 @@ const RecoveryChart = ({ chartDatas, inputTotal, amount }: Props) => {
       legend: { display: false },
       annotation: {
         annotations: {
-          // 1.2억 목표 가로선
+          // 1.5억 목표 가로선
           goalLine: {
             type: 'line' as const,
             yMin: GOAL,
@@ -448,7 +498,7 @@ const RecoveryChart = ({ chartDatas, inputTotal, amount }: Props) => {
             borderDash: [5, 5],
             label: {
               display: true,
-              content: '목표 1.2억',
+              content: `목표 ${parseFloat(GOAL_txt.toFixed(1))}억`,
               backgroundColor: 'transparent',
               color: '#fff',
               yAdjust: -10,

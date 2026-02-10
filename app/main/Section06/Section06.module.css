@@ -111,20 +111,29 @@
 }
 .itemBox .input_group .input_item .custom_picker_input {
   width: 100%;
-  font-size: max(16px, 1.8rem);
-  color: #000;
+  font-size: 16px;
+  color: #fff;
   font-weight: 500;
   border-left: 1px solid #e0e0e0;
   padding-left: 5px;
   line-height: 1.2;
+  background: var(--main-color);
+  padding: 7px 10px;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
 }
 .itemBox .input_group .input_item .custom_picker_input::-moz-placeholder {
-  color: #797979;
+  color: #fff;
   font-weight: 400;
 }
 .itemBox .input_group .input_item .custom_picker_input::placeholder {
-  color: #797979;
+  color: #fff;
   font-weight: 400;
+}
+.itemBox .input_group .input_item .custom_picker_input:hover {
+  background: #ff3445;
 }
 
 @media (max-width: 992px) {
@@ -155,6 +164,7 @@
     border-left: none;
     border-bottom: 1px solid #e0e0e0;
     padding-bottom: 3px;
+    padding: 10px;
   }
 }
 .input_group .input_item .check_group {

@@ -128,17 +128,28 @@
          }
       }
 
-      > input {
+      .input_body {
          flex: 1;
-         font-size: max(16px, 1.8rem);
-         color: #000;
-         font-weight: 500;
          border-left: 1px solid #e0e0e0;
-         padding-left: 5px;
-         
-         &::placeholder {
+         @include flex-box();
+         gap: 10px;
+
+         input {
+            font-size: max(16px, 1.8rem);
+            color: #000;
+            font-weight: 500;
+            padding-left: 5px;
+            flex: 1;
+            
+            &::placeholder {
+               color: #797979;
+               font-weight: 400;
+            }
+         }
+
+         span {
             color: #797979;
-            font-weight: 400;
+            font-size: max(16px, 1.8rem);
          }
       }
    }
@@ -184,9 +195,13 @@
       @include vertical-flex();
       align-items: start;
 
-      input {
-         width: 100%; 
+      .input_body {
          @include border_change;
+         width: 100%;
+
+         input {
+            width: 100%;    
+         }
       }
    }
 
@@ -267,4 +282,16 @@
    .calc_result_box .result_window .data_box .chart_body {
       height: 330px;
    }
+}
+
+
+
+
+
+
+
+// bottomForm으로 바로 나오는 form 스타일 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+.miniForm {
+   background: #ccc;
 }

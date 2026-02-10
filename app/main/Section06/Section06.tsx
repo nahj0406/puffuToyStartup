@@ -1,4 +1,3 @@
-import clsx from 'clsx'
 import styles from './Section06.module.css'
 import ContainerV1 from '@/component/ContainerV1.tsx/ContainerV1'
 import { FormBox } from './client'
