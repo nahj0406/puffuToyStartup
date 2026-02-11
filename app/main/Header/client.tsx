@@ -38,11 +38,12 @@ export function OuterMenu() {
     <>
       <nav className={clsx(styles.outer, openClass)}>
         <ul>
-          <li onClick={()=> moveAnchor('section1')}>사업 소개</li>
           <li onClick={()=> moveAnchor('section2')}>창업 경쟁력</li>
-          <li onClick={()=> moveAnchor('section3')}>창업 패키지</li>
-          <li onClick={()=> moveAnchor('section4')}>창업 절차</li>
-          <li onClick={()=> moveAnchor('section5')}>창업 문의</li>
+          <li onClick={()=> moveAnchor('section3')}>프라이빗 설계</li>
+          <li onClick={()=> moveAnchor('section4')}>상권 분석</li>
+          <li onClick={()=> moveAnchor('section5')}>수익 계산하기</li>
+          <li onClick={()=> moveAnchor('section6')}>창업안내</li>
+          <li onClick={()=> moveAnchor('section7')}>창업문의</li>
         </ul>
       </nav>
 
