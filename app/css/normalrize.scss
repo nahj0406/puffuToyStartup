@@ -29,6 +29,13 @@ main {margin-bottom: 88px;}
    margin: 0 auto;
 }
 
+// @media (min-width: 1921px) {
+
+//    html {
+//       font-size: clamp(7px, calc(100vw * 10 / 1920), 10px);
+//    }
+// }
+
 
 @media (max-width: 1480px) {
    .containerV1 {
