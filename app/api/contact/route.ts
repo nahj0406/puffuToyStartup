@@ -48,7 +48,7 @@ export async function POST(req: Request) {
     await transporter.sendMail({
       from: `${fromName} <${fromAddress}>`,
       to: mailTo,
-      subject: `[창업문의] 푸푸토이 창업문의가 도착했습니다`,
+      subject: `[창업문의] ${name}님으로부터 푸푸토이 창업문의가 도착했습니다`,
       text: [
         `이름: ${name}`,
         ``,

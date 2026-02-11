@@ -1,0 +1,105 @@
+.Form_layer {
+  position: fixed;
+  bottom: 100px;
+  z-index: 10000;
+  right: 1%;
+  width: 100%;
+  max-width: 450px;
+}
+.Form_layer .Form_body {
+  background: rgba(77, 77, 77, 0.8);
+  --webkit-backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  border-radius: 20px;
+  width: 100%;
+  padding: 10px;
+  height: 500px;
+  overflow: hidden;
+}
+.Form_layer .close_btn {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background: #111;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid #555;
+}
+.Form_layer .close_btn > img {
+  width: 40%;
+}
+.Form_layer .close_btn:hover {
+  background: #444;
+}
+
+@media (min-width: 992px) {
+  .modal_bg .bg_close_layer {
+    display: none;
+  }
+  .Form_layer > h3 {
+    display: none;
+  }
+  .Form_layer .close_btn > img {
+    filter: invert(1);
+  }
+}
+@media (max-width: 992px) {
+  .modal_bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .modal_bg .bg_close_layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  .Form_layer {
+    width: 95%;
+    right: unset;
+    bottom: unset;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    z-index: 2;
+  }
+  .Form_layer > h3 {
+    font-size: 30px;
+    color: #fff;
+    line-height: 1.2;
+  }
+  .Form_layer .Form_body {
+    height: 80dvh;
+    max-height: 500px;
+  }
+  .Form_layer .close_btn {
+    background: #fff;
+    position: relative;
+    top: unset;
+    left: unset;
+    transform: unset;
+    margin: 0 auto;
+  }
+  .Form_layer .close_btn > img {
+    opacity: 0.8;
+  }
+}/*# sourceMappingURL=MiniFormModal.module.css.map */

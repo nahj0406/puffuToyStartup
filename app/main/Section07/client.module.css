@@ -75,7 +75,7 @@
   transition: all 0.3s;
 }
 .calc_header .calc_input_box .calc_submit:hover {
-  background: #ff3445;
+  background: var(--hover-color);
 }
 
 .input_group {

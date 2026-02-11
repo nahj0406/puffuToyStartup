@@ -86,7 +86,7 @@
       transition: all 0.3s;
 
       &:hover {
-         background: #ff3445;
+         background: var(--hover-color);
       }
    }
 }

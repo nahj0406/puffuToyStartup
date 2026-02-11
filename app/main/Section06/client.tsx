@@ -2,9 +2,10 @@
 
 import clsx from "clsx";
 import styles from "./Section06.module.css";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useId } from "react";
 import NiceModal from "@ebay/nice-modal-react";
 import ConfirmModal from "@/component/modal/ConfirmModal/ConfirmModal";
+import MiniFormModal from "@/component/modal/MiniFormModal/MiniFormModal";
 import * as motion from "motion/react-client"
 
 // date-picker
@@ -15,15 +16,18 @@ import { format } from "date-fns";
 // 시간 min,max용
 // import { setHours, setMinutes } from "date-fns";
 
-export function FormBox({miniForm} : {miniForm?: boolean;}) {
+export function FormBox({miniForm,} : {miniForm?: boolean;}) {
+
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [openDate, setOpenDate] = useState<Date | null>(null);
   const [isMobilePicker, setIsMobilePicker] = useState(false);
   const startPickerRef = useRef<any>(null);
   const openPickerRef = useRef<any>(null);
+  const uid = useId(); // 미니폼이랑 인풋 id 중복되서 고유 id로 처리용
 
+  
+  // 모바일에선 모달로 처리, 창 줄어서 모바일 영역 들어가면 열려 있던 창 닫힘.
   useEffect(() => {
-    // 모바일에선 모달로 처리, 창 줄어서 모바일 영역 들어가면 열려 있던 창 닫힘.
     const mql = window.matchMedia("(max-width: 768px)");
     setIsMobilePicker(mql.matches);
 
@@ -40,10 +44,23 @@ export function FormBox({miniForm} : {miniForm?: boolean;}) {
     return () => mql.removeEventListener("change", handler);
   }, []);
 
+
   // nodemailer 전송
   const [privacyCheck, setPrivacyCheck] = useState<Boolean>(false);
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const [isLoading, setIsLoading] = useState(false);
+
+  // 업종변경 고유 id로 체크
+  const businessYesId = `${uid}-business_yes`;
+  const businessNoId = `${uid}-business_No`;
+
+  // 점포상태 고유 id로 체크
+  const storeYesId = `${uid}-store_yes`;
+  const storeNoId = `${uid}-store_No`;
+  const storeLookingId = `${uid}-store_looking`;
+
+  // 개인정보처리방침 동의
+  const privacyCheckId = `${uid}-privacy_check`;
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -119,11 +136,16 @@ export function FormBox({miniForm} : {miniForm?: boolean;}) {
         setStartDate(null);
         setIsLoading(false);
 
+        if(miniForm) { // 바텀 창업으로 열리는 미니폼 닫기 용도
+          NiceModal.hide(MiniFormModal);
+        }
+
         await NiceModal.show(ConfirmModal, {
           message:
             "문의 전송이 완료되었습니다. \n 빠른 시일내에 답변드리겠습니다",
           autoClose: 3000,
         });
+
       } else {
         setStatus("error");
         NiceModal.show(ConfirmModal, {
@@ -151,8 +173,8 @@ export function FormBox({miniForm} : {miniForm?: boolean;}) {
         whileInView='onscreen'
         viewport={{amount: 0.2, once: true}}
         variants={{
-          offscreen: { y: -10, opacity: 0,},
-          onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.5,},},
+          offscreen: { y: !miniForm ? -10 : 10, opacity: 0,},
+          onscreen: { y: 0, opacity: 1, transition: { duration: !miniForm ? 0.5 : 0.2, delay: !miniForm ? 0.5 : 0.1,},},
         }}
       >
         <article className={styles.step_box}>
@@ -266,10 +288,10 @@ export function FormBox({miniForm} : {miniForm?: boolean;}) {
                   <span>업종 변경여부</span>
                 </label>
                 <div className={styles.check_group}>
-                  <label htmlFor="business_yes">
+                  <label htmlFor={businessYesId}>
                     <input
                       type="radio"
-                      id={"business_yes"}
+                      id={businessYesId}
                       value="있음"
                       name={"business"}
                     />
@@ -277,10 +299,10 @@ export function FormBox({miniForm} : {miniForm?: boolean;}) {
                     <span>있음</span>
                   </label>
 
-                  <label htmlFor="business_no">
+                  <label htmlFor={businessNoId}>
                     <input
                       type="radio"
-                      id={"business_no"}
+                      id={businessNoId}
                       value="없음"
                       name={"business"}
                     />
@@ -309,10 +331,10 @@ export function FormBox({miniForm} : {miniForm?: boolean;}) {
                   <span>점포상태</span>
                 </label>
                 <div className={styles.check_group}>
-                  <label htmlFor="store_yes">
+                  <label htmlFor={storeYesId}>
                     <input
                       type="radio"
-                      id={"store_yes"}
+                      id={storeYesId}
                       value="있음"
                       name={"store"}
                     />
@@ -320,10 +342,10 @@ export function FormBox({miniForm} : {miniForm?: boolean;}) {
                     <span>있음</span>
                   </label>
 
-                  <label htmlFor="store_no">
+                  <label htmlFor={storeNoId}>
                     <input
                       type="radio"
-                      id={"store_no"}
+                      id={storeNoId}
                       value="없음"
                       name={"store"}
                     />
@@ -331,10 +353,10 @@ export function FormBox({miniForm} : {miniForm?: boolean;}) {
                     <span>없음</span>
                   </label>
 
-                  <label htmlFor="store_looking">
+                  <label htmlFor={storeLookingId}>
                     <input
                       type="radio"
-                      id={"store_looking"}
+                      id={storeLookingId}
                       value="알아보는 중"
                       name={"store"}
                     />
@@ -376,10 +398,10 @@ export function FormBox({miniForm} : {miniForm?: boolean;}) {
 
           <div className={clsx(styles.itemBox, styles.agree_box)}>
             <AgreeContent />
-            <label htmlFor="privacy_check" className={styles.check}>
+            <label htmlFor={privacyCheckId} className={styles.check}>
               <input
                 type="checkbox"
-                id={"privacy_check"}
+                id={privacyCheckId}
                 checked={privacyCheck as boolean}
                 onChange={(e) => setPrivacyCheck(e.target.checked)}
               />

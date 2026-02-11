@@ -1,6 +1,7 @@
 @charset "UTF-8";
 :root {
   --main-color: #D82A38;
+  --hover-color: #ff3445;
   --header-h: 65px;
   --fontSize60: max(35px, 6rem);
   --fontSize45: max(30px, 4.5rem);

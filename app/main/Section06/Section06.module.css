@@ -133,7 +133,7 @@
   font-weight: 400;
 }
 .itemBox .input_group .input_item .custom_picker_input:hover {
-  background: #ff3445;
+  background: var(--hover-color);
 }
 
 @media (max-width: 992px) {
@@ -265,18 +265,27 @@
   }
 }
 .miniForm {
-  background: rgba(0, 0, 0, 0.8);
-  --webkit-backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
-  position: absolute;
-  bottom: 115%;
-  right: 1%;
-  padding: 20px;
-  border-radius: 20px;
-  max-width: 450px;
-  height: 500px;
+  max-width: 100%;
+  height: 100%;
   overflow-y: auto;
+  padding: 10px;
+}
+.miniForm :global(.react-datepicker-popper) {
+  left: -25px !important;
+}
+.miniForm::-webkit-scrollbar {
+  width: 7px;
+}
+.miniForm::-webkit-scrollbar-thumb {
+  background: var(--main-color);
+  border-radius: 10px;
+}
+.miniForm::-webkit-scrollbar-thumb:hover {
+  background: var(--hover-color);
+}
+.miniForm::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: #fff;
 }
 .miniForm .step_box > .title {
   font-size: 15px;
@@ -294,4 +303,11 @@
 }
 .miniForm .itemBox .input_group .input_item > input {
   font-size: 16px;
+}
+.miniForm .itemBox .input_group .input_item .check_group > label span {
+  font-size: 14px;
+}
+.miniForm > button {
+  margin-top: 0;
+  font-size: 20px;
 }/*# sourceMappingURL=Section06.module.css.map */
