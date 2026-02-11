@@ -2,7 +2,7 @@
 "use client";
 import NiceModal, { useModal } from "@ebay/nice-modal-react";
 import { useEffect } from "react";
-import { FormBox } from '@/main/Section06/client'
+import { FormBox } from '@/main/07_ContactSection/client'
 import { useMediaQuery } from "react-responsive";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./MiniFormModal.module.css"

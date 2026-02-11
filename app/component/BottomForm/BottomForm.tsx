@@ -6,7 +6,6 @@ import ContainerV1 from "../ContainerV1.tsx/ContainerV1";
 import Link from "next/link";
 import siteInfo from "shared/utils/siteInfo";
 import NiceModal from "@ebay/nice-modal-react";
-import { useState } from "react";
 import MiniFormModal from "../modal/MiniFormModal/MiniFormModal";
 
 export default function BottomForm() {
