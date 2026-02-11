@@ -1,11 +1,11 @@
 // section
-import Section01 from '@/main/Section01/Section01';
-import Section02 from '@/main/Section02/Section02';
-import Section03 from '@/main/Section03/Section03';
-import Section04 from '@/main/Section04/Section04';
-import Section05 from '@/main/Section05/Section05';
-import Section06 from '@/main/Section06/Section06';
-import Section07 from '@/main/Section07/Section07';
+import HeroSection from '@/main/01_HeroSection/HeroSection';
+import WhyUsSection from '@/main/02_WhyUsSection/WhyUsSection';
+import PrivacySection from '@/main/03_PrivacySection/PrivacySection';
+import LocationSection from './main/04_LocationSection/LocationSection';
+import CalcSection from '@/main/05_CalcSection/CalcSection';
+import ProcessSection from '@/main/06_ProcessSection/ProcessSection';
+import ContactSection from '@/main/07_ContactSection/ContactSection';
 import Header from '@/main/Header/Header';
 import Footer from '@/main/Footer/Footer';
 import BottomForm from '@/component/BottomForm/BottomForm';
@@ -16,13 +16,13 @@ export default function Home() {
   return (
     <main>
       <Header/>
-      <Section01/>
-      <Section02/>
-      <Section03/>
-      <Section04/>
-      <Section07/>
-      <Section05/>
-      <Section06/>
+      <HeroSection/>
+      <WhyUsSection/>
+      <PrivacySection/>
+      <LocationSection/>
+      <CalcSection/>
+      <ProcessSection/>
+      <ContactSection/>
       <Footer/>
       <BottomForm />
     </main>
