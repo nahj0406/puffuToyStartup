@@ -270,7 +270,7 @@
   min-width: 330px;
 }
 .location_box > .btn_box .red_btn:hover {
-  background: #ff3445;
+  background: var(--hover-color);
 }
 
 .location_box .mapBox {

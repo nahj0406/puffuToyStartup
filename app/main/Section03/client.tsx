@@ -6,6 +6,8 @@ import React, { useRef, useState, useEffect } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import * as motion from "motion/react-client"
+import NiceModal from "@ebay/nice-modal-react";
+import MiniFormModal from "@/component/modal/MiniFormModal/MiniFormModal";
 
 // Import Swiper styles
 import 'swiper/css';
@@ -30,7 +32,7 @@ export function SlideBox() {
    return (
       <div className={styles.slide_box}>
          <div className={styles.tab_title}>
-            <h5>교육환경보호구역 · 제한사항 체크리스트</h5>
+            <h5 onClick={()=> NiceModal.hide(MiniFormModal)}>교육환경보호구역 · 제한사항 체크리스트</h5>
             
             {/* 네비게이션 말고 페이지네이션 쓰기 */}
             <ul className={clsx('custom-pagination', styles.tab_box)}></ul>
@@ -132,6 +134,8 @@ export function SlideBox() {
 }
 
 export function ButtonBox() {
+  
+
   const FormAnchor = (id: string) => {
     const el = document.getElementById(id);
       if (!el) return;
@@ -167,7 +171,7 @@ export function ButtonBox() {
         </Link>
       </div>
 
-      <div onClick={()=> FormAnchor('section5')} className={clsx(styles.red_btn)}>
+      <div onClick={()=> {NiceModal.show(MiniFormModal, {});}} className={clsx(styles.red_btn)}>
         내 입지조건 문의하기
       </div>
   </motion.div>

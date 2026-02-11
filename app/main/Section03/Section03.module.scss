@@ -306,7 +306,7 @@
          min-width: 330px;
 
          &:hover {
-            background: #ff3445;
+            background: var(--hover-color);
          }
       }
    }

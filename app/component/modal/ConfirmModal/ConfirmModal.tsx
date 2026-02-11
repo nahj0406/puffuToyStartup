@@ -9,10 +9,7 @@ export default NiceModal.create(
    ({ message, autoClose = 7000 }: { message: string; autoClose?: number }) => {
       const modal = useModal();
 
-      const handleClose = () => {
-         modal.hide();
-         // 애니메이션이 없다면 바로 remove, 있다면 transition 종료 후 호출하는게 정석입니다.
-      };
+      const handleClose = () => modal.hide();
 
       useEffect(() => {
          if (autoClose > 0) {
