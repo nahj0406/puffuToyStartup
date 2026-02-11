@@ -11,10 +11,8 @@
    justify-content: center;
 }
 
-.location {overflow: hidden;}
-
-
-.wrap_container {
+.location {
+   overflow: hidden;
    width: 100%;
    background: url('/img/location/location_bg.jpg') no-repeat center / cover;
    padding: 17rem 0 max(50px, 12rem);
@@ -23,72 +21,82 @@
    justify-content: start
 }
 
+.title_box {
+   // h2 {color: #fff;}
+}
+
+
+.wrap_container {
+   width: 100%;
+   @include vertical-flex();
+   justify-content: start;
+   gap: max(60px, 12rem);
+}
+
 // 첫번째
 .itemBox {
    @include flex-box();
-   gap: 11.5rem;
+   align-items: start;
    width: 100%;
-   max-width: 1300px;
-   margin: 0 auto;
+   gap: 4rem;
+   flex-wrap: wrap;
+   gap: 50px 30px;
 
-   .text_box {
-      @include vertical-flex();
-      align-items: start;
-      gap: 30px;
-      color: #fff;
-
-      h3 {
-         font-size: var(--fontSize45);
-         font-weight: 700;
-         line-height: 1.4;
-      }
-
-      p {
-         font-size: var(--fontSize25);
-         line-height: 1.4;
-      }
-   }
-
-
-   .img_box {
-      @include vertical-flex();
-      align-items: start;
-      justify-content: start;
-      background: #fff;
+   .item {
+      position: relative;
       border-radius: 30px;
-      padding: max(20px, 4rem) max(15px, 3.5rem);
-      gap: 30px;
-      
+      background: #fff;
+      width: calc(100% / 3 - 25px);
+      max-width: 440px;
+
+      &:nth-of-type(4), &:nth-of-type(5) {
+         width: calc(100% / 2 - 25px);
+      }
+
+      .title_point {
+         background: var(--main-color);
+         padding: 7px 11px;
+         font-size: var(--fontSize20);
+         color: #fff;
+         font-weight: 700;
+         border-radius: 100px;
+         text-transform: uppercase;
+         position: absolute;
+         top: -20px;
+         left: 50%;
+         transform: translateX(-50%);
+      }
+
       .unit {
-         @include flex-box();
+         @include vertical-flex();
          justify-content: start;
-         gap: 30px;
+         gap: 15px;
+         padding: 25px;
+         text-align: center;
 
-         .img {
-            width: 100%;
-            max-width: 220px;
-         }
+         img {width: 100%;}
 
-         .unit_txt {
+         .txt_box {
             @include vertical-flex();
-            align-items: start;
+            justify-content: start;
             gap: 15px;
+            color: #000;
+            min-height: 120px;
 
-            .title_point {
-               background: var(--main-color);
-               padding: 7px 13px;
-               font-size: var(--fontSize20);
-               color: #fff;
+            h5 {
+               font-size: var(--fontSize25);
                font-weight: 700;
-               border-radius: 100px;
-               text-transform: uppercase;
+               line-height: 1.3;
+
+               span {color: var(--main-color);}
             }
 
             p {
-               font-size: 20px;
-               font-weight: 700;
-               color: #000;
+               font-size: var(--fontSize18);
+               font-weight: 500;
                line-height: 1.4;
+               
+               b {font-weight: 700;}
             }
          }
       }
@@ -97,13 +105,6 @@
 
 @media (min-width: 992px) and (max-width: 1080px) {
    .itemBox .text_box h3 br {
-      display: none;
-   }
-
-   .itemBox .img_box {
-      max-width: 560px;
-   }
-   .itemBox .img_box .unit_txt p br {
       display: none;
    }
 }
@@ -116,87 +117,27 @@
    .itemBox {
       @include vertical-flex();
       gap: max(50px, 7rem);
-
-      .text_box {
-         align-items: center;
-         text-align: center;
-      }
-
-      .img_box {
-         align-items: center;
-
-         .unit {
-            justify-content: center;
-
-            .img {max-width: 45%;}
-
-            .unit_txt {
-               min-width: 300px;
-            }
-         }
-      }
    }
 }
 
 
 @media (max-width: 768px) {
    .itemBox {
-      .img_box {
-         .unit {
-            align-items: start;
-
-            .unit_txt {
-               min-width: auto;
-
-               .title_point {
-                  margin-top: 0.8em;
-               }
-
-               p br {display: none;}
-            }
-         }
-      }
+      
    }
 }
 
 @media (max-width: 600px) {
-   .itemBox .img_box .unit .unit_txt p {
-      font-size: var(--fontSize20);
-   }
+   // .itemBox .img_box .unit .unit_txt p {
+   //    font-size: var(--fontSize20);
+   // }
 }
 
 @media (max-width: 500px) {
    .itemBox {
       
-      .img_box {
-
-         .unit {
-            @include vertical-flex();
-            gap: 20px;
-
-            .img {max-width: 100%;}
-
-            .unit_txt {
-               min-width: auto;
-
-               .title_point {
-                  margin-top: 0;
-               }
-
-               p br {display: none;}
-            }
-         }
-      }
    }
 }
-
-// @media (max-width: 400px) {
-//    .itemBox {
-//       .text_box h3 br{
-//          // display: none;
-//       }
-//    }
-// }
 
 
 // 두번째 규제검토 박스
