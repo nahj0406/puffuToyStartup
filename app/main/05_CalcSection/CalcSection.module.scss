@@ -2,6 +2,7 @@
    width: 100%;
    @include mixins.sectionPaddings;
    background: url('/img/calc/calc_bg.png') no-repeat top / cover;
+   overflow: hidden;
 }
 
 .calcSection .wrapper {

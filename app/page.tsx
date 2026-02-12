@@ -18,6 +18,10 @@ import BottomForm from '@/component/BottomForm/BottomForm';
 // @include 할때 불러오는 코드 앞에 mixins 붙여주면 mixins.scss 코드 연결됨.
 
 
+// font-size, css 변수 global 앨리먼트 스타일 속성은 전부 normalrize.scss에 작성
+// font-size는 hero나 Calc 단락 정도 빼면 거의 normalrize에 있는 fontSize 따라감.
+
+
 export default function Home() {
 
   return (
