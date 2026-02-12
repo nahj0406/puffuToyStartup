@@ -3,7 +3,7 @@
    --hover-color: #ff3445;
    --header-h: 65px;
 
-   --fontSize60: max(35px, 6rem);
+   --fontSize60: max(33px, 6rem);
    --fontSize45: max(30px, 4.5rem);
    --fontSize40: max(25px, 4rem);
    --fontSize35: max(20px, 3.5rem);
@@ -145,11 +145,12 @@ main {margin-bottom: 88px;}
    text-align: center;
 
    .title_deco_circle {
-      padding: 3px 14px;
+      padding: 7px 14px;
       border-radius: 100px;
       background: var(--main-color);
       color: #fff;
       font-size: var(--fontSize25);
+      font-weight: 700;
    }
 
    h2 {
