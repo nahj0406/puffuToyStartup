@@ -1,8 +1,8 @@
 
 .process {
    width: 100%;
-   padding: max(50px, 12rem) 0;
-   background: url('/img/process/process_bg.png') no-repeat center / cover;
+   @include mixins.sectionPaddings;
+   background: url('/img/process/process_bg.png') no-repeat top / cover;
    @include mixins.vertical-flex();
    justify-content: start;
    gap: max(60px, 12rem);
@@ -12,24 +12,6 @@
 // 공통 title_box
 .title_box {
    margin-bottom: max(40px, 6rem);
-
-   .line_deco_box {
-      padding: 0 max(15px, 2.7rem);
-      position: relative;
-
-      .line {
-         display: block;
-         width: 7px;
-         height: 100%;
-         position: absolute;
-         z-index: 2;
-         background: var(--main-color);
-
-         &.left { bottom: 0; left: 0;}
-
-         &.right { top: 0; right: 0;}
-      }
-   }
 }
 
 @media (min-width: 500px) and (max-width: 992px) {

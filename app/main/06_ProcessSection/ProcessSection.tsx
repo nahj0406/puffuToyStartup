@@ -15,27 +15,27 @@ export default function ProcessSection() {
 
    const stepArr = [ // 매장 오픈 절차
       {
-         img: '/img/process/sec5_icon01.png',
+         img: '/img/process/procedure_icon01.png',
          content: '창업상담'
       },
       {
-         img: '/img/process/sec5_icon02.png',
+         img: '/img/process/procedure_icon02.png',
          content: '입지 조건 확인'
       },
       {
-         img: '/img/process/sec5_icon03.png',
+         img: '/img/process/procedure_icon03.png',
          content: '현장 체크'
       },
       {
-         img: '/img/process/sec5_icon04.png',
+         img: '/img/process/procedure_icon04.png',
          content: '설계/ 인테리어 공사'
       },
       {
-         img: '/img/process/sec5_icon05.png',
+         img: '/img/process/procedure_icon05.png',
          content: '매장 기계 설치'
       },
       {
-         img: '/img/process/sec5_icon06.png',
+         img: '/img/process/procedure_icon06.png',
          content: '매장 오픈'
       },
    ]
@@ -51,7 +51,6 @@ export default function ProcessSection() {
 
    return (
       <>
-         <TextSlide />
          <section className={styles.process} id={'process'}>
             <ContainerV1 className={clsx(styles.wrapper, styles.cost_area)}>
                <motion.div 
@@ -70,19 +69,19 @@ export default function ProcessSection() {
                      >
                         창업비용 안내
                      </motion.span>
-                     <div className={styles.line_deco_box}>
+                     <div className={'line_deco_box'}>
                         <motion.span
                            initial='offscreen'
                            whileInView='onscreen'
                            viewport={{amount: 0.3, once: true}}
-                           className={clsx(styles.line, styles.left)}
+                           className={'line left'}
                            variants={LineDecoAni}
                         />
                         <motion.span 
                            initial='offscreen'
                            whileInView='onscreen'
                            viewport={{amount: 0.3, once: true}}
-                           className={clsx(styles.line, styles.right)}
+                           className={'line right'}
                            variants={LineDecoAni}
                         />
 
@@ -118,39 +117,39 @@ export default function ProcessSection() {
 
                      <div className={styles.content}>
                         <div className={styles.unit}>
-                           <img className={styles.icon_img} src="/img/calc/sec7_signboard.png" alt="패키지 아이콘" />
+                           <img className={styles.icon_img} src="/img/process/cost_signboard.png" alt="패키지 아이콘" />
                            <span>외부간판</span>
                         </div>
       
                         <div className={styles.unit}>
-                           <img className={styles.icon_img} src="/img/calc/sec7_outdoor_sign.png" alt="패키지 아이콘" />
+                           <img className={styles.icon_img} src="/img/process/cost_outdoor_sign.png" alt="패키지 아이콘" />
                            <span>실내 외 사인물</span>
                         </div>
       
                         <div className={styles.unit}>
-                           <img className={styles.icon_img} src="/img/calc/sec7_interior.png" alt="패키지 아이콘" />
+                           <img className={styles.icon_img} src="/img/process/cost_interior.png" alt="패키지 아이콘" />
                            <span>인테리어 포함</span>
                         </div>
       
                         <div className={clsx(styles.unit, styles.kiosk_group)}>
                            <div className={clsx(styles.kiosk)}>
-                              <img className={styles.icon_img} src="/img/calc/sec7_kiosk.png" alt="패키지 아이콘" />
+                              <img className={styles.icon_img} src="/img/process/cost_kiosk.png" alt="패키지 아이콘" />
                               <span>자판기 12대</span>
                            </div>
       
                            <div className={styles.ca_icon}>
-                              <img src="/img/calc/sec7_kiosk_category.png" alt="= 기호" />
+                              <img src="/img/process/cost_kiosk_category.png" alt="= 기호" />
                            </div>
       
                            <div className={clsx(styles.kisok_item)}>
       
                               <figure className={styles.item_unit}>
-                                 <img src="/img/calc/sec7_kiosk_coil.png" alt="패키지 아이콘" />
+                                 <img src="/img/process/cost_kiosk_coil.png" alt="패키지 아이콘" />
                                  <span>스프링 4대</span>
                               </figure>
       
                               <figure className={styles.item_unit}>
-                                 <img src="/img/calc/sec7_kiosk_cabinet.png" alt="패키지 아이콘" />
+                                 <img src="/img/process/cost_kiosk_cabinet.png" alt="패키지 아이콘" />
                                  <span>캐비닛 8대</span>
                               </figure>
                            </div>
@@ -226,19 +225,19 @@ export default function ProcessSection() {
                         본사가 함께 돕는
                      </motion.span>
 
-                     <div className={styles.line_deco_box}>
+                     <div className={'line_deco_box'}>
                         <motion.span
                            initial='offscreen'
                            whileInView='onscreen'
                            viewport={{amount: 0.3, once: true}}
-                           className={clsx(styles.line, styles.left)}
+                           className={'line left'}
                            variants={LineDecoAni}
                         />
                         <motion.span 
                            initial='offscreen'
                            whileInView='onscreen'
                            viewport={{amount: 0.3, once: true}}
-                           className={clsx(styles.line, styles.right)}
+                           className={'line right'}
                            variants={LineDecoAni}
                         />
 
