@@ -13,22 +13,26 @@ import { Swiper, SwiperSlide } from "swiper/react";
 // 반응형 처리
 // 내용 props 받을지 생각해보기
 
+interface TextSlideProps {
+  txtArr?: string[];
+  className?: string;
+}
 
-export default function TextSlide() {
-   const textArr = [
-      '프라이빗 동선',
-      '다양한 상품',
-      '합리적 가격',
-      '안전한 성인인증',
-      '온/오프라인 픽업',
-      '무재고(위탁)운영',
-   ];
+export default function TextSlide({ txtArr, className = '', }: TextSlideProps) {
+   const textArr = txtArr ?? [
+    '프라이빗 동선',
+    '다양한 상품',
+    '합리적 가격',
+    '안전한 성인인증',
+    '온/오프라인 픽업',
+    '무재고(위탁)운영',
+  ];
 
    const slides = [...textArr, ...textArr, ...textArr];
 
    
    return (
-      <div className={styles.textSlide}>
+      <div className={clsx(styles.textSlide, className)}>
          <Swiper
             className={clsx(styles.slideFrams)}
             loop={true}

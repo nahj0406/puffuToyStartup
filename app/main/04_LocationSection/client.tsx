@@ -275,7 +275,7 @@ export function RegulationBox() {
              pagination={paginationOptions}
              modules={[Autoplay, Pagination]}
              autoplay={{
-               delay: 7000,
+               delay: 5000,
                disableOnInteraction: false,
              }}
              className={styles.mySwiper}
@@ -361,23 +361,23 @@ export function RegulationBox() {
 }
 
 export function ButtonBox() {
-  const FormAnchor = (id: string) => {
-    const el = document.getElementById(id);
-      if (!el) return;
+  // const FormAnchor = (id: string) => {
+  //   const el = document.getElementById(id);
+  //     if (!el) return;
 
-      // :root에 설정된 --header-h 값 가져옴.
-      const headerH = parseFloat(
-         getComputedStyle(document.documentElement)
-            .getPropertyValue('--header-h')
-      ) || 0;
-      // 사파리에서도 적용 잘 되는데 만약 버벅이면 getComputedStyle 문제임.
+  //     // :root에 설정된 --header-h 값 가져옴.
+  //     const headerH = parseFloat(
+  //        getComputedStyle(document.documentElement)
+  //           .getPropertyValue('--header-h')
+  //     ) || 0;
+  //     // 사파리에서도 적용 잘 되는데 만약 버벅이면 getComputedStyle 문제임.
 
-      const y =
-         el.getBoundingClientRect().top +
-         window.scrollY - headerH;
+  //     const y =
+  //        el.getBoundingClientRect().top +
+  //        window.scrollY - headerH;
 
-      window.scrollTo({ top: y, behavior: 'smooth' });
-  };
+  //     window.scrollTo({ top: y, behavior: 'smooth' });
+  // };
 
   return (
     <motion.div 
