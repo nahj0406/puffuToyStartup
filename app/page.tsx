@@ -11,6 +11,13 @@ import Footer from '@/main/Footer/Footer';
 import BottomForm from '@/component/BottomForm/BottomForm';
 
 
+// 나중에 푸푸토이 쇼핑몰 프로젝트 서브도메인으로 파서 병합된다면 scss 파일중에 global.scss랑 normalrize.scss 어떻게 할지 확인하기.
+
+// scss 컴파일 상황 : next.js에서 자동 컴파일링 해줘서 npm i sass만 설치하면 끝.
+// scss 파일 공통으로 들어가는 mixin 코드 : next.config.ts에 sassOption으로 css/mixins.scss 파일 설정 완료
+// @include 할때 불러오는 코드 앞에 mixins 붙여주면 mixins.scss 코드 연결됨.
+
+
 export default function Home() {
 
   return (
