@@ -2,6 +2,7 @@
 .WhyUs {
    overflow: hidden; position: relative;
    @include mixins.sectionPaddings;
+   background: url('/img/whyUs/whyUs_bg.png') no-repeat top / cover;
 }
 
 .WhyUs .wrapper > * {
@@ -16,14 +17,14 @@
    opacity: 0.2;
 
    &.circle01 {
-      top: -20%;
-      right: -12%;
+      top: -11vw;
+      right: -13vw;
       animation: circle1Rotate 30s infinite linear;
    }
 
    &.circle02 {
-      bottom: -21%;
-      left: -12%;
+      bottom: -20vw;
+      left: -13vw;
       animation: circle2Rotate 30s infinite linear;
    }
 }
