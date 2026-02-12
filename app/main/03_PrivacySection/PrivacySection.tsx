@@ -81,7 +81,8 @@ export default function PrivacySection() {
                      </div>
 
                      <div className={styles.content_box}>
-                        <img src="/img/privacy/another_route.png" alt="타 매장 동선" />
+                        <img className={styles.pc_img} src="/img/privacy/another_route.png" alt="타 매장 동선" />
+                        <img className={styles.mob_img} src="/img/privacy/another_route_mob.png" alt="타 매장 동선" />
 
                         <ul className={styles.txt_list}>
                            <li>매장 입장 후 곧바로 상품 진열 공간 노출</li>
@@ -89,12 +90,12 @@ export default function PrivacySection() {
                            <li>매장 내 타 고객 있을 경우 서로 심리적 부담</li>
 
                            <li>
-                              상품 선택을 위해 키오스크 앞에 서 있는 동안에도
+                              상품 선택을 위해 키오스크 앞에 서 있는 동안에도 <br />
                               다른 고객과 동선 문제로 시선에 대한 스트레스가 발생
                            </li>
 
                            <li>
-                              체류 시간은 최소화 할 수 있을지라도 매장에
+                              체류 시간은 최소화 할 수 있을지라도 매장에 <br />
                               방문할 때마다 누군가 있는지 확인하게 되는 구조
                            </li>
                         </ul>
@@ -122,7 +123,8 @@ export default function PrivacySection() {
                      </div>
 
                      <div className={styles.content_box}>
-                        <img src="/img/privacy/privacy_route.png" alt="푸푸토이 매장 동선" />
+                        <img className={styles.pc_img} src="/img/privacy/privacy_route.png" alt="푸푸토이 매장 동선" />
+                        <img className={styles.mob_img} src="/img/privacy/privacy_route_mob.png" alt="푸푸토이 매장 동선" />
 
                         <div className={styles.list_box}>
                            <h3>
@@ -132,18 +134,18 @@ export default function PrivacySection() {
 
                            <ul className={styles.txt_list}>
                               <li>
-                                 매장 입장 후 즉각적 상품 노출 대신  프라이빗 라운지를 통해
+                                 매장 입장 후 즉각적 상품 노출 대신  프라이빗 라운지를 통해 <br />
                                  방문한 고객들에게 심리적 완충 공간을 제공합니다.
                               </li>
    
                               <li>
-                                 편하게 머무르며 상품을 볼 수 있게 설계된 프라이빗 라운지에
+                                 편하게 머무르며 상품을 볼 수 있게 설계된 프라이빗 라운지에 <br />
                                  배치된 키오스크에서 차분하게 상품을 고를 수 있습니다.
                               </li>
    
                               <li>
-                                 상품 선택이 끝나면 곧바로 분리된 결제룸으로 이동하여 다른 고객과의
-                                 동선 겹침 없이 상품을 빠르게 수령하고 나갈 수 있습니다.
+                                 상품 선택이 끝나면 곧바로 분리된 결제룸으로 이동하여 다른 <br /> 
+                                 고객과의 동선 겹침 없이 상품을 빠르게 수령하고 나갈 수 있습니다.
                               </li>
                            </ul>
                         </div>

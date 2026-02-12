@@ -7,7 +7,7 @@
 .privacy {
    position: relative;
    width: 100%;
-   height: 100dvh;
+   min-height: 100dvh;
    background: linear-gradient(0deg, #87151E 41%, #D82A38);
    overflow: hidden;
 
@@ -52,12 +52,14 @@
       padding: 0;
       border-radius: 0;
       background: none;
+      border: none;
    }
 
    h2 {
       span:global(.title_deco) {
-         background: #fff;
-         color: var(--main-color);
+         // background: #fff;
+         background: url('/img/deco_gold_bg.png') no-repeat center / cover;
+         color: var(--sub-color1);
       }
    }
 }
@@ -111,12 +113,16 @@
 
 .store_box .content_box {
    @include mixins.vertical-flex;
-   align-items: start;
+   // align-items: start;
    gap: 30px;
 
    padding: 25px max(20px, 4.5rem) max(30px, 4rem);
 
-   > img {width: 100%;}
+   > img {
+      width: 100%;
+
+      &.mob_img {display: none;}
+   }
 
    .txt_list {
       @include mixins.vertical-flex;
@@ -190,7 +196,7 @@
    .list_box {
       @include mixins.vertical-flex;
       justify-content: start;
-      align-items: start;
+      // align-items: start;
       gap: max(20px, 2.5rem);
 
       > h3 {
@@ -237,12 +243,15 @@
 }
 
 @media (max-width: 1080px) {
-   .privacy {height: auto;}
+
+   .privacy {height: auto; min-height: auto;}
+
    .sec_wrapper .stoer_wrapper {
       flex-direction: column;
 
       .store_box {
-         width: auto;
+         width: 100%;
+         max-width: 650px;
       }
    }
 
@@ -254,6 +263,10 @@
    .stoer_wrapper .privacy_store {
       align-self: flex-start;
       order: 1;
+
+      .list_box {
+         h3 {font-size: max(25px, 3.5rem);}
+      }
    }
 
    .privacy_store .content_box {
@@ -262,7 +275,25 @@
       }
    }
 
+   .store_box .content_box {
+      .txt_list {
+         > li {
+            font-size: max(16px, 2rem);
+            br {display: none;}
+         }
+      }
+   }
+
    .stoer_wrapper .vs_img {top: 47%; order: 2;}
+}
+
+@media (max-width: 600px) {
+   .store_box .content_box {
+      > img {
+         &.pc_img {display: none;}
+         &.mob_img {display: block;}
+      }
+   }
 }
 
 @media (max-width: 500px) {
