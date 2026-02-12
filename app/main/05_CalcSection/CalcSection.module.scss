@@ -1,27 +1,15 @@
-@mixin flex-box {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-}
-
-@mixin vertical-flex {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-}
 
 .calcSection {
    width: 100%;
    padding: max(50px, 12rem) 0 max(60px, 13rem);
    background: url('/img/calc/sec7_bg.jpg') no-repeat center / cover;
-   @include vertical-flex();
+   @include mixins.vertical-flex();
    justify-content: start;
    gap: max(50px, 7rem);
 }
 
 .calcSection .wrapper {
-   @include vertical-flex();
+   @include mixins.vertical-flex();
    justify-content: start;
    gap: max(70px, 12rem);
 }
@@ -31,13 +19,13 @@
 // }
 
 .itemBox {
-   @include flex-box();
+   @include mixins.flex-box();
    justify-content: start;
    gap: max(30px, 7rem);
    max-width: 1226px;
 
    .box_vertical_group {
-      @include vertical-flex();
+      @include mixins.vertical-flex();
       align-items: start;
       gap: 30px;
       width: 100%;
@@ -46,7 +34,7 @@
 
    .toggle_box {
       width: 100%;
-      @include vertical-flex();
+      @include mixins.vertical-flex();
       align-items: start;
       background: #fff;
       border-radius: 15px;
@@ -71,7 +59,7 @@
 
       .content {
          width: 100%;
-         @include vertical-flex();
+         @include mixins.vertical-flex();
          gap: max(10px, 1.5rem);
          text-align: center;
          padding: 0 10px max(25px, 3.5rem);
@@ -101,7 +89,7 @@
 
    .box_header {
       width: 100%;
-      @include vertical-flex();
+      @include mixins.vertical-flex();
       gap: 10px;
       padding: max(15px, 2.2rem) 10px;
       background: linear-gradient(#D82A38, #B71926);
@@ -121,7 +109,7 @@
 
 // 패키지 내부 내용
 .itemBox .package_box .content {
-   @include flex-box();
+   @include mixins.flex-box();
    flex-direction: unset !important;
    justify-content: start;
    gap: max(15px, 2rem);
@@ -133,7 +121,7 @@
       border-radius: 10px;
       min-height: 213px;
       padding: 10px;
-      @include vertical-flex();
+      @include mixins.vertical-flex();
       gap: 13px;
       box-shadow: 0 4px 10px 0px rgba(0,0,0,0.25);
       flex: 1;
@@ -151,7 +139,7 @@
          flex: 2.24;
 
          .kiosk {
-            @include vertical-flex();
+            @include mixins.vertical-flex();
             gap: 13px;
 
             > span {
@@ -161,11 +149,11 @@
          }
 
          .kisok_item {
-            @include vertical-flex();
+            @include mixins.vertical-flex();
             gap: max(13px, 2rem);
 
             .item_unit {
-               @include vertical-flex();
+               @include mixins.vertical-flex();
                gap: 7px;
 
                > img {

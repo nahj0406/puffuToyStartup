@@ -1,27 +1,15 @@
-@mixin flex-box {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-}
-
-@mixin vertical-flex {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-}
 
 .process {
    width: 100%;
    padding: max(50px, 12rem) 0 max(60px, 13rem);
    background: url('/img/process/process_bg.png') no-repeat center / cover;
-   @include vertical-flex();
+   @include mixins.vertical-flex();
    justify-content: start;
    gap: max(50px, 7rem);
 }
 
 .wrapper .title_box {
-   @include vertical-flex();
+   @include mixins.vertical-flex();
    justify-content: start;
    gap: 30px;
 
@@ -50,7 +38,7 @@
    margin: 0 auto;
 
    .item {
-      @include vertical-flex();
+      @include mixins.vertical-flex();
       justify-content: start;
       gap: 25px;
       border: 1px solid var(--main-color);
@@ -84,7 +72,7 @@
       }
 
       .img_box {
-         @include vertical-flex();
+         @include mixins.vertical-flex();
          justify-content: start;
          gap: 15px;
 
@@ -164,7 +152,7 @@
 
 // 창업지원
 .wrapper_02 {
-   @include vertical-flex();
+   @include mixins.vertical-flex();
    justify-content: start;
    gap: 50px;
 }
@@ -178,7 +166,7 @@
 }
 
 .wrapper_02 .itemBox > .item {
-   @include vertical-flex();
+   @include mixins.vertical-flex();
    justify-content: start;
    gap: 25px;
    background: #c33b47;
@@ -206,7 +194,7 @@
    }
 
    .img_box {
-      @include vertical-flex();
+      @include mixins.vertical-flex();
       justify-content: start;
       gap: 20px;
 
@@ -230,7 +218,7 @@
       }
 
       > .txt_box {
-         @include vertical-flex();
+         @include mixins.vertical-flex();
          justify-content: start;
          gap: 15px;
 

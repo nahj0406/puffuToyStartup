@@ -1,7 +1,6 @@
 'use client'
 
-import styles from './TextSlide.module.css'
-import siteInfo from 'shared/utils/siteInfo'
+import styles from './TextSlide.module.scss'
 import clsx from 'clsx';
 
 import { Autoplay } from "swiper/modules";

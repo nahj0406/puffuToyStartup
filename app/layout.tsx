@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { poppins, pretendard, paperlogy } from "./fonts";
-import "./css/globals.css";
-import "./css/normalrize.css";
+import "./css/globals.scss";
+import "./css/normalrize.scss";
 import Providers from "./provider";
 import ModalProvider from './client';
 

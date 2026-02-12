@@ -1,5 +1,5 @@
 import ContainerV1 from '@/component/ContainerV1.tsx/ContainerV1'
-import styles from './Footer.module.css'
+import styles from './Footer.module.scss'
 import Link from 'next/link'
 import siteInfo from 'shared/utils/siteInfo'
 

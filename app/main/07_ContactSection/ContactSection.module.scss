@@ -1,21 +1,10 @@
-@mixin flex-box {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-}
 
-@mixin vertical-flex {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-}
 
 .contact {
    width: 100%;
    padding: max(50px, 12rem) 0 max(60px, 13rem);
    background: url('/img/contact/contact_bg.png') no-repeat center / cover;
-   @include vertical-flex();
+   @include mixins.vertical-flex();
    justify-content: start;
    gap: max(50px, 7rem);
 }
@@ -27,7 +16,7 @@
 }
 
 .formBox {
-   @include vertical-flex();
+   @include mixins.vertical-flex();
    justify-content: start;
    gap: 30px;
    width: 100%;
@@ -37,7 +26,7 @@
 
 .formBox .step_box {
    width: 100%;
-   @include vertical-flex();
+   @include mixins.vertical-flex();
    justify-content: start;
    align-items: start;
    gap: 10px;
@@ -54,7 +43,7 @@
 
    > .itemBox {
       width: inherit;
-      @include vertical-flex();
+      @include mixins.vertical-flex();
       justify-content: inherit;
       gap: 15px;
    }
@@ -68,7 +57,7 @@
 
    .input_item {
       width: inherit;
-      @include flex-box();
+      @include mixins.flex-box();
       justify-content: start;
       background: #fff;
       gap: 10px;
@@ -157,7 +146,7 @@
       .input_item {
          padding: 15px 10px 12px;
          min-width: 0;
-         @include vertical-flex();
+         @include mixins.vertical-flex();
          align-items: start;
 
          input {
@@ -175,7 +164,7 @@
 
 .input_group .input_item .check_group {
    flex: 1;
-   @include flex-box();
+   @include mixins.flex-box();
    justify-content: start;
    gap: 15px;
    border-left: 1px solid #e0e0e0;
@@ -183,7 +172,7 @@
    flex-wrap: wrap;
 
    > label {
-      @include flex-box();
+      @include mixins.flex-box();
       justify-content: start;
       gap: 7px;
       cursor: pointer;
@@ -250,7 +239,7 @@
    }
 
    .check {
-      @include flex-box();
+      @include mixins.flex-box();
       gap: 7px;
       color: #fff;
       font-size: 16px;

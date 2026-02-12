@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "./Header.module.css";
+import styles from "./Header.module.scss";
 import { useState } from "react";
 import clsx from "clsx";
 
@@ -38,12 +38,12 @@ export function OuterMenu() {
     <>
       <nav className={clsx(styles.outer, openClass)}>
         <ul>
-          <li onClick={()=> moveAnchor('section2')}>창업 경쟁력</li>
-          <li onClick={()=> moveAnchor('section3')}>프라이빗 설계</li>
-          <li onClick={()=> moveAnchor('section4')}>상권 분석</li>
-          <li onClick={()=> moveAnchor('section5')}>수익 계산하기</li>
-          <li onClick={()=> moveAnchor('section6')}>창업안내</li>
-          <li onClick={()=> moveAnchor('section7')}>창업문의</li>
+          <li onClick={()=> moveAnchor('whyUs')}>창업 경쟁력</li>
+          <li onClick={()=> moveAnchor('privacy')}>프라이빗 설계</li>
+          <li onClick={()=> moveAnchor('location')}>상권 분석</li>
+          <li onClick={()=> moveAnchor('calcSection')}>수익 계산하기</li>
+          <li onClick={()=> moveAnchor('process')}>창업안내</li>
+          <li onClick={()=> moveAnchor('contact')}>창업문의</li>
         </ul>
       </nav>
 

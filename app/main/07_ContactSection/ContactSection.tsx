@@ -1,4 +1,4 @@
-import styles from './ContactSection.module.css'
+import styles from './ContactSection.module.scss'
 import ContainerV1 from '@/component/ContainerV1.tsx/ContainerV1'
 import { FormBox } from './client'
 import * as motion from "motion/react-client"
@@ -7,7 +7,7 @@ export default function ContactSection() {
 
 
    return (
-      <section className={styles.contact} id='section5'>
+      <section className={styles.contact} id='contact'>
          <div className={styles.title_box}>
             <motion.h2 
                className="paperLogy"

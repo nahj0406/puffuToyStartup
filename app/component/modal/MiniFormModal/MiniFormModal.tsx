@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { FormBox } from '@/main/07_ContactSection/client'
 import { useMediaQuery } from "react-responsive";
 import { motion, AnimatePresence } from "framer-motion";
-import styles from "./MiniFormModal.module.css"
+import styles from "./MiniFormModal.module.scss"
 
 
 // miniForm 수정 시 확인 파일

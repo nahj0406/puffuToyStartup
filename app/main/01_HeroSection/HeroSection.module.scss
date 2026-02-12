@@ -1,21 +1,8 @@
-@mixin flex-box {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-}
-
-@mixin vertical-flex {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-}
-
 
 .hero {
    width: 100%;
    height: 100dvh;
-   @include flex-box;
+   @include mixins.flex-box;
    align-items: center;
    position: relative;
    padding: 45px 0;
@@ -29,7 +16,7 @@
    width: 100%;
    max-width: 1400px;
    height: 100%;
-   @include flex-box();
+   @include mixins.flex-box();
 
    .circle_wrap {
       $circle-size : 62rem;
@@ -43,7 +30,7 @@
       
 
       .content_box {
-         @include vertical-flex;
+         @include mixins.vertical-flex;
          gap: max(35px, 4.5rem);
          position: absolute;
          width: 100%;
@@ -52,13 +39,13 @@
          transform: translate(-50%, -50%);
 
          .content {
-            @include vertical-flex;
+            @include mixins.vertical-flex;
             gap: 30px;
 
             .txt_box {
                color: #fff;
                text-align: center;
-               @include vertical-flex;
+               @include mixins.vertical-flex;
                line-height: 1.2;
                gap: 10px;
 
@@ -120,7 +107,7 @@
    .bar_keyword {
       position: absolute;
       bottom: 14%;
-      @include vertical-flex();
+      @include mixins.vertical-flex();
       align-items: start;
       gap: 40px;
 
@@ -239,7 +226,7 @@
    }
 
    .itemBox {
-      @include vertical-flex();
+      @include mixins.vertical-flex();
       gap: 40px 0;
       position: static;
 
@@ -271,7 +258,7 @@
       .keyword_box {
          order: 2;
          width: 100%;
-         @include flex-box();
+         @include mixins.flex-box();
          gap: 20px;
 
          .bar_keyword {

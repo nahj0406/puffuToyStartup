@@ -1,7 +1,7 @@
 'use client'
 
 import clsx from 'clsx'
-import styles from './LocationSection.module.css'
+import styles from './LocationSection.module.scss'
 import React, { useRef, useState, useEffect } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';

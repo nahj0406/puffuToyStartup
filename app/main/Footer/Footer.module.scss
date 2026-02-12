@@ -1,37 +1,22 @@
 
-// @use '@/css/mixins' as mx;
-
-@mixin flex-box {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-}
-
-@mixin vertical-flex {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-}
-
 .footer {
    padding: 60px 0;
    background: #333;
    border-top: 1px solid #d8d8d8;
 
    .wrapper {
-      @include flex-box;
+      @include mixins.flex-box;
       justify-content: space-between;
       gap: 20px;
       
 
       .content_box {
-         @include vertical-flex;
+         @include mixins.vertical-flex;
          align-items: start;
          gap: 20px;
          
          .content_item {
-            @include flex-box;
+            @include mixins.flex-box;
             align-items: start;
             justify-content: start;
             flex-wrap: wrap;
@@ -57,7 +42,7 @@
 
 
       .tel_box {
-         @include vertical-flex;
+         @include mixins.vertical-flex;
          align-items: end;
          gap: 10px;
          color: #fff;
@@ -80,7 +65,7 @@
       padding: max(20px, 3rem) 0;
 
       .wrapper {
-         @include vertical-flex;
+         @include mixins.vertical-flex;
          align-items: start;
          gap: 4rem;
 
@@ -104,7 +89,7 @@
 
 @media (max-width: 500px) {
    .wrapper .content_box .content_item {
-      @include vertical-flex;
+      @include mixins.vertical-flex;
       flex-wrap: unset;
    }
 }
