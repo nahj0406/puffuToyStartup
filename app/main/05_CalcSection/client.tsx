@@ -87,7 +87,7 @@ export function BadgeBox() {
               },
             }}
           >
-            <Counter from={0} to={3000} duration={3} />
+            <Counter from={0} to={3000} duration={4} />
             만원
           </motion.span>
         </h3>

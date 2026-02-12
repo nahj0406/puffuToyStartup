@@ -52,7 +52,7 @@ main {margin-bottom: 88px;}
 
 @media (max-width: 992px) {
    html { // 폰트사이즈 지정! rem
-   // font-size: clamp(7px, calc(100vw * 9 / 992), 10px);
+      font-size: clamp(7px, calc(100vw * 9 / 992), 10px);
    }
 
    main {margin-bottom: 80px;}
