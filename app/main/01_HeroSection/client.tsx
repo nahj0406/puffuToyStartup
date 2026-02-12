@@ -1,7 +1,7 @@
 
 'use client'
 
-import styles from './HeroSection.module.css'
+import styles from './HeroSection.module.scss'
 import * as motion from "motion/react-client"
 import type { Variants } from "motion/react"
 import clsx from 'clsx'

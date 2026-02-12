@@ -1,12 +1,12 @@
 import clsx from 'clsx'
-import styles from './PrivacySection.module.css'
+import styles from './PrivacySection.module.scss'
 import ContainerV1 from '@/component/ContainerV1.tsx/ContainerV1'
 import * as motion from "motion/react-client"
 import isMobile from 'shared/utils/isMobile'
 
 export default function PrivacySection() {
    return (
-      <section className={styles.privacy} id='section2'>
+      <section className={styles.privacy} id='privacy'>
          <div className={'black_title_header'}>
             <ContainerV1 className={styles.wrapper}>
                <div className='black_title'>

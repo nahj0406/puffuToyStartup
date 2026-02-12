@@ -1,19 +1,4 @@
 
-// @use '@/css/mixins' as mx;
-
-@mixin flex-box {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-}
-
-@mixin vertical-flex {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-}
-
 .header {
    position: sticky;
    top: 0;
@@ -24,7 +9,7 @@
 }
 
 .wrapper {
-   @include flex-box;
+   @include mixins.flex-box();
    justify-content: space-between;
    height: 100%;
    gap: 10px;
@@ -40,7 +25,7 @@
    
       > ul {
          color: #fff;
-         @include flex-box;
+         @include mixins.flex-box();
          gap: max(20px, 3rem);
          font-size: var(--fontSize20);
          font-weight: 600;
@@ -60,7 +45,7 @@
    }
 
    .tel_box {
-      @include vertical-flex;
+      @include mixins.vertical-flex;
       align-items: end;
       font-size: 2rem;
       color: #fff;
@@ -125,7 +110,7 @@
          
 
          > ul {
-            @include vertical-flex;
+            @include mixins.vertical-flex;
             gap: 25px;
             width: 100%;
          }
@@ -143,7 +128,7 @@
       }
 
       .btn_box {
-         @include flex-box;
+         @include mixins.flex-box();
          z-index: 3;
          width: 30px;
          height: 30px;

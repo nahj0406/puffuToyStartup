@@ -1,7 +1,7 @@
 "use client";
 
 import NiceModal, { useModal } from "@ebay/nice-modal-react";
-import styles from "./ConfirmModal.module.css";
+import styles from "./ConfirmModal.module.scss";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect } from "react";
 

@@ -1,15 +1,3 @@
-@mixin flex-box {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-}
-
-@mixin vertical-flex {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-}
 
 
 .bottomForm {
@@ -24,12 +12,12 @@
 }
 
 .wrapper {
-   @include flex-box();
+   @include mixins.flex-box;
    justify-content: space-between;
 }
 
 .bottomForm .left_box {
-   @include flex-box();
+   @include mixins.flex-box;
    justify-content: start;
    gap: 10px;
 
@@ -44,7 +32,7 @@
    }
 
    .tel_content {
-      @include vertical-flex();
+      @include mixins.vertical-flex();
       align-items: start;
       gap: 5px;
 
@@ -66,7 +54,7 @@
 
 
 .bottomForm .right_box {
-   @include flex-box();
+   @include mixins.flex-box;
    width: fit-content;
    gap: 15px;
 

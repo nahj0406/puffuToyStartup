@@ -1,22 +1,9 @@
-@mixin flex-box {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-}
-
-@mixin vertical-flex {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-}
-
 .location {
    overflow: hidden;
    width: 100%;
    background: url('/img/location/location_bg.jpg') no-repeat center / cover;
    padding: 17rem 0 max(50px, 12rem);
-   @include vertical-flex();
+   @include mixins.vertical-flex();
    gap: max(60px, 9rem);
    justify-content: start
 }
@@ -28,14 +15,14 @@
 
 .wrap_container {
    width: 100%;
-   @include vertical-flex();
+   @include mixins.vertical-flex();
    justify-content: start;
    gap: max(60px, 12rem);
 }
 
 // 첫번째
 .itemBox {
-   @include flex-box();
+   @include mixins.flex-box();
    align-items: start;
    width: 100%;
    gap: 4rem;
@@ -68,7 +55,7 @@
       }
 
       .unit {
-         @include vertical-flex();
+         @include mixins.vertical-flex();
          justify-content: start;
          gap: 15px;
          padding: 25px;
@@ -77,7 +64,7 @@
          img {width: 100%;}
 
          .txt_box {
-            @include vertical-flex();
+            @include mixins.vertical-flex();
             justify-content: start;
             gap: 15px;
             color: #000;
@@ -115,7 +102,7 @@
       padding-top: max(50px, 7rem);
    }
    .itemBox {
-      @include vertical-flex();
+      @include mixins.vertical-flex();
       gap: max(50px, 7rem);
    }
 }
@@ -142,7 +129,7 @@
 
 // 두번째 규제검토 박스
 .location_box {
-   @include vertical-flex();
+   @include mixins.vertical-flex();
    justify-content: start;
    border-radius: 20px;
    background: rgba(0,0,0,0.8);
@@ -152,14 +139,14 @@
 
 
    .title_box {
-      @include vertical-flex();
+      @include mixins.vertical-flex();
       justify-content: start;
       gap: max(25px, 5rem);
       margin-bottom: max(25px, 5rem);
       text-align: center;
 
       .title {
-         @include vertical-flex();
+         @include mixins.vertical-flex();
          justify-content: start;
          gap: max(10px, 1.5rem);
          color: #fff;
@@ -209,7 +196,7 @@
 
    // 하단 버튼 그룹
    > .btn_box {
-      @include flex-box();
+      @include mixins.flex-box();
       margin: 0 auto;
       gap: 20px;
       color: #fff;
@@ -255,7 +242,7 @@
 
 // 규제 검토 박스
 .location_box .mapBox {
-   @include flex-box();
+   @include mixins.flex-box();
    justify-content: start;
    gap: 50px;
    width: 100%;
@@ -265,7 +252,7 @@
 
 // 왼쪽
 .mapBox .img_box {
-   @include vertical-flex();
+   @include mixins.vertical-flex();
    align-items: start;
    gap: 10px;
    width: 53%;
@@ -274,12 +261,12 @@
 
    .color_check {
       padding-left: 13px;
-      @include flex-box();
+      @include mixins.flex-box();
       justify-content: start;
       gap: 20px;
 
       .unit {
-         @include flex-box();
+         @include mixins.flex-box();
          justify-content: start;
          gap: 6px;
          color: #fff;
@@ -304,12 +291,12 @@
 // 오른쪽
 .mapBox .slide_box {
    width: 47%;
-   @include vertical-flex();
+   @include mixins.vertical-flex();
    align-items: start;
    gap: 20px;
 
    .tab_title {
-      @include vertical-flex();
+      @include mixins.vertical-flex();
       gap: 20px;
       align-items: start;
       width: 100%;
@@ -323,7 +310,7 @@
 
       // pagination style
       .tab_box {
-         @include flex-box();
+         @include mixins.flex-box();
          justify-content: start;
          gap: 15px;
          width: inherit;
@@ -360,7 +347,7 @@
 
    .card_box {
       width: 100%;
-      @include vertical-flex();
+      @include mixins.vertical-flex();
       align-items: start;
       gap: 25px;
       background: #fff;
@@ -369,7 +356,7 @@
       min-height: max(265px, 31rem);
 
       .card {
-         @include vertical-flex();
+         @include mixins.vertical-flex();
          align-items: inherit;
          gap: 20px;
 
@@ -380,7 +367,7 @@
          }
 
          .list {
-            @include vertical-flex();
+            @include mixins.vertical-flex();
             align-items: inherit;
             gap: 5px;
 
@@ -431,7 +418,7 @@
 
 @media (max-width: 768px) {
    .location_box > .btn_box {
-      @include vertical-flex();
+      @include mixins.vertical-flex();
 
       .blue_btn, .blue_btn a, .red_btn {
          min-width: auto;
@@ -440,7 +427,7 @@
       }
    }
    .location_box .mapBox {
-      @include vertical-flex();
+      @include mixins.vertical-flex();
       margin-bottom: max(30px, 7rem);
    }
 

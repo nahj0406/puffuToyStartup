@@ -1,8 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-// import styles from './CalcSection.module.css'
-import styles2 from "./client.module.css";
+import styles2 from "./client.module.scss";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import NiceModal from "@ebay/nice-modal-react";

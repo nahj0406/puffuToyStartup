@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import styles from './LocationSection.module.css'
+import styles from './LocationSection.module.scss'
 import ContainerV1 from '@/component/ContainerV1.tsx/ContainerV1'
 import * as motion from "motion/react-client"
 import { ButtonBox, SlideBox } from './client'
@@ -7,7 +7,7 @@ import { ButtonBox, SlideBox } from './client'
 export default function LocationSection() {
 
    return (
-      <section className={styles.location}>
+      <section className={styles.location} id='location'>
 
          <motion.div 
             className={styles.title_box}

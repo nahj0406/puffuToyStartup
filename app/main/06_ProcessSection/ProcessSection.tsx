@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import styles from './ProcessSection.module.css'
+import styles from './ProcessSection.module.scss'
 import ContainerV1 from '@/component/ContainerV1.tsx/ContainerV1'
 import TextSlide from '@/component/TextSlide.tsx/TextSlide';
 import * as motion from "motion/react-client"
@@ -41,7 +41,7 @@ export default function ProcessSection() {
    return (
       <>
          <TextSlide />
-         <section className={styles.process} id={'section4'}>
+         <section className={styles.process} id={'process'}>
             <ContainerV1>
                <div className={styles.title_box}>
                   <motion.div 

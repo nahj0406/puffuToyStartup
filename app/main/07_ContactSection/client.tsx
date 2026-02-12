@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import styles from "./ContactSection.module.css";
+import styles from "./ContactSection.module.scss";
 import { useEffect, useRef, useState, useId } from "react";
 import NiceModal from "@ebay/nice-modal-react";
 import ConfirmModal from "@/component/modal/ConfirmModal/ConfirmModal";

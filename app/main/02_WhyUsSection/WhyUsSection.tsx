@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import styles from './WhyUsSection.module.css'
+import styles from './WhyUsSection.module.scss'
 import ContainerV1 from '@/component/ContainerV1.tsx/ContainerV1'
 import TextSlide from '@/component/TextSlide.tsx/TextSlide'
 import * as motion from "motion/react-client"
@@ -23,7 +23,7 @@ export default function WhyUsSection() {
       },
    }
    return (
-      <section className={styles.WhyUs} id='section1'>
+      <section className={styles.WhyUs} id='whyUs'>
          <TextSlide />
 
          <img src="/img/whyUs/rotate_circle.png" alt="로고 써클" className={clsx(styles.logo_circle, styles.circle01)} />

@@ -1,7 +1,7 @@
 'use client'
 
 import clsx from "clsx";
-import styles from "./BottomForm.module.css";
+import styles from "./BottomForm.module.scss";
 import ContainerV1 from "../ContainerV1.tsx/ContainerV1";
 import Link from "next/link";
 import siteInfo from "shared/utils/siteInfo";
