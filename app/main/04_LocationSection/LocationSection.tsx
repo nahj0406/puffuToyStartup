@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import styles from './LocationSection.module.scss'
 import ContainerV1 from '@/component/ContainerV1.tsx/ContainerV1'
 import * as motion from "motion/react-client"
-import { ButtonBox, SlideBox } from './client'
+import { PointBox, RegulationBox, ButtonBox } from './client'
 
 export default function LocationSection() {
 
@@ -37,7 +37,12 @@ export default function LocationSection() {
                   선택도 <span className='title_deco'>걱정 없습니다</span>
                </motion.h2>
 
-               <motion.p>
+               <motion.p
+                  variants={{
+                     offscreen: { y: -10, opacity: 0,},
+                     onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.7,},},
+                  }}
+               >
                   푸푸토이는 <b>유동인구가 많지 않아도,</b> 일정 반경 <br />
                   내 수요만 확보되면 운영이 가능합니다.
                </motion.p>
@@ -46,143 +51,7 @@ export default function LocationSection() {
 
          <div className={styles.wrap_container}>
             <ContainerV1 className={styles.wrapper}>
-               <div className={styles.itemBox}>
-
-                  <motion.figure 
-                     className={styles.item}
-                     initial='offscreen'
-                     whileInView='onscreen'
-                     viewport={{amount: 0.3, once: true}}
-                     variants={{
-                        offscreen: { y: 50, opacity: 0,},
-                        onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.3,},},
-                     }}
-                  >
-                     <span className={clsx(styles.title_point, 'poppins')}>point 1</span>
-
-                     <div className={styles.unit}>
-                        <img src="/img/location/item1_img01.png" alt="상가 이미지1" className={styles.img} />
-   
-                        <div className={styles.txt_box}>
-                           <h5 className='paperLogy'><span>일정 반경 내</span> 수요만 확보되면 운영 가능</h5>
-
-                           <p>
-                              성인용품은 제품 특성상 <b>타업종 대비 높은 단가</b>로 <br />
-                              적은 판매량으로도 임대료와 운영비 충당이 <br />
-                              비교적 수월합니다.
-                           </p>
-                        </div>
-                     </div>
-                  </motion.figure>
-
-                  <motion.figure 
-                     className={styles.item}
-                     initial='offscreen'
-                     whileInView='onscreen'
-                     viewport={{amount: 0.3, once: true}}
-                     variants={{
-                        offscreen: { y: 50, opacity: 0,},
-                        onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.3,},},
-                     }}
-                  >
-                     <span className={clsx(styles.title_point, 'poppins')}>point 2</span>
-
-                     <div className={styles.unit}>
-                        <img src="/img/location/item1_img02.png" alt="상가 이미지2" className={styles.img} />
-   
-                        <div className={styles.txt_box}>
-                           <h5 className='paperLogy'><span>메인 상권</span>이 아니라도 운영 가능</h5>
-                           
-                           <p>
-                              준비된 동선과 간판 + 안내 설계로 고객들의 이목을 <br />
-                              끌어 <b>직관적으로 매장 위치</b>를 알릴 수 있습니다.
-                           </p>
-                        </div>
-                     </div>
-                  </motion.figure>
-
-                  <motion.figure 
-                     className={styles.item}
-                     initial='offscreen'
-                     whileInView='onscreen'
-                     viewport={{amount: 0.3, once: true}}
-                     variants={{
-                        offscreen: { y: 50, opacity: 0,},
-                        onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.3,},},
-                     }}
-                  >
-                     <span className={clsx(styles.title_point, 'poppins')}>point 3</span>
-
-                     <div className={styles.unit}>
-                        <img src="/img/location/item1_img03.png" alt="상가 이미지2" className={styles.img} />
-   
-                        <div className={styles.txt_box}>
-                           <h5 className='paperLogy'>소비 목적이 분명한 <span>목적형 구매</span></h5>
-                           
-                           <p>
-                              매장 방문객의 대다수는 이미 구매 의사를 결정하고 <br />
-                              방문하기 때문에 <span>구매 전환율</span>이 타업종 대비 높습니다.
-                           </p>
-                        </div>
-                     </div>
-                  </motion.figure>
-
-                  <motion.figure 
-                     className={styles.item}
-                     initial='offscreen'
-                     whileInView='onscreen'
-                     viewport={{amount: 0.3, once: true}}
-                     variants={{
-                        offscreen: { y: 50, opacity: 0,},
-                        onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.3,},},
-                     }}
-                  >
-                     <span className={clsx(styles.title_point, 'poppins')}>point 4</span>
-
-                     <div className={styles.unit}>
-                        <img src="/img/location/item1_img04.png" alt="상가 이미지2" className={styles.img} />
-   
-                        <div className={styles.txt_box}>
-                           <h5 className='paperLogy'><span>야간 · 심야</span> 시간대에도 매출 발생</h5>
-                           
-                           <p>
-                              야간과 심야 시간에는 <span>유흥가나 일반 데이트 커플</span> 등의 <br />
-                              수요가 증가하는 시간대로 24시간 상시 운영중인 <br />
-                              매장의 특성으로 <span>야간 매출</span>을 충분히 기대할 수 있습니다.
-                           </p>
-                        </div>
-                     </div>
-                  </motion.figure>
-
-                  <motion.figure 
-                     className={styles.item}
-                     initial='offscreen'
-                     whileInView='onscreen'
-                     viewport={{amount: 0.3, once: true}}
-                     variants={{
-                        offscreen: { y: 50, opacity: 0,},
-                        onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.3,},},
-                     }}
-                  >
-                     <span className={clsx(styles.title_point, 'poppins')}>point 5</span>
-
-                     <div className={styles.unit}>
-                        <img src="/img/location/item1_img05.png" alt="상가 이미지2" className={styles.img} />
-   
-                        <div className={styles.txt_box}>
-                           <h5 className='paperLogy'><span>자체 쇼핑몰 운영</span>으로 온라인 유저 유입</h5>
-                           
-                           <p>
-                              푸푸토이 온라인 쇼핑몰의 <span>자체 픽업 시스템</span>을 <br />
-                              통해 인근 거주 온라인 고객의 구매까지 <br />
-                              <span>오프라인 매출</span>로 연결할 수 있습니다.
-                           </p>
-                        </div>
-                     </div>
-                  </motion.figure>
-
-                  
-               </div>
+               <PointBox />
             </ContainerV1>
    
             <ContainerV1>
@@ -197,7 +66,7 @@ export default function LocationSection() {
                      onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.3,},},
                   }}
                >
-                  <div className={styles.location_box}>
+                  <div className={styles.analysis_box}>
                      <div className={styles.title_box}>
                         <motion.div 
                            className={styles.title}
@@ -260,7 +129,7 @@ export default function LocationSection() {
                         </figure>
                         
                         {/*  교육환경보호구역 체크리스트 */}
-                        <SlideBox />
+                        <RegulationBox />
                      </motion.div>
          
                      <motion.p 

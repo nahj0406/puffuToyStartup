@@ -8,12 +8,7 @@
    justify-content: start
 }
 
-.title_box {
-   // h2 {color: #fff;}
-}
-
-
-.wrap_container {
+.location .wrap_container {
    width: 100%;
    @include mixins.vertical-flex();
    justify-content: start;
@@ -21,114 +16,123 @@
 }
 
 // 첫번째
-.itemBox {
-   @include mixins.flex-box();
-   align-items: start;
-   width: 100%;
-   gap: 4rem;
-   flex-wrap: wrap;
-   gap: 50px 30px;
+@media (min-width: 992px) { // swiper 아닌 상태 처리, 모바일에선 swiper로 전환
+   .wrap_container .itemBox {
+      overflow: unset !important; // swiper style 무력화
+      
+      :global(.swiper-wrapper) {
+         @include mixins.flex-box();
+         align-items: start;
+         width: 100%;
+         gap: 4rem;
+         flex-wrap: wrap;
+         gap: 50px 30px;
+      }
+   }
 
-   .item {
-      position: relative;
-      border-radius: 30px;
-      background: #fff;
-      width: calc(100% / 3 - 25px);
-      max-width: 440px;
+   .itemBox .item_slide {
+      width: calc(100% / 3 - 25px) !important;
 
       &:nth-of-type(4), &:nth-of-type(5) {
-         width: calc(100% / 2 - 25px);
+         width: 50% !important;
+         max-width: 44rem;
       }
 
-      .title_point {
-         background: var(--main-color);
-         padding: 7px 11px;
-         font-size: var(--fontSize20);
-         color: #fff;
+      .item {
+         width: 100%;
+         min-height: 50rem;
+      }
+   }
+}
+
+.itemBox .item {
+   position: relative;
+   border-radius: 30px;
+   background: #fff;
+   max-width: 440px;
+
+   .title_point {
+      background: var(--main-color);
+      padding: 7px 11px;
+      font-size: var(--fontSize20);
+      color: #fff;
+      font-weight: 700;
+      border-radius: 100px;
+      text-transform: uppercase;
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+   }
+}
+
+.itemBox .item .unit {
+   @include mixins.vertical-flex();
+   justify-content: start;
+   gap: 15px;
+   padding: 25px;
+   text-align: center;
+
+   img {width: 100%;}
+
+   .txt_box {
+      @include mixins.vertical-flex();
+      justify-content: start;
+      gap: 15px;
+      color: #000;
+      min-height: 120px;
+
+      h5 {
+         font-size: var(--fontSize25);
          font-weight: 700;
-         border-radius: 100px;
-         text-transform: uppercase;
-         position: absolute;
-         top: -20px;
-         left: 50%;
-         transform: translateX(-50%);
+         line-height: 1.3;
+
+         span {color: var(--main-color);}
       }
 
-      .unit {
-         @include mixins.vertical-flex();
-         justify-content: start;
-         gap: 15px;
-         padding: 25px;
-         text-align: center;
-
-         img {width: 100%;}
-
-         .txt_box {
-            @include mixins.vertical-flex();
-            justify-content: start;
-            gap: 15px;
-            color: #000;
-            min-height: 120px;
-
-            h5 {
-               font-size: var(--fontSize25);
-               font-weight: 700;
-               line-height: 1.3;
-
-               span {color: var(--main-color);}
-            }
-
-            p {
-               font-size: var(--fontSize18);
-               font-weight: 500;
-               line-height: 1.4;
-               
-               b {font-weight: 700;}
-            }
-         }
+      p {
+         font-size: var(--fontSize18);
+         font-weight: 500;
+         line-height: 1.4;
+         
+         b {font-weight: 700;}
       }
    }
 }
 
-@media (min-width: 992px) and (max-width: 1080px) {
-   .itemBox .text_box h3 br {
-      display: none;
+
+@media (max-width: 1380px) {
+   .itemBox .item {max-width: 100%;}
+   .itemBox .item .unit {
+      .txt_box {
+         h5 {min-height: 2.1em;}
+         br {display: none;}
+      }
    }
 }
-
 
 @media (max-width: 992px) {
-   .wrap_container {
-      padding-top: max(50px, 7rem);
-   }
-   .itemBox {
-      @include mixins.vertical-flex();
-      gap: max(50px, 7rem);
+   .wrap_container .itemBox {
+      padding-top: 30px;
    }
 }
-
 
 @media (max-width: 768px) {
-   .itemBox {
-      
+   .itemBox .item {
+      min-height: 390px;
    }
 }
 
-@media (max-width: 600px) {
-   // .itemBox .img_box .unit .unit_txt p {
-   //    font-size: var(--fontSize20);
-   // }
-}
-
-@media (max-width: 500px) {
-   .itemBox {
-      
+@media (max-width: 680px) {
+   .itemBox .item {
+      min-height: 370px;
    }
 }
+
 
 
 // 두번째 규제검토 박스
-.location_box {
+.analysis_box {
    @include mixins.vertical-flex();
    justify-content: start;
    border-radius: 20px;
@@ -241,7 +245,7 @@
 }
 
 // 규제 검토 박스
-.location_box .mapBox {
+.analysis_box .mapBox {
    @include mixins.flex-box();
    justify-content: start;
    gap: 50px;
@@ -417,7 +421,7 @@
 }
 
 @media (max-width: 768px) {
-   .location_box > .btn_box {
+   .analysis_box > .btn_box {
       @include mixins.vertical-flex();
 
       .blue_btn, .blue_btn a, .red_btn {
@@ -426,7 +430,7 @@
          max-width: 500px;
       }
    }
-   .location_box .mapBox {
+   .analysis_box .mapBox {
       @include mixins.vertical-flex();
       margin-bottom: max(30px, 7rem);
    }
@@ -441,7 +445,7 @@
 }
 
 @media (max-width: 600px) {
-   .location_box br {display: none;}
+   .analysis_box br {display: none;}
 
    .mapBox .img_box {
       width: 100%;
