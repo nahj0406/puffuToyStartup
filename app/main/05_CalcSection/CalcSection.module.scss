@@ -1,257 +1,390 @@
-
 .calcSection {
    width: 100%;
-   padding: max(50px, 12rem) 0 max(60px, 13rem);
-   background: url('/img/calc/sec7_bg.jpg') no-repeat center / cover;
-   @include mixins.vertical-flex();
-   justify-content: start;
-   gap: max(50px, 7rem);
+   @include mixins.sectionPaddings;
+   background: url('/img/calc/calc_bg.png') no-repeat top / cover;
 }
 
 .calcSection .wrapper {
    @include mixins.vertical-flex();
    justify-content: start;
-   gap: max(70px, 12rem);
+   gap: 35px;
+   position: relative;
 }
 
-// .calcSection .title_box {
-//    margin-bottom: max(50px, 8rem);
-// }
+.title_box {
+   h2 {
+      .mob_br {display: none !important;}
+   }
+}
 
-.itemBox {
-   @include mixins.flex-box();
-   justify-content: start;
-   gap: max(30px, 7rem);
-   max-width: 1226px;
+// 금색 뱃지
+.wrapper .badge_box {
+   .badge {
+      position: relative;
+      z-index: 1;
 
-   .box_vertical_group {
-      @include mixins.vertical-flex();
-      align-items: start;
-      gap: 30px;
-      width: 100%;
-      max-width: 480px;
+      img {
+         width: clamp(300px, 25vw, 480px);
+         animation: imgScale 1.2s infinite alternate;
+      } // 1920 기준 480px
+
+      .count_txt {
+         position: absolute;
+         top: 58%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         color: var(--sub-color1);
+         font-size: clamp(50px, 4.17vw, 80px); // 1920 기준 80px
+         font-weight: 900;
+         line-height: 1;
+         @include mixins.flex-box;
+         gap: max(5px, 1rem);
+
+         small {font-size: 0.5em;}
+         span {letter-spacing: 5px;}
+      }
    }
 
-   .toggle_box {
-      width: 100%;
-      @include mixins.vertical-flex();
-      align-items: start;
-      background: #fff;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 8px 10px 5px rgba(0,0,0,0.1);
-      gap: 20px;
-
-      .box_header {
-         border-radius: inherit;
-         padding: max(13px, 1.6rem) 10px;
-         background: #2A2A2A;
-         text-align: center;
-         width: 100%;
-
-         h5 {
-            font-size: var(--fontSize35);
-            color: #fff;
-            line-height: 1.2;
-            font-weight: 800;
-         }
-      }
-
-      .content {
-         width: 100%;
-         @include mixins.vertical-flex();
-         gap: max(10px, 1.5rem);
-         text-align: center;
-         padding: 0 10px max(25px, 3.5rem);
-
-         p.txt1 {
-            color: #000;
-            font-size: var(--fontSize30);
-            font-weight: 800;
-         }
-
-         p.txt2 {
-            color: #434343;
-            font-size: var(--fontSize20);
-            font-weight: 500;
-            line-height: 1.3;
-         }
+   @media (min-width: 992px) { // 992 이상만 absolute
+      .badge {
+         position: absolute;
+         top: 18rem;
+         &.sales {left: -7.6rem;}
+         &.profits {right: -7.6rem;}  
       }
    }
 }
 
-
-// 패키지만 따로 css 지정
-.itemBox .package_box {
-   gap: max(25px, 4.5rem);
-   flex: 1;
-   max-width: 850px;
-
-   .box_header {
-      width: 100%;
-      @include mixins.vertical-flex();
-      gap: 10px;
-      padding: max(15px, 2.2rem) 10px;
-      background: linear-gradient(#D82A38, #B71926);
-      color: #fff;
-      font-weight: 800;
-      line-height: 1.2;
-
-      h5 {
-         font-size: var(--fontSize35);
-      }
-
-      span {
-         font-size: var(--fontSize20);
-      }
-   }
+@keyframes imgScale {
+   from {transform: scale(1);}
+   to {transform: scale(0.97);}
 }
 
-// 패키지 내부 내용
-.itemBox .package_box .content {
-   @include mixins.flex-box();
-   flex-direction: unset !important;
-   justify-content: start;
-   gap: max(15px, 2rem);
-   width: 100%;
-   padding: 0 3.5rem 4.5rem;
-   
-   .unit {
-      background: #c33b47;
-      border-radius: 10px;
-      min-height: 213px;
-      padding: 10px;
-      @include mixins.vertical-flex();
-      gap: 13px;
-      box-shadow: 0 4px 10px 0px rgba(0,0,0,0.25);
-      flex: 1;
 
-      .icon_img {width: auto; height: max(50px, 9.3rem);}
-      > span {
-         font-size: var(--fontSize20);
-         color: #fff;
-      }
-
-      &.kiosk_group {
-         flex-direction: unset;
-         gap: 15px;
-         padding: 20px 10px;
-         flex: 2.24;
-
-         .kiosk {
-            @include mixins.vertical-flex();
-            gap: 13px;
-
-            > span {
-               font-size: var(--fontSize20);
-               color: #fff;
-            }
-         }
-
-         .kisok_item {
-            @include mixins.vertical-flex();
-            gap: max(13px, 2rem);
-
-            .item_unit {
-               @include mixins.vertical-flex();
-               gap: 7px;
-
-               > img {
-                  width: auto;
-                  height: max(40px, 5rem);
-               }
-               > span {
-                  font-size: var(--fontSize16);
-                  color: #fff;
-               }
-            }
-         }
-         
-      }
-   }
-}
-
-@media (min-width: 992px) {
-   .itemBox .package_box {
-      min-width: 600px;
+@media (min-width: 992px) and (max-width: 1630px) {
+   .wrapper .badge_box {
+      .badge {
+         &.sales {left: 13px !important;}
+         &.profits {right: 13px !important;}  
+      }      
    }
 }
 
 @media (max-width: 992px) {
-   .itemBox {
-      flex-direction: column;
+   .wrapper .badge_box {
+      @include mixins.flex-box;
+      gap: max(20px, 5rem);
+   }
+}
 
-      .package_box {
-         max-width: 90%;
-         border-radius: 10px;
+@media (max-width: 680px) {
+   .wrapper .badge_box {
+      img {width: clamp(100px, 44.12vw, 300px);} // 680 300px
 
-         .box_header {
-            border-radius: inherit !important;
+      .badge .count_txt {
+         font-size: clamp(25px, 5.88vw, 40px); // 680 기준 50px
+
+         span {letter-spacing: 3px;}
+      }
+   }
+}
+
+@media (max-width: 450px) {
+   .title_box {
+      h2 {
+         display: block;
+         br {display: none;}
+         .mob_br {display: block !important;}
+      }
+   }
+}
+
+
+
+
+
+// 계산기
+.Calculator {
+   width: 100%;
+   @include mixins.vertical-flex;
+}
+
+.anchor_dummy {
+   width: 100%;
+   height: 1px;
+}
+
+.calc_header {
+   @include mixins.vertical-flex;
+   gap: max(25px, 5rem);
+   width: inherit;
+   margin-bottom: max(30px, 5rem);
+
+
+   .calc_title {
+      @include mixins.vertical-flex;
+      gap: max(20px, 3rem);
+      text-align: center;
+      color: #fff;
+
+      h2 {
+         font-size: var(--fontSize35);
+         line-height: 1.4;
+         font-weight: 700;
+      }
+
+      p {
+         font-size: var(--fontSize20);
+         line-height: 1.4;
+         font-weight: 500;
+      }
+
+   }
+}
+
+// 입력 상자
+.calc_header .calc_input_box {
+   @include mixins.vertical-flex();
+   justify-content: start;
+   background: url('/img/calc/profits_box_bg.jpg') no-repeat center / cover;
+   border-radius: 10px;
+   border: 5px solid var(--main-color);
+   width: 100%;
+   max-width: 500px;
+   padding: 25px 25px 35px;
+   gap: 20px;
+
+   .calc_input_header {
+      text-align: center;
+      font-size: 25px;
+      color: #fff;
+      font-weight: 900;
+      line-height: 1;
+   }
+
+   .calc_submit {
+      margin-top: 5px;
+      width: 100%;
+      max-width: 220px;
+      padding: 10px 5px;
+      font-size: max(18px, 2rem);
+      background: var(--main-color);
+      border-radius: 5px;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+
+      &:hover {
+         background: var(--hover-color);
+      }
+   }
+}
+
+// 입력상자 인풋
+.calc_input_box .input_group {
+   @include mixins.vertical-flex();
+   justify-content: start;
+   gap: 15px;
+   width: 100%;
+
+   .input_item {
+      width: inherit;
+      @include mixins.flex-box();
+      justify-content: start;
+      background: #fff;
+      gap: 10px;
+      border-radius: 10px;
+      padding: 19px 20px;
+
+      > .tag {
+         display: inline-block;
+         // text-align: center;
+         min-width: 100px;
+         font-size: max(14px, 1.8rem);
+         font-weight: 600;
+         color: #000;
+         white-space: nowrap;
+
+         span {position: relative;}
+
+         &.required span::after {
+            content: '*';
+            position: absolute;
+            top: -0px;
+            right: -12px;
+            color: var(--main-color);
+
          }
       }
 
-      .box_vertical_group {
-         flex-direction: unset;
-         max-width: 90%;
+      .input_body {
+         flex: 1;
+         border-left: 1px solid #e0e0e0;
+         @include mixins.flex-box();
+         gap: 10px;
 
-         .toggle_box {
-            justify-content: start;
-            min-height: 185px;
-            border-radius: 10px;
-
-            .box_header {
-               border-radius: inherit !important;
+         input {
+            font-size: max(16px, 1.8rem);
+            color: #000;
+            font-weight: 500;
+            padding-left: 5px;
+            flex: 1;
+            
+            &::placeholder {
+               color: #797979;
+               font-weight: 400;
             }
          }
+
+         span {
+            color: #797979;
+            font-size: max(16px, 1.8rem);
+         }
+      }
+   }
+}
+
+
+@media (max-width: 992px) {
+   .calc_header {
+      flex-direction: column;
+      gap: 50px;
+
+      .calc_title h2 {font-size: var(--fontSize45);}
+
+      .calc_input_box {
+         max-width: 100%;
       }
    }
 }
 
 @media (max-width: 768px) {
-   .itemBox {
+   @mixin border_change {
+      border-left: none; 
+      border-bottom: 1px solid #e0e0e0;
+      padding-bottom: 3px;
+   }
 
-      .package_box .content {
-         flex-wrap: wrap;
+   .calc_header .calc_input_box {
+      padding: 25px 15px 30px;
+   }
 
-         .unit {
-            width: calc(100% / 3 - 11px);
-            flex: unset;
-            min-height: unset;
-            padding: 20px 10px;
+   .calc_header .calc_input_box .input_item {
+      padding: 15px 10px 12px;
+      min-width: 0;
+      gap: 15px;
+      @include mixins.vertical-flex();
+      align-items: start;
 
-            &.kiosk_group {
-               width: 100%;
-               flex: unset;
+      .input_body {
+         @include border_change;
+         width: 100%;
 
-               .kisok_item {
-                  flex-direction: unset;
-
-                  .item_unit {
-                     > img {height: max(50px, 6.3rem);}
-                  }
-               }
-            }
+         input {
+            width: 100%;    
          }
       }
+   }
 
-      .box_vertical_group {
-         flex-direction: column;
+   .calc_header .calc_input_box .calc_submit {
+      max-width: 100%;
+   }
+}
 
-         .toggle_box {
-            min-height: auto;
-         }
+
+// 결과 박스
+.calc_result_box {
+   @include mixins.vertical-flex();
+   justify-content: start;
+   gap: 30px;
+   width: 100%;
+   border-radius: 10px;
+   
+}
+
+// 차트 상자
+.calc_result_box .result_window {
+   background: url('/img/calc/profits_box_bg.jpg') no-repeat center / cover;
+   border: 5px solid var(--main-color);
+   border-radius: 10px;
+   width: 100%;
+   min-height: 180px;
+   padding: 25px 25px 30px;
+
+   .data_box {
+      @include mixins.vertical-flex();
+      justify-content: start;
+      align-items: start;
+      gap: 20px;         
+
+      .month_result {
+         color: #fff;
+         // font-size: var(--fontSize25);
+         font-size: 25px;
+         font-weight: 700;
+         line-height: 1.2;
+         text-align: center;
+      }
+
+      .chart_body {
+         width: 100%;
+         background: #222;
+         padding: 20px;
+         height: 400px;
       }
    }
 }
 
-@media (max-width: 500px) {
-   .itemBox .package_box .content .unit {
-      padding: 10px;
-      width: calc(100% / 2 - 10px);
+// 투자금 회수 불가, 예상 투자액 확인 전 텍스트
+.calc_result_box .not_data_txt {
+   @include mixins.flex-box();
+   color: #fff;
+   font-weight: 500;
+   font-size: var(--fontSize20);
+   width: 100%;
+   min-height: 180px;
+   text-align: center;
+   line-height: 1.4;
+}
 
-      &:nth-of-type(3) {
-         width: 100%;
+// 월 순이익 추정치
+.calc_result_box .profit {
+   width: 100%;
+   max-width: 620px;
+   padding: 15px 10px;
+   text-align: center;
+   border-radius: 10px;
+   font-size: max(30px, 3.5rem);
+   font-weight: 900;
+   line-height: 1.3;
+   color: var(--sub-color1);
+   background: url('/img/deco_gold_bg.png') no-repeat center / cover;
+
+   b {letter-spacing: 3px; font-weight: inherit;}
+}
+
+@media (max-width: 992px) {
+   .calc_result_box .result_window {
+      padding: 25px 15px;
+      .data_box {
+         align-items: center;
       }
-   } 
+   }
+}
+
+@media (max-width: 600px) {
+   .calc_result_box .result_window {
+      .data_box .month_result {
+         @include mixins.flex-box();
+         align-items: center;
+         flex-wrap: wrap;
+         gap: 5px;
+      }
+   }
+
+   .calc_result_box .result_window .data_box .chart_body {
+      height: 330px;
+   }
 }
 

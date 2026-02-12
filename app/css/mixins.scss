@@ -12,5 +12,9 @@
    justify-content: center;
 }
 
+@mixin sectionPaddings {
+   padding: max(50px, 12rem) 0;
+}
+
 
 .mixintest {width: 100%;}

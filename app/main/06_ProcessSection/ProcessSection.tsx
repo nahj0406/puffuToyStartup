@@ -3,6 +3,7 @@ import styles from './ProcessSection.module.scss'
 import ContainerV1 from '@/component/ContainerV1.tsx/ContainerV1'
 import TextSlide from '@/component/TextSlide.tsx/TextSlide';
 import * as motion from "motion/react-client"
+import type { Variants } from "motion/react"
 import isMobile from 'shared/utils/isMobile';
 
 export default function ProcessSection() {
@@ -11,45 +12,209 @@ export default function ProcessSection() {
       img: string;
       content: string;
    };
+
    const stepArr = [ // 매장 오픈 절차
       {
-         img: '/img/process/sec5_icon01.png',
+         img: '/img/process/procedure_icon01.png',
          content: '창업상담'
       },
       {
-         img: '/img/process/sec5_icon02.png',
+         img: '/img/process/procedure_icon02.png',
          content: '입지 조건 확인'
       },
       {
-         img: '/img/process/sec5_icon03.png',
+         img: '/img/process/procedure_icon03.png',
          content: '현장 체크'
       },
       {
-         img: '/img/process/sec5_icon04.png',
+         img: '/img/process/procedure_icon04.png',
          content: '설계/ 인테리어 공사'
       },
       {
-         img: '/img/process/sec5_icon05.png',
+         img: '/img/process/procedure_icon05.png',
          content: '매장 기계 설치'
       },
       {
-         img: '/img/process/sec5_icon06.png',
+         img: '/img/process/procedure_icon06.png',
          content: '매장 오픈'
       },
    ]
 
+   const LineDecoAni : Variants = {
+      offscreen: { height: 0, opacity: 0 },
+      onscreen: { 
+         height: '100%',
+         opacity: 1,
+         transition: {duration: 0.5, delay: 0.5 }
+      },
+   }
+
    return (
       <>
-         <TextSlide />
          <section className={styles.process} id={'process'}>
-            <ContainerV1>
-               <div className={styles.title_box}>
-                  <motion.div 
-                     className='normal_title_header'
+            <ContainerV1 className={clsx(styles.wrapper, styles.cost_area)}>
+               <motion.div 
+                  className={styles.title_box}
+                  initial='offscreen'
+                  whileInView='onscreen'
+                  viewport={{amount: 0.5, once: true}}
+               >
+                  <div className='normal_title_header'>
+                     <motion.span 
+                        className='paperLogy title_deco_circle'
+                        variants={{
+                           offscreen: { y: -10, opacity: 0,},
+                           onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.3,},},
+                        }}
+                     >
+                        창업비용 안내
+                     </motion.span>
+                     <div className={'line_deco_box'}>
+                        <motion.span
+                           initial='offscreen'
+                           whileInView='onscreen'
+                           viewport={{amount: 0.3, once: true}}
+                           className={'line left'}
+                           variants={LineDecoAni}
+                        />
+                        <motion.span 
+                           initial='offscreen'
+                           whileInView='onscreen'
+                           viewport={{amount: 0.3, once: true}}
+                           className={'line right'}
+                           variants={LineDecoAni}
+                        />
+
+                        <motion.h2 
+                           className='paperLogy'
+                           variants={{
+                              offscreen: { y: -10, opacity: 0,},
+                              onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.5,},},
+                           }}
+                        >
+                           프라이빗함은 지키고, <br />
+                           가격은 <span className='title_deco'>합리적</span>으로
+                        </motion.h2>
+                     </div>
+                  </div>
+               </motion.div>
+
+               <div className={styles.itemBox}>
+                  <motion.article 
+                     className={clsx(styles.package_box, styles.toggle_box)}
                      initial='offscreen'
                      whileInView='onscreen'
-                     viewport={{amount: 0.3, once: true}}
+                     viewport={{amount: 0.5, once: true}}
+                     variants={{
+                        offscreen: { y: -20, opacity: 0,},
+                        onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.3,},},
+                     }}
                   >
+                     <div className={styles.box_header}>
+                        <h5 className='paperLogay'>1.5억 패키지</h5>
+                        <span className='paperLogay'>(실내 추가 공사 비용 제외)</span>
+                     </div>
+
+                     <div className={styles.content}>
+                        <div className={styles.unit}>
+                           <img className={styles.icon_img} src="/img/process/cost_signboard.png" alt="패키지 아이콘" />
+                           <span>외부간판</span>
+                        </div>
+      
+                        <div className={styles.unit}>
+                           <img className={styles.icon_img} src="/img/process/cost_outdoor_sign.png" alt="패키지 아이콘" />
+                           <span>실내 외 사인물</span>
+                        </div>
+      
+                        <div className={styles.unit}>
+                           <img className={styles.icon_img} src="/img/process/cost_interior.png" alt="패키지 아이콘" />
+                           <span>인테리어 포함</span>
+                        </div>
+      
+                        <div className={clsx(styles.unit, styles.kiosk_group)}>
+                           <div className={clsx(styles.kiosk)}>
+                              <img className={styles.icon_img} src="/img/process/cost_kiosk.png" alt="패키지 아이콘" />
+                              <span>자판기 12대</span>
+                           </div>
+      
+                           <div className={styles.ca_icon}>
+                              <img src="/img/process/cost_kiosk_category.png" alt="= 기호" />
+                           </div>
+      
+                           <div className={clsx(styles.kisok_item)}>
+      
+                              <figure className={styles.item_unit}>
+                                 <img src="/img/process/cost_kiosk_coil.png" alt="패키지 아이콘" />
+                                 <span>스프링 4대</span>
+                              </figure>
+      
+                              <figure className={styles.item_unit}>
+                                 <img src="/img/process/cost_kiosk_cabinet.png" alt="패키지 아이콘" />
+                                 <span>캐비닛 8대</span>
+                              </figure>
+                           </div>
+                        </div>
+                     </div>
+                  </motion.article>
+
+                  <div className={styles.box_vertical_group}>
+                     <motion.article 
+                        className={clsx(styles.toggle_box)}
+                        initial='offscreen'
+                        whileInView='onscreen'
+                        viewport={{amount: 0.5, once: true}}
+                        variants={{
+                           offscreen: { y: -20, opacity: 0,},
+                           onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.5,},},
+                        }}
+                     >
+                        <div className={styles.box_header}>
+                           <h5 className='paperLogay'>설치 기간</h5>
+                        </div>
+      
+                        <div className={styles.content}>
+                           <p className={styles.txt1}>평균 1개월</p>
+                           <p className={styles.txt2}>
+                              ※ 자판기 수급 상황에 따라 <br />
+                              대기 시간이 발생할 수 있습니다.
+                           </p>
+                        </div>
+                     </motion.article>
+      
+                     <motion.article 
+                        className={clsx(styles.toggle_box)}
+                        initial='offscreen'
+                        whileInView='onscreen'
+                        viewport={{amount: 0.5, once: true}}
+                        variants={{
+                           offscreen: { y: -20, opacity: 0,},
+                           onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.7,},},
+                        }}
+                     >
+                        <div className={styles.box_header}>
+                           <h5 className='paperLogay'>면적 가이드</h5>
+                        </div>
+      
+                        <div className={styles.content}>
+                           <p className={styles.txt1}>20평 이상 권장</p>
+                           <p className={styles.txt2}>
+                              (프라이빗 라운지 + 키오스크 4대 <br />
+                              + 자판기 동선)
+                           </p>
+                        </div>
+                     </motion.article>
+                  </div>
+               </div>
+            </ContainerV1>
+   
+            <ContainerV1 className={clsx(styles.wrapper, styles.procedure_area)}>
+               <motion.div 
+                  className={styles.title_box}
+                  initial='offscreen'
+                  whileInView='onscreen'
+                  viewport={{amount: 0.5, once: true}}
+               >
+                  <div className='normal_title_header'>
                      <motion.span 
                         className='paperLogy title_deco_circle'
                         variants={{
@@ -59,20 +224,36 @@ export default function ProcessSection() {
                      >
                         본사가 함께 돕는
                      </motion.span>
-                     <motion.h2 
-                        className='paperLogy'
-                        variants={{
-                           offscreen: { y: -10, opacity: 0,},
-                           onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.5,},},
-                        }}
-                     >
-                        창업절차 안내
-                     </motion.h2>
-                  </motion.div>
-               </div>
-            </ContainerV1>
-   
-            <ContainerV1 className={clsx(styles.wrapper, styles.wrapper_01)}>
+
+                     <div className={'line_deco_box'}>
+                        <motion.span
+                           initial='offscreen'
+                           whileInView='onscreen'
+                           viewport={{amount: 0.3, once: true}}
+                           className={'line left'}
+                           variants={LineDecoAni}
+                        />
+                        <motion.span 
+                           initial='offscreen'
+                           whileInView='onscreen'
+                           viewport={{amount: 0.3, once: true}}
+                           className={'line right'}
+                           variants={LineDecoAni}
+                        />
+
+                        <motion.h2 
+                           className='paperLogy'
+                           variants={{
+                              offscreen: { y: -10, opacity: 0,},
+                              onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.5,},},
+                           }}
+                        >
+                           창업절차 안내
+                        </motion.h2>
+                     </div>
+                  </div>
+               </motion.div>
+
                <motion.div 
                   className={styles.itemBox}
                   initial='offscreen'
@@ -117,138 +298,6 @@ export default function ProcessSection() {
                   예상 기간은 평균 1개월이며 <br />
                   자판기 수급에 따라 대기 시간이 존재할 수 있습니다.
                </motion.p>
-            </ContainerV1>
-   
-            <ContainerV1 className={clsx(styles.wrapper, styles.wrapper_02)}>
-               <motion.div 
-                  className={styles.title_box}
-                  initial='offscreen'
-                  whileInView='onscreen'
-                  viewport={{amount: isMobile ? 0.3 : 0.5, once: true}}
-               >
-                  <div className='normal_title_header'>
-                     <motion.span 
-                        className='paperLogy title_deco_circle'
-                        variants={{
-                           offscreen: { y: -10, opacity: 0,},
-                           onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.3,},},
-                        }}
-                     >
-                        오픈 이후까지 책임지는
-                     </motion.span>
-                     <motion.h2 
-                        className='paperLogy'
-                        variants={{
-                           offscreen: { y: -10, opacity: 0,},
-                           onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.5,},},
-                        }}
-                     >
-                        통합 운영 지원 시스템
-                     </motion.h2>
-                  </div>
-   
-                  <motion.p 
-                     className='paperLogy'
-                     variants={{
-                        offscreen: { y: -10, opacity: 0,},
-                        onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.7,},},
-                     }}
-                  >
-                     푸푸토이는 창업 이후에 운영자가 혼자 판단해야 하는 상황을 <br />
-                     <span className='title_deco'>최소화할 수 있도록</span> 운영 난이도를 낮춘 시스템과 <br />
-                     지원 구조를 함께 제공합니다.
-                  </motion.p>
-               </motion.div>
-   
-               <motion.div 
-                  className={styles.itemBox}
-                  initial='offscreen'
-                  whileInView='onscreen'
-                  viewport={{amount: isMobile ? 0.2 : 0.5, once: true}}
-               >
-                  <motion.article 
-                     className={styles.item}
-                     variants={{
-                        offscreen: { y: 30, opacity: 0,},
-                        onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.3,},},
-                     }}
-                  >
-                     <span className={clsx(styles.point_txt, 'poppins')}>
-                        point 01
-                     </span>
-
-                     <figure className={styles.img_box}>
-                        <div className={styles.img}>
-                           <img src={'/img/process/sec5_point_icon01.png'} alt="sec5_아이콘" className={styles.default} />
-                           <img src={'/img/process/sec5_point_icon01_hover.png'} alt="sec5_아이콘" className={styles.hover} />
-                        </div>
-      
-                        <div className={styles.txt_box}>
-                           <h5>자동발주 기반 재고 관리</h5>
-                           <p>
-                              재고 부족 시 자동 발주가 이루어져 품절 걱정 <br />
-                              없이 안정적인 상품 운영이 가능합니다.
-                           </p>
-                        </div>
-                     </figure>
-                  </motion.article>
-   
-                  <motion.article 
-                     className={styles.item}
-                     variants={{
-                        offscreen: { y: 30, opacity: 0,},
-                        onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.5,},},
-                     }}
-                  >
-                     <span className={clsx(styles.point_txt, 'poppins')}>
-                        point 02
-                     </span>
-
-                     <figure className={styles.img_box}>
-                        <div className={styles.img}>
-                           <img src={'/img/process/sec5_point_icon02.png'} alt="sec5_아이콘" className={styles.default} />
-                           <img src={'/img/process/sec5_point_icon02_hover.png'} alt="sec5_아이콘" className={styles.hover} />
-                        </div>
-      
-                        <div className={styles.txt_box}>
-                           <h5>24시간 본사 CS 관제 지원</h5>
-                           <p>
-                              매장 내 고객 요청 및 이슈를 본사가 24시간 <br />
-                              직접 대응해 무인 환경에서도 신뢰도 <br />
-                              높은 고객 서비스를 제공합니다.
-                           </p>
-                        </div>
-                     </figure>
-                  </motion.article>
-   
-                  <motion.article 
-                     className={styles.item}
-                     variants={{
-                        offscreen: { y: 30, opacity: 0,},
-                        onscreen: { y: 0, opacity: 1, transition: { duration: 0.5, delay: 0.7,},},
-                     }}
-                  >
-                     <span className={clsx(styles.point_txt, 'poppins')}>
-                        point 03
-                     </span>
-   
-                     <figure className={styles.img_box}>
-                        <div className={styles.img}>
-                           <img src={'/img/process/sec5_point_icon03.png'} alt="sec5_아이콘" className={styles.default} />
-                           <img src={'/img/process/sec5_point_icon03_hover.png'} alt="sec5_아이콘" className={styles.hover} />
-                        </div>
-      
-                        <div className={styles.txt_box}>
-                           <h5>키오스크 상품·서비스 업데이트</h5>
-                           <p>
-                              신상품 추가 및 콘텐츠 업데이트를 키오스크에 <br />
-                              즉시 반영해 항상 최신 상품과 서비스를 <br />
-                              매장에서 제공할 수 있습니다.
-                           </p>
-                        </div>
-                     </figure>
-                  </motion.article>
-               </motion.div>
             </ContainerV1>
    
          </section>

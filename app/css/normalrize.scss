@@ -1,9 +1,11 @@
 :root {
    --main-color: #D82A38;
    --hover-color: #ff3445;
+   --sub-color1: #563F17;
    --header-h: 65px;
 
-   --fontSize60: max(35px, 6rem);
+   --fontSize80: max(40px, 8rem);
+   --fontSize60: max(33px, 6rem);
    --fontSize45: max(30px, 4.5rem);
    --fontSize40: max(25px, 4rem);
    --fontSize35: max(20px, 3.5rem);
@@ -74,13 +76,70 @@ main {margin-bottom: 88px;}
 
 
 
-// deco style
+.normal_title_header {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 10px;
+   text-align: center;
 
+   .title_deco_circle {
+      padding: 7px 14px;
+      border-radius: 100px;
+      background: var(--main-color);
+      color: #fff;
+      font-size: var(--fontSize25);
+      font-weight: 700;
+   }
+
+   .line_deco_box { // 필요한 것만 추가해서 사용.
+      padding: 0 max(15px, 2.7rem);
+      position: relative;
+
+      .line {
+         display: block;
+         width: 7px;
+         height: 100%;
+         position: absolute;
+         z-index: 2;
+         background: var(--main-color);
+
+         &.left { bottom: 0; left: 0;}
+
+         &.right { top: 0; right: 0;}
+      }
+   }
+
+   h2 {
+      font-size: var(--fontSize60);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.4;
+   }
+
+   p {
+      margin-top: 20px;
+      font-size: var(--fontSize25);
+      line-height: 1.4;
+      font-weight: 400;
+      color: #fff;
+
+      b {font-weight: 700;}
+   }
+}
+
+
+// deco style
 .title_deco {
    padding: 0 10px;
    line-height: 1;
    background: var(--main-color);
    color: #fff;
+
+   &.gold {
+      color: var(--sub-color1);
+      background: url('/img/deco_gold_bg.png') no-repeat center / cover;
+   }
 }
 
 .title_deco2 {
@@ -102,6 +161,9 @@ main {margin-bottom: 88px;}
    }
 }
 
+
+
+// 둥근 데코
 .title_deco_circle {
    padding: 2.1rem 3.2rem;
    border-radius: 50%;
@@ -135,42 +197,6 @@ main {margin-bottom: 88px;}
       line-height: 1.2;
    }
 }
-
-
-.normal_title_header {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   gap: 10px;
-   text-align: center;
-
-   .title_deco_circle {
-      padding: 3px 14px;
-      border-radius: 100px;
-      background: var(--main-color);
-      color: #fff;
-      font-size: var(--fontSize25);
-   }
-
-   h2 {
-      font-size: var(--fontSize60);
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.3;
-   }
-
-   p {
-      margin-top: 20px;
-      font-size: var(--fontSize25);
-      line-height: 1.4;
-      font-weight: 400;
-      color: #fff;
-
-      b {font-weight: 700;}
-   }
-}
-
-.text_route {color: #fff; font-size: 20px;}
 
 // date-picker custom
 
