@@ -8,28 +8,7 @@ import { KeywordBox } from './client'
 
 export default function HeroSection() {
 
-   const cardVariants : Variants = {
-      offscreen: { y: 50, opacity: 0 },
-      onscreen: { 
-         y: 0, 
-         opacity: 1, 
-         transition: {
-            y: { 
-               type: "spring", 
-               bounce: 0.4, 
-               duration: 1, 
-               delay: 2.4 
-            },
-            opacity: { 
-               type: "tween", 
-               ease: "easeInOut", 
-               duration: 0.3, 
-               delay: 2.4 
-            }
-         }
-      },
-   }
-   
+   // 말풍선
    const bubbleVariants : Variants = {
       offscreen: { y: 50, opacity: 0 },
       onscreen: { 
@@ -47,6 +26,29 @@ export default function HeroSection() {
                ease: "easeInOut", 
                duration: 0.3, 
                delay: 0.5 
+            }
+         }
+      },
+   }
+
+   // 패키지 카드
+   const cardVariants : Variants = {
+      offscreen: { y: 50, opacity: 0 },
+      onscreen: { 
+         y: 0, 
+         opacity: 1, 
+         transition: {
+            y: { 
+               type: "spring", 
+               bounce: 0.4, 
+               duration: 1, 
+               delay: 2.4 
+            },
+            opacity: { 
+               type: "tween", 
+               ease: "easeInOut", 
+               duration: 0.3, 
+               delay: 2.4 
             }
          }
       },
@@ -103,7 +105,7 @@ export default function HeroSection() {
                            <motion.h1
                               className='paperLogy'
                               variants={{
-                                 offscreen: { y: '120%',},
+                                 offscreen: { y: '150%',},
                                  onscreen: { y: 0, transition: { duration: 0.5, delay: 1.7,},},
                               }}
                            >
