@@ -150,7 +150,7 @@ export function FormBox({miniForm,} : {miniForm?: boolean;}) {
         setStatus("error");
         NiceModal.show(ConfirmModal, {
           message:
-            "네트워크 오류가 발생했습니다. \n 조금 뒤에 다시 실행해 주세요",
+            "메일 전송에 문제가 발생했습니다. \n 불편을 끼쳐 드려 죄송합니다.",
         });
       }
     } catch (err) {
