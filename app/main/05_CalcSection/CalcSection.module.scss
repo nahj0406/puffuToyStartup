@@ -337,6 +337,13 @@
          height: 400px;
       }
    }
+
+   .chart_guide {
+      width: 100%;
+      color: #fff;
+      font-size: max(13px, 1.5rem);
+      text-align: center;
+   }
 }
 
 // 투자금 회수 불가, 예상 투자액 확인 전 텍스트

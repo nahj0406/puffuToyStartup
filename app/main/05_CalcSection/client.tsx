@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import NiceModal from "@ebay/nice-modal-react";
 import ConfirmModal from "@/component/modal/ConfirmModal/ConfirmModal";
 import { motion, AnimatePresence } from "framer-motion";
+import { useMediaQuery } from "react-responsive";
+
 import {
   animate,
   useMotionValue,
@@ -164,7 +166,10 @@ export function Counter({ from = 0, to, duration = 2 }: CounterProps) {
   return <b>{display}</b>;
 }
 
+
+// 수익 계산기
 export function Caculator() {
+
   // 기준 투자금 : 투자금 1억 밑으로 내려가면 parseFloat 꼭 수정하기, RecoveryChart도 수정하기
   const TARGET_AMOUNT = 150000000;
   const AMOUNT_Txt = parseFloat((TARGET_AMOUNT / 100000000).toFixed(1));
@@ -180,6 +185,7 @@ export function Caculator() {
   const [totalDate, setTotalDate] = useState<string>("");
   const [chartDatas, setChartDatas] = useState<number[]>([]);
   const [chartActive, setChartActive] = useState<boolean>(false);
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
 
   const toNumber = (value: string) => Number(value.replace(/,/g, "")) || 0;
 
@@ -190,6 +196,27 @@ export function Caculator() {
     extraCost: toNumber(value.extraCost),
   };
 
+  // 계산 버튼 클릭 시 이동
+  const resultAnchor = (id: string) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    // :root에 설정된 --header-h 값 가져옴.
+    const headerH =
+      parseFloat(
+        getComputedStyle(document.documentElement).getPropertyValue(
+          "--header-h",
+        ),
+      ) || 0;
+    // 사파리에서도 적용 잘 되는데 만약 버벅이면 getComputedStyle 문제임.
+
+    const y = el.getBoundingClientRect().top + window.scrollY - (headerH + 30);
+
+    window.scrollTo({ top: y, behavior: "smooth" });
+  };
+
+
+  // 계산식
   const caculator = () => {
     if (
       numbers.expectedSales <= 0 ||
@@ -240,29 +267,13 @@ export function Caculator() {
       chartData.push(inputTotal * i);
     }
 
+    resultAnchor("calc_result");
+
     setChartDatas(chartData); // 그래프
 
     setChartActive(true);
   };
 
-  // 계산 버튼 클릭 시 이동
-  const resultAnchor = (id: string) => {
-    const el = document.getElementById(id);
-    if (!el) return;
-
-    // :root에 설정된 --header-h 값 가져옴.
-    const headerH =
-      parseFloat(
-        getComputedStyle(document.documentElement).getPropertyValue(
-          "--header-h",
-        ),
-      ) || 0;
-    // 사파리에서도 적용 잘 되는데 만약 버벅이면 getComputedStyle 문제임.
-
-    const y = el.getBoundingClientRect().top + window.scrollY - (headerH + 30);
-
-    window.scrollTo({ top: y, behavior: "smooth" });
-  };
 
   // 순이익 표시 필터
   const formatCurrency = (value: number) => {
@@ -388,9 +399,6 @@ export function Caculator() {
             className={clsx(styles.calc_submit, "paperLogy")}
             onClick={() => {
               caculator();
-              if (total > 0) {
-                resultAnchor("calc_result");
-              }
             }}
           >
             계산하기
@@ -438,6 +446,15 @@ export function Caculator() {
                       inputTotal={total}
                       amount={TARGET_AMOUNT}
                     />
+
+                    
+                    <p className={styles.chart_guide}>
+                      {
+                        !isMobile ? 
+                          '그래프에 마우스를 올리면 수익률이 표시됩니다.'
+                        : '그래프를 터치하면 수익률이 표시됩니다.'
+                      }
+                    </p>
                   </motion.div>
                 </AnimatePresence>
               )}

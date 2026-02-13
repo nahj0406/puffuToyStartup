@@ -110,7 +110,7 @@
          line-height: 1.2;
          background: var(--main-color);
          padding: 7px 10px;
-         text-align: center;
+         text-align: center !important;
          border-radius: 5px;
          cursor: pointer;
          transition: all 0.3s;
