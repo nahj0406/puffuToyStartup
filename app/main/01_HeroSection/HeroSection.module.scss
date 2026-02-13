@@ -71,11 +71,11 @@
                            &::before {
                               content:'';
                               position: absolute;
-                              top: -62%;
-                              right: -60%;
+                              top: -30%;
+                              right: -20%;
                               background: url('/img/deco_light.png') no-repeat center / cover;
-                              width: 1.7777em;
-                              height: 1.8666em;
+                              width: 0.7777em; // 35px;
+                              height: 0.7777em; // 35px;
                            }
                         }
                      }

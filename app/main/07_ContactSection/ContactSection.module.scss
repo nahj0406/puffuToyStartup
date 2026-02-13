@@ -279,7 +279,24 @@
    padding: 10px;
 
    :global(.react-datepicker-popper) { // datePicker 위치 조정
-      left: -25px !important;
+      left: 50% !important;
+      top: 50% !important;
+      transform: translate(-50%, -50%) !important;
+      will-change: unset !important;
+   }
+
+   :global(.react-datepicker__triangle) { // 꽁다리 삼각형 제거
+      display: none !important;
+   }
+
+   @media (max-width: 992px) {
+      // 미니폼 내부에서 datePicker가 fixed 먹혀버려서 이렇게 변경
+      :global(.react-datepicker__portal) {
+         top: 50%;
+         transform: translateY(-50%);
+         height: auto;
+         background: transparent;
+      }
    }
 
    &::-webkit-scrollbar {
