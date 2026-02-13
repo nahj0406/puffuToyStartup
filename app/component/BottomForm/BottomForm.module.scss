@@ -68,26 +68,31 @@
       background: #fff;
       cursor: pointer;
       text-align: center;
-      transition: all 0.1s;
+      transition: all 0.25s;
 
-      &.contact {
-         color: var(--main-color);
-
-         &:hover {background: #1b1b1b; color: #fff;}
-      }
-      &.map {
-         color: #05438E;
-
-         &:hover {background: #05438E; color: #fff;}
-      }
+      &.contact {color: var(--main-color);}
+      &.map {color: #05438E;}
       &.calc {
          background: url('/img/deco_gold_bg.png') no-repeat center / cover;
          color: var(--sub-color1);
-
-          &:hover {color: var(--main-color);}
       }
 
       br {display: none;}
+
+      // 768 밑에선 hover 효과 차단
+      @media (min-width: 768px) {
+         &.contact {
+            &:hover {background: #1b1b1b; color: #fff;}
+         }
+
+         &.map {
+            &:hover {background: #05438E; color: #fff;}
+         }
+
+         &.calc {
+            &:hover {color: var(--main-color);}
+         }
+      }
    }
 }
 

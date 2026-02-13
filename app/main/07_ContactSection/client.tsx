@@ -2,7 +2,7 @@
 
 import clsx from "clsx";
 import styles from "./ContactSection.module.scss";
-import { useEffect, useRef, useState, useId } from "react";
+import { useEffect, useRef, useState, useId, forwardRef } from "react";
 import NiceModal from "@ebay/nice-modal-react";
 import ConfirmModal from "@/component/modal/ConfirmModal/ConfirmModal";
 import MiniFormModal from "@/component/modal/MiniFormModal/MiniFormModal";
@@ -164,6 +164,29 @@ export function FormBox({miniForm,} : {miniForm?: boolean;}) {
     }
   }
 
+  // Props 타입 정의 (필요한 것만 추출)
+  interface CustomInputProps {
+    value?: string;
+    onClick?: () => void;
+    placeholder?: string;
+  }
+
+  const CustomInput = forwardRef<HTMLButtonElement, CustomInputProps>(
+    ({ value, onClick, placeholder }, ref) => (
+      <button
+        type="button" // Form 내부에 있을 때 새로고침 방지
+        className={styles.custom_picker_input} // 기존 스타일 그대로 적용
+        onClick={onClick}
+        ref={ref}
+        style={{ textAlign: 'left', cursor: 'pointer' }} // 버튼처럼 보이게 조정
+      >
+        {value || placeholder}
+      </button>
+    )
+  );
+
+  CustomInput.displayName = "CustomInput";
+
   return (
     <>
       <motion.form 
@@ -268,6 +291,10 @@ export function FormBox({miniForm,} : {miniForm?: boolean;}) {
                   className={styles.custom_picker_input}
                   calendarClassName={"calenderWrapper"}
                   placeholderText="상담희망 날짜 선택"
+
+                  // 버튼으로 적용
+                  customInput={<CustomInput />}
+  
                   //  showTimeSelect
                   //  minTime={setHours(setMinutes(new Date(), 30), 9)}
                   //  maxTime={setHours(setMinutes(new Date(), 30), 18)}
@@ -385,6 +412,8 @@ export function FormBox({miniForm,} : {miniForm?: boolean;}) {
                   className={styles.custom_picker_input}
                   calendarClassName={"monthWrapper"}
                   placeholderText="오픈희망시기 선택"
+
+                  customInput={<CustomInput />}
                 />
               </div>
             </div>

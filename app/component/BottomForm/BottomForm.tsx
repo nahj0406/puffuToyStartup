@@ -7,6 +7,7 @@ import Link from "next/link";
 import siteInfo from "shared/utils/siteInfo";
 import NiceModal from "@ebay/nice-modal-react";
 import MiniFormModal from "../modal/MiniFormModal/MiniFormModal";
+import TopButton from "../TopButton/TopButton";
 
 export default function BottomForm() {
 
@@ -73,6 +74,8 @@ export default function BottomForm() {
                </div>
            </div>
          </ContainerV1>
+
+         <TopButton />
        </div>
     </>
   );
