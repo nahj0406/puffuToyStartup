@@ -7,15 +7,16 @@ import NiceModal from "@ebay/nice-modal-react";
 import ConfirmModal from "@/component/modal/ConfirmModal/ConfirmModal";
 import { motion, AnimatePresence } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
-
+import type { Variants } from "motion/react";
 import {
   animate,
   useMotionValue,
   useTransform,
   useMotionValueEvent,
 } from "motion/react";
-import type { Variants } from "motion/react";
 
+import { Bar } from "react-chartjs-2";
+import annotationPlugin from "chartjs-plugin-annotation";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -26,8 +27,7 @@ import {
   Legend,
   Filler,
 } from "chart.js";
-import { Bar } from "react-chartjs-2";
-import annotationPlugin from "chartjs-plugin-annotation";
+
 
 ChartJS.register(
   CategoryScale,
@@ -230,8 +230,35 @@ export function Caculator() {
       return;
     }
 
+    // 1. 예상 매출액이 3000만원 이상이면
+    // 실 매출액 = 3000만원의 30% + 초과분 1만원의 35% 
+
+    // 2. 매출액이 3000만원 미만이면
+    // 실 매출액 = 2999만원의 30%
+
+    // 순이익 = 실 매출액 - (월세 + 관리비 + 기타)
+    // 회수기간 개월수 = 1억5천(투자금) / 순이익
+
+
+    // 매출액 계산
+    let expectedSalesProfit = 0;
+    const cutlineProfit = 30000000; // 예상 월 매출
+
+    if(numbers.expectedSales > cutlineProfit) { // 3000만원 이상
+      const baseProfit = cutlineProfit * 0.3;
+      const excessProfit = (numbers.expectedSales - cutlineProfit) * 0.35;
+      expectedSalesProfit = baseProfit + excessProfit;
+      
+      // console.log('3000 이상',excessProfit);
+
+    } else if (numbers.expectedSales < cutlineProfit) { // 3000만원 미만
+
+      expectedSalesProfit = Math.floor(numbers.expectedSales * 0.3);
+      // console.log('3000 미만', expectedSalesProfit);
+    }
+
     const inputTotal =
-      numbers.expectedSales -
+      expectedSalesProfit -
       (numbers.rent + numbers.maintenance + numbers.extraCost);
 
     // 총 순이익
@@ -501,7 +528,7 @@ export function Caculator() {
                   transition={{ duration: 0.5 }}
                 >
                   <span className="paperLogy">
-                    월 순이익 추정치 : <b>{formatCurrency(total)}</b>
+                    예상 월 순이익 추정치 : <b>{formatCurrency(total)}</b>
                   </span>
                 </motion.div>
               </AnimatePresence>
@@ -614,7 +641,7 @@ const RecoveryChart = ({ chartDatas, inputTotal, amount }: Props) => {
         grid: { color: "#333" },
         ticks: {
           color: "#ccc",
-          // 단위 포맷팅 (예: 1.2억, 9000...)
+          // 단위 포맷팅 (예: 1.5억, 9000...)
           callback: (val: any) => {
             if (val >= 100000000) return (val / 100000000).toFixed(1) + "억";
             return val.toLocaleString();

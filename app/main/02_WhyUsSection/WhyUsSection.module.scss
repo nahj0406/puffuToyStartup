@@ -52,11 +52,11 @@
       &::before {
          content:'';
          position: absolute;
-         top: -35%;
-         right: -24%;
+         top: -14%;
+         right: -5%;
          background: url('/img/deco_light.png') no-repeat center / cover;
-         width: 1.33333em;
-         height: 1.41666em;
+         width: 0.58333em; // 35px
+         height: 0.58333em; // 35px
       }
    }
 }
