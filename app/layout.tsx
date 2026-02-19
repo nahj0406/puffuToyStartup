@@ -8,6 +8,9 @@ import ModalProvider from './client';
 export const metadata: Metadata = {
   title: "무인 성인용품 창업 | 푸푸토이",
   description: "남들 모르게, 매출이 남는 무인 성인 웰니스 매장 | 인건비 걱정 ZERO! | 초보자도 쉽게 가능",
+  verification: {
+    google: "XTNwtoVO0-W_DHmyCe7k2DFHPa5xSJUdiaOLY8Hob7M",
+  },
   openGraph: {
     url: "https://brand.puffutoy.com/",
     type: "website",
@@ -46,6 +49,7 @@ export default function RootLayout({
       <head>
         <meta charSet="utf-8" />
         <meta name="theme-color" content="#000" />
+        {/* <meta name="google-site-verification" content="XTNwtoVO0-W_DHmyCe7k2DFHPa5xSJUdiaOLY8Hob7M" /> */}
       </head>
       <body
         className={`${pretendard.className} ${poppins.variable} ${paperlogy.variable} antialiased`}
