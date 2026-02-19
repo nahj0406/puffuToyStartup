@@ -170,7 +170,7 @@ export function Counter({ from = 0, to, duration = 2 }: CounterProps) {
 // 수익 계산기
 export function Caculator() {
 
-  // 기준 투자금 : 투자금 1억 밑으로 내려가면 parseFloat 꼭 수정하기, RecoveryChart도 수정하기
+  // 기준 투자금 : 투자금 변동 되면 parseFloat 꼭 수정하기, RecoveryChart도 수정하기
   const TARGET_AMOUNT = 150000000;
   const AMOUNT_Txt = parseFloat((TARGET_AMOUNT / 100000000).toFixed(1));
 
@@ -244,7 +244,7 @@ export function Caculator() {
     let expectedSalesProfit = 0;
     const cutlineProfit = 30000000; // 예상 월 매출
 
-    if(numbers.expectedSales > cutlineProfit) { // 3000만원 이상
+    if(numbers.expectedSales >= cutlineProfit) { // 3000만원 이상
       const baseProfit = cutlineProfit * 0.3;
       const excessProfit = (numbers.expectedSales - cutlineProfit) * 0.35;
       expectedSalesProfit = baseProfit + excessProfit;
