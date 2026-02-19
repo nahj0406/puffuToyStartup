@@ -616,8 +616,17 @@ interface Props {
 
 const RecoveryChart = ({ chartDatas, inputTotal, amount }: Props) => {
   const GOAL = amount; // 1.5억
-
   const GOAL_txt = GOAL / 100000000;
+
+  // 1. Y축 최대값 결정 로직
+  // 데이터 중 가장 큰 값(마지막 개월차 누적액)과 목표액 중 더 큰 것을 찾음
+  const lastCumulativeProfit = chartDatas[chartDatas.length - 1] || 0;
+  // const maxDataValue = Math.max(lastCumulativeProfit, GOAL);
+  
+  // 그래프 상단에 10% 정도 여유 공간 생성 (가독성 목적)
+  const yAxisMax = lastCumulativeProfit > 0 
+  ? lastCumulativeProfit * 1.2 
+  : GOAL;
 
   const data = {
     labels: chartDatas.map((_, i) => `${i + 1}개월차`),
@@ -625,7 +634,6 @@ const RecoveryChart = ({ chartDatas, inputTotal, amount }: Props) => {
       {
         label: "누적 수익",
         data: chartDatas,
-        // 배경 그라데이션 (함수로 구현하거나 단순 색상 지정)
         backgroundColor: "rgba(255, 94, 98, 0.8)",
         borderRadius: 4,
       },
@@ -638,12 +646,14 @@ const RecoveryChart = ({ chartDatas, inputTotal, amount }: Props) => {
     scales: {
       y: {
         beginAtZero: true,
+        // 위에서 계산한 변수를 여기에 적용
+        max: yAxisMax, 
         grid: { color: "#333" },
         ticks: {
           color: "#ccc",
-          // 단위 포맷팅 (예: 1.5억, 9000...)
           callback: (val: any) => {
             if (val >= 100000000) return (val / 100000000).toFixed(1) + "억";
+            if (val >= 10000) return (val / 10000).toLocaleString() + "만";
             return val.toLocaleString();
           },
         },
@@ -657,7 +667,6 @@ const RecoveryChart = ({ chartDatas, inputTotal, amount }: Props) => {
       legend: { display: false },
       annotation: {
         annotations: {
-          // 1.5억 목표 가로선
           goalLine: {
             type: "line" as const,
             yMin: GOAL,
@@ -668,18 +677,19 @@ const RecoveryChart = ({ chartDatas, inputTotal, amount }: Props) => {
             label: {
               display: true,
               content: `목표 ${parseFloat(GOAL_txt.toFixed(1))}억`,
-              backgroundColor: "transparent",
+              backgroundColor: "rgba(0,0,0,0.5)", // 글씨 잘 보이게 배경 살짝 추가
               color: "#fff",
               yAdjust: -10,
             },
           },
-          // 투자 회수 시점 세로선 (예시: 10개월차 회수라면)
           recoveryLine: {
             type: "line" as const,
-            xMin: GOAL / inputTotal - 1, // index 기준
-            xMax: GOAL / inputTotal - 1,
+            // inputTotal이 0일 경우 대비 (0 나누기 방지)
+            xMin: inputTotal > 0 ? (GOAL / inputTotal) - 1 : 0,
+            xMax: inputTotal > 0 ? (GOAL / inputTotal) - 1 : 0,
             borderColor: "red",
             borderWidth: 2,
+            display: (_ctx: any) => inputTotal > 0, // 수익이 날 때만 표시
           },
         },
       },
