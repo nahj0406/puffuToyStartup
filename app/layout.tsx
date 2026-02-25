@@ -6,7 +6,7 @@ import Providers from "./provider";
 import ModalProvider from './client';
 
 export const metadata: Metadata = {
-  title: "무인 성인용품 창업 | 푸푸토이",
+  title: "푸푸토이 | 손쉬운 무인 성인용품 창업",
   description: "남들 모르게, 매출이 남는 무인 성인 웰니스 매장 | 인건비 걱정 ZERO! | 초보자도 쉽게 가능",
   verification: {
     google: "XTNwtoVO0-W_DHmyCe7k2DFHPa5xSJUdiaOLY8Hob7M",
@@ -17,13 +17,13 @@ export const metadata: Metadata = {
   openGraph: {
     url: "https://brand.puffutoy.com/",
     type: "website",
-    title: "무인 성인용품 창업 | 푸푸토이",
+    title: "푸푸토이 | 손쉬운 무인 성인용품 창업",
     description: "남들 모르게, 매출이 남는 무인 성인 웰니스 매장 | 인건비 걱정 ZERO! | 초보자도 쉽게 가능",
     images: "https://brand.puffutoy.com/org-img.png",
   },
   twitter: {
     card: "summary",
-    title: "무인 성인용품 창업 | 푸푸토이",
+    title: "푸푸토이 | 손쉬운 무인 성인용품 창업",
     description: "남들 모르게, 매출이 남는 무인 성인 웰니스 매장 | 인건비 걱정 ZERO! | 초보자도 쉽게 가능",
     images: "https://brand.puffutoy.com/org-img.png",
   },
