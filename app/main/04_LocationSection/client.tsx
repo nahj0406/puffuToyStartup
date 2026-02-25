@@ -235,6 +235,8 @@ export function PointBox() {
                       통해 인근 거주 온라인 고객의 구매까지 <br />
                       <span>오프라인 매출</span>로 연결할 수 있습니다.
                     </p>
+
+                    <a className={styles.link_btn} href="https://puffutoy.com/" target='_blank'>온라인 쇼핑몰 확인하기</a>
                 </div>
               </div>
           </motion.figure>
