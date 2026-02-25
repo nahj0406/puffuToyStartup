@@ -16,7 +16,7 @@ export default function Header() {
       <header className={styles.header}>
          <ContainerV1 className={styles.wrapper}>
             <div className={styles.logo}>
-               <Link href={'/'}><img src="/img/logo.png" alt="로고" /></Link>
+               <Link href={'/'}><img src="/img/logo.png" alt="푸푸토이 무인 성인용품 창업" /></Link>
             </div>
 
             {/* 앵커 메뉴 및 모바일 버튼 */}
